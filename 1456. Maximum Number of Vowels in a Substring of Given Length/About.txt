@@ -1,0 +1,20 @@
+Intuition - 
+The problem asks us to find the maximum number of vowels in any substring of length k within the given string. We can approach this problem by using a sliding window of size k and moving it from left to right through the string, counting the number of vowels within the window at each step. We can keep track of the maximum number of vowels seen so far and return it as the final answer.
+
+Approach -
+
+1. Initialize a sliding window of size k to cover the first k characters of the input string.
+2. Count the number of vowels within the sliding window and store it as the initial maximum count.
+3. Initialize a variable to store the current count of vowels within the sliding window.
+4. Iterate over the remaining characters in the input string, one at a time.
+5. For each new character, add it to the sliding window and increment the current vowel count if it is a vowel.
+6. Remove the oldest character from the sliding window and decrement the current vowel count if it was a vowel.
+7. Update the maximum vowel count seen so far with the current count if it is greater.
+8. Continue iterating until all characters have been processed.
+9. Return the maximum vowel count seen during the iteration.
+
+Complexity -
+Time complexity: O(n)
+Where, n is the length of the input string s
+Space complexity: O(k)
+Where, k is the size of the sliding window used to compute the maximum number of vowels in a substring.
