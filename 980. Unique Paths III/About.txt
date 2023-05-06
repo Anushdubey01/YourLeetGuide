@@ -1,0 +1,24 @@
+# Intuition - 
+Given a grid where some cells are blocked and some cells are empty, the task is to find the number of unique paths from the start cell to the end cell, visiting every empty cell exactly once. 
+
+# Approach - 
+1.	The program uses a Depth First Search (DFS) approach to traverse all possible paths from the start cell to the end cell, while ensuring that every empty cell is visited exactly once.
+
+2.	The program first initializes the number of empty cells, the starting cell coordinates, and the ending cell coordinates. It then calls the DFS function with the initial parameters.
+
+3.	The DFS function checks if the current cell is out of bounds or if it is already visited or if it is a blocked cell. If any of these conditions are met, the DFS function returns.
+
+4.	If the DFS function reaches the ending cell and all the empty cells have been visited, it increments the count of the number of unique paths found.
+
+5.	The DFS function then recursively calls itself on all possible adjacent cells that are empty and have not been visited yet. The DFS function keeps track of the number of empty cells visited so far and updates the grid to mark the cells that have been visited.
+
+
+Once all possible paths have been explored, the program returns the count of unique paths found.
+
+# Complexity
+- Time complexity O(3^mn)
+
+- Space complexity O(mn)
+
+
+
