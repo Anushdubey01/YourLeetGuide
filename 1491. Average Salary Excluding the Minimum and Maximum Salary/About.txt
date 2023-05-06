@@ -1,0 +1,31 @@
+Intuition & Approach -
+
+    * Define a method average that takes an integer array salary as input and returns a double value.
+
+    * Get the length of the input array salary.
+
+    * Sort the array in ascending order using the Arrays.sort method.
+
+    * Initialize a double variable t with the second element of the sorted array salary[1], since the smallest value has to be excluded from the average calculation.
+
+    * Use a for loop to iterate over the remaining elements of the sorted array, starting from the third element salary[2] up to the second-to-last element salary[N - 2].
+
+    * Inside the loop, add each element to the variable t.
+
+    * Calculate the average by dividing the total sum t by the number of elements excluding the smallest and largest values (N - 2).
+
+    * Return the calculated average as a double value.
+
+    The program sorts the array, excludes the smallest and largest values, and then calculates the average of the remaining elements.
+
+
+Complexity - 
+
+    * Time complexity: O(n log n) - 
+
+      where n is the length of the input array. This is because the program uses the built-in sorting function of Java, which has a time complexity of O(n log n).
+	The loop that calculates the sum of the salaries has a time complexity of O(n), so it does not affect the overall time complexity.
+
+    * Space complexity: O(1) - 
+
+      The program only uses a fixed number of variables to store the input and intermediate values, so the space used does not depend on the length of the input array.
