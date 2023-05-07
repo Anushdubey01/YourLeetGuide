@@ -1,0 +1,22 @@
+# Intuition - 
+
+The program aims to find the length of the longest non-decreasing subsequence at each position of an input array obstacles.
+
+
+# Approach - 
+
+1. The program uses a variation of the binary search algorithm to find the first element in the tail list that is greater than the current obstacle.
+
+2. It maintains the tail list, which keeps track of the current longest non-decreasing subsequence.
+
+3. If the current obstacle is greater than or equal to the last element in the tail list, then the obstacle is added to the end of the tail list, and its length is appended to the ans list.
+
+4. Otherwise, the index of the first element greater than the obstacle is found using the binary search algorithm, and the obstacle is inserted at that index in the tail list.
+
+5. The length of the longest non-decreasing subsequence that ends at the current position is equal to the index plus one, and this value is appended to the ans list.
+
+# Complexity - 
+
+- Time complexity: The time complexity of the program is **O(n log n)**, where n is the length of the input array obstacles.
+
+- Space complexity: The space complexity of the program is **O(n)**, since the tail and ans lists both have a maximum size of n.
