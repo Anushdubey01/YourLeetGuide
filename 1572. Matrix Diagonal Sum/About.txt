@@ -1,0 +1,8 @@
+* Intuition:
+The program calculates the sum of the elements in the diagonal of a square matrix. It adds the elements of the main diagonal and the secondary diagonal by iterating through the matrix. If the size of the matrix is an odd number, it subtracts the center element, which belongs to both diagonals, to avoid double counting.
+
+* Approach:
+The program uses a simple approach of iterating through the matrix using a for loop. It adds the elements of the main diagonal and the secondary diagonal by using the index of the for loop. It also checks for the center element in case the size of the matrix is an odd number, and subtracts it to avoid double counting.
+
+* Complexity:
+The time complexity of the program is O(N), where N is the number of elements in the matrix, as it iterates through all the elements once. The space complexity of the program is O(1), as it only uses a single integer variable to store the sum of diagonal elements and a few integer variables for loop control. Therefore, the program is efficient both in terms of time and space complexity.
