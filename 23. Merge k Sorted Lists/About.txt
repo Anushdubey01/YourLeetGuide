@@ -1,0 +1,23 @@
+# Intuition - 
+We are given an array of k linked lists, and our task is to merge all of them into a single linked list in a sorted order.
+
+# Approach - 
+1. Create a dummy node and a current node pointing to the dummy node.
+
+2. Initialize a min heap to store the heads of all the k lists.
+
+3. Traverse the lists array and add all the non-null head nodes to the min heap.
+
+4. Extract the minimum node from the heap and add it to the result list.
+
+5. If the extracted node has a next node, then add it to the heap.
+
+6. Repeat the above step until the heap becomes empty.
+
+7. Return the next of the dummy node, which will point to the head of the merged linked list.
+
+# Complexity - 
+- Time complexity: The time complexity of the above approach is **O(n log k)**, where n is the total number of nodes in all k lists. The reason for this complexity is that each node will be added to and removed from the heap only once.
+
+
+- Space complexity: The space complexity of the above approach is **O(k)**, which is the size of the heap. In the worst case, when all the k lists have only one node each, the heap size will be k.
