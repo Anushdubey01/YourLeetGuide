@@ -1,0 +1,17 @@
+# Intuition - 
+The program is solving the problem of finding the minimum number of changes required to make a given string a strong password. A password is considered strong if it satisfies the following conditions:
+
+- It has at least 6 characters and at most 20 characters.
+- It must contain at least one lowercase letter, at least one uppercase letter, and at least one digit.
+ - It cannot contain three repeating characters in a row.
+
+# Approach
+1. The program first calculates the number of missing characters required to make the string a strong password using the getMissing() method.
+2. It then calculates the number of replacements required to remove any three repeating characters in a row. It keeps track of the number of (3k)-sequences and (3k+1)-sequences to determine the number of replacements required. The variable replaces stores this number.
+3. The program then checks if the length of the string is less than 6 or less than or equal to 20. If the length is less than 6, then the program returns the maximum of the number of missing characters and 6 minus the length. If the length is less than or equal to 20, then the program returns the maximum of the number of replacements and the number of missing characters.
+4. If the length of the string is greater than 20, then the program calculates the number of deletions required to make the string length equal to 20. It then reduces the number of replacements required based on the number of deletions that can be made. It does this by reducing the replacements required for (3k)-sequences, (3k+1)-sequences, and other sequences respectively. Finally, the program returns the number of deletions required plus the maximum of the number of replacements and the number of missing characters.
+
+# Complexity
+- Time complexity: **O(n)**, where n is the length of the string. The program iterates over the characters of the string once to calculate the missing characters and the number of replacements required.
+
+- Space complexity: **O(1)**, The program uses a constant amount of extra space to store variables.
