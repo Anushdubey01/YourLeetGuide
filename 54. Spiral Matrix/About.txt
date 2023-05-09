@@ -1,0 +1,10 @@
+# Intuition - 
+The given program solves the problem of traversing a 2D matrix in a spiral order, and returns the values in the order they were visited.
+
+# Approach - 
+The approach used in the code is to define four variables r1, c1, r2, and c2 that represent the top, left, bottom, and right boundaries of the current spiral. In each iteration of the while loop, the code traverses the top row from left to right, the right column from top to bottom, the bottom row from right to left, and the left column from bottom to top. After each traversal, the boundaries are updated to exclude the elements that have already been visited, and the loop continues until all elements have been visited.
+
+# Complexity - 
+- Time complexity: The time complexity of the program is **O(m * n)**, where m is the number of rows and n is the number of columns in the matrix, since we need to visit each element once. 
+
+- Space complexity: The space complexity of the program is also **O(m * n)**, since we need to store all the visited elements in the answer list. However, the space used by the program could be reduced by modifying the input matrix in-place instead of creating a new list to store the visited elements.
