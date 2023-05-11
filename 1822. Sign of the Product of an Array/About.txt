@@ -1,0 +1,8 @@
+Intuition:
+The program aims to find the sign of the product of all the numbers in the given array. If the product is positive, the sign is +1, if it is negative, the sign is -1, and if any number in the array is zero, the product is zero, and the sign is also zero.
+
+Approach:
+The approach is to iterate over each element of the array and determine its sign. We initialize a variable `res` to 1, which stores the sign of the product. For each number in the array, we check its sign using the `if` statement. If the number is positive, we continue with the next iteration. If the number is zero, we immediately return 0 as the product will also be zero. If the number is negative, we update the value of `res` by multiplying it with -1. At the end of the loop, we return the final value of `res`.
+
+Complexity:
+The time complexity of the program is O(N), where N is the length of the input array. This is because we need to iterate over each element of the array once. The space complexity is O(1), as we are only using a single integer variable to store the sign of the product. Therefore, the program has an optimal time and space complexity.
