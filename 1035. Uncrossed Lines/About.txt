@@ -1,0 +1,16 @@
+# Intuition - 
+Given two integer arrays, the problem is to draw connecting lines between their integers such that the lines don't intersect each other and the maximum number of lines can be drawn. The approach is to use dynamic programming to find the longest common subsequence between the two arrays.
+The length of the longest common subsequence is the maximum number of lines that can be drawn without any intersection.
+
+# Approach - 
+1. Create a two-dimensional array 'dp' of size (m+1) x (n+1) where 'm' and 'n' are the lengths of nums1 and nums2 respectively.
+2. Traverse both the arrays using nested for loops, and if the elements at the current indices are equal, then set the value of dp[i][j] to dp[i-1][j-1]+1, where i and j are the indices of the current elements in nums1 and nums2 respectively.
+3. Otherwise, set dp[i][j] to the maximum of dp[i-1][j] and dp[i][j-1].
+4. Finally, return dp[m][n], where m and n are the lengths of nums1 and nums2 respectively.
+
+# Complexity - 
+- Time complexity: O(mn)
+
+- Space complexity: O(mn)
+
+The time complexity is O(mn) because we have to traverse both arrays of size m and n respectively, and for each element, we perform constant time operations (comparing the elements and assigning values to the dp array). The space complexity is also O(mn) because we create a two-dimensional dp array of size (m+1) x (n+1).
