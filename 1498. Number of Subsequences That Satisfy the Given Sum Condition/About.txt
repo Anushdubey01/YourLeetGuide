@@ -1,0 +1,9 @@
+Intuition -
+The problem is asking to find the number of subsequences of a given array nums whose sum is less than or equal to the given target. A subsequence of an array is a sequence that can be derived from the array by deleting some or no elements without changing the order of the remaining elements.
+
+Approach -
+The approach to solve this problem is to first sort the array nums in ascending order. Then, we use two pointers, l and r, initially pointing to the first and last element of the array, respectively. We move the pointers towards each other and calculate the number of subsequences that can be formed by taking any element between the l and r pointers. If the sum of the left and right pointers is less than or equal to the target, then we update our answer by adding 2^(r-l) to it, as there are 2^(r-l) subsequences that can be formed by taking any element between the l and r pointers. We move the l pointer to the next element and continue the process until l and r cross each other.
+
+Complexity - 
+Time complexity: O(n log n) where n is the length of the input array nums.
+Space complexity: O(n) where n is the length of the input array nums.
