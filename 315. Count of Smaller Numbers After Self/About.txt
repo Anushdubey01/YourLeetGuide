@@ -1,0 +1,21 @@
+# Intuition - 
+The given program solves the problem of counting the number of smaller elements that appear after each element in the input array. It uses a Fenwick Tree (also known as a Binary Indexed Tree) data structure to efficiently update and query prefix sums.
+
+# Approach - 
+1. The program defines a FenwickTree class that initializes an array 'sums' to store the prefix sums.
+2. The update() method of FenwickTree updates the prefix sums by traversing the tree using the lowbit() function.
+3. The get() method of FenwickTree calculates the prefix sum by traversing the tree in the opposite direction.
+4. The program defines the Solution class, which counts the number of smaller elements for each element in the input array.
+5. It creates a map 'ranks' to assign a rank to each unique element in the input array.
+6. The getRanks() method populates the ranks map by sorting the input array and assigning ranks accordingly.
+7. The countSmaller() method iterates over the input array from right to left.
+8. For each element, it retrieves its rank from the ranks map and queries the Fenwick Tree to count the number of smaller elements.
+9. It updates the Fenwick Tree by incrementing the count for the current element's rank.
+10. The results are stored in a list 'ans' and then reversed to maintain the original order of elements.
+
+# Complexity - 
+- The Fenwick Tree construction takes **O(N log N)** time and **O(N)**space, where N is the number of unique elements in the input array.
+- The countSmaller() method iterates over the input array, performs Fenwick Tree queries and updates, taking **O(N log N)** time.
+- The getRanks() method sorts the input array, taking **O(N log N)** time.
+- Overall, the time complexity of the solution is **O(N log N),** where N is the size of the input array.
+- The space complexity is **O(N),** considering the space required for the Fenwick Tree and the ranks map.
