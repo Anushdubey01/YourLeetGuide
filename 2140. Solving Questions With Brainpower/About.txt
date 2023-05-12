@@ -1,0 +1,21 @@
+Intuition:
+- The program aims to find the maximum number of points that can be obtained by answering questions.
+- Each question has two values: the points (p) it gives and the number of subsequent questions (b) that cannot be answered.
+- The goal is to maximize the total points by selecting the questions strategically.
+
+Approach:
+1. Convert the input `int[][] questions` into a `List<List<Integer>> questionList` to work with a more convenient data structure.
+2. Initialize an array `r` of size `n` (number of questions) to store the maximum points achievable from each question.
+3. Iterate through the questions in reverse order, starting from the last question:
+   - Retrieve the points (p) and the number of subsequent blocked questions (b) for the current question.
+   - If it is the last question (`i == n - 1`), set `r[i]` to the points of that question since there are no subsequent questions to consider.
+   - If the number of subsequent blocked questions and the current index are such that answering this question is not possible (`i + b + 1 >= n`), set `r[i]` to the maximum points achievable by skipping this question and considering the next question (`r[i + 1]`).
+   - Otherwise, set `r[i]` to the maximum points achievable by either skipping the current question (`r[i + 1]`) or answering it and considering the maximum points achievable from the next available question after the blocked questions (`p + r[i + b + 1]`).
+4. Return `r[0]`, which represents the maximum points achievable from the first question.
+
+Complexity:
+- Converting the input array to a list takes O(n) time and space.
+- The main loop iterates through all the questions once, resulting in O(n) iterations.
+- Within each iteration, retrieving values from the `questionList` and updating `r` are constant-time operations.
+- Therefore, the overall time complexity is O(n).
+- The space complexity is O(n) to store the `r` array and the converted `questionList`.
