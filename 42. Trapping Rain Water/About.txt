@@ -1,0 +1,15 @@
+# Intuition - 
+The problem aims to calculate the amount of water that can be trapped between bars in a given array of heights. The trapped water can be visualized by finding the difference between the minimum of the maximum heights on the left and right sides of each bar and the height of the bar itself.
+
+# Approach - 
+1. Create two arrays, "l" and "r," of the same length as the input height array to store the maximum heights encountered from the left and right sides, respectively.
+2. Initialize the first element of "l" with the height of the first bar, and the last element of "r" with the height of the last bar.
+3. Iterate through the height array from left to right and update each element of "l" by taking the maximum between the current height and the previous maximum.
+4. Iterate through the height array from right to left and update each element of "r" by taking the maximum between the current height and the next maximum.
+5. Initialize a variable "count" to keep track of the trapped water.
+6. Iterate through the height array again and calculate the trapped water at each bar by taking the minimum between the corresponding elements of "l" and "r" and subtracting the height of the bar. Add this value to "count."
+7. Finally, return the value of "count," which represents the total amount of trapped water.
+
+# Complexity Analysis - 
+- Time Complexity: The program performs three iterations over the height array, resulting in a linear time complexity of **O(n),** where n is the length of the height array.
+- Space Complexity: The program uses two additional arrays of the same length as the height array, resulting in a space complexity of **O(n).**
