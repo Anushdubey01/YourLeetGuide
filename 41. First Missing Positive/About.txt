@@ -1,0 +1,22 @@
+# Intuition - 
+The program aims to find the first missing positive integer in an array. It assumes that the missing positive integer lies in the range [1, N+1], where N is the size of the array.
+
+# Approach - 
+**The program uses a two-step approach**
+
+1. **Segregation:** It segregates the array such that all non-positive integers are moved to the left side of the array.
+
+2. **Finding the missing positive integer:** It iterates through the positive values in the modified array and modifies the corresponding index in the array to mark the presence of the value. Finally, it searches for the first index that still holds a positive value, which represents the first missing positive integer.
+
+**The program consists of three helper methods:**
+
+1. `Segregate`: It moves all non-positive integers to the left side of the array and returns the index where positive integers start.
+
+2. `findMissingPositive`: It modifies the array to mark the presence of positive values and returns the index of the first positive value that is not marked.
+
+3. `findMissing`: It performs the segregation, creates a new array without the non-positive values, and finds the missing positive integer in the modified array.
+
+# Complexity - 
+- Time complexity: The program performs two iterations over the array, resulting in a time complexity of **O(N),** where N is the size of the array.
+
+- Space complexity: The program uses additional space for the arr2 array, which has a maximum size of N-shift, where shift is the number of non-positive integers. Therefore, the space complexity is **O(N-shift).**
