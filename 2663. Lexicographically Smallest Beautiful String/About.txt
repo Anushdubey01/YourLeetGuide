@@ -1,0 +1,12 @@
+# Intuition - 
+- The code aims to find the smallest lexicographically beautiful string without palindromic substrings of length 2 or 3.
+
+# Approach - 
+- The code uses a `StringBuilder` to manipulate the input string.
+- It iterates from the end of the string and increments characters until no palindromic substring of length 2 or 3 is formed.
+- If a valid beautiful string is found, it returns the modified suffix.
+- If no solution is found, it returns an empty string.
+
+# Complexity - 
+- Time Complexity: **O(n * k),** where n is the length of the input string and k is the value of `k`.
+- Space Complexity: **O(n),** where n is the length of the input string.
