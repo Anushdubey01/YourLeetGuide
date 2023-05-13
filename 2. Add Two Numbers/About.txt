@@ -1,0 +1,18 @@
+Intuition:
+The code represents the addition of two numbers represented as linked lists. It iterates through the linked lists, calculates the sum of corresponding digits along with the carry, and constructs a new linked list to store the result.
+
+Approach:
+1. Create a dummy node and a current node (`dummy`, `curr`) initially pointing to the dummy node.
+2. Initialize a carry variable to 0 to keep track of any carry generated during addition.
+3. Iterate while there is a carry or either of the linked lists has remaining digits:
+   - If the current digit exists in `l1`, add it to the carry and move `l1` to the next node.
+   - If the current digit exists in `l2`, add it to the carry and move `l2` to the next node.
+   - Create a new node in the result list with the value as the sum of carry and the digits from `l1` and `l2`.
+   - Update the carry by dividing it by 10 to get the new carry.
+   - Move `curr` to the next node in the result list.
+4. Return the next node of the dummy node, which represents the head of the resulting linked list.
+
+Complexity:
+- Let n be the length of the longer linked list between `l1` and `l2`.
+- The code traverses each node of the linked lists once, resulting in a time complexity of O(n).
+- The space complexity is O(n) as well since a new linked list is constructed to store the result.
