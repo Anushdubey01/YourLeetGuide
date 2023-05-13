@@ -1,0 +1,18 @@
+# Intuition - 
+The code implements a memoization technique to cache the results of a given function `fn`. It ensures that the function is not called multiple times with the same inputs, instead returning the cached result if available.
+
+# Approach - 
+1. The `memoize` function takes the original function (`fn`) as input and returns a memoized version of it.
+2. The memoized function maintains a global cache (`globalCache`) using a nested `Map` structure.
+3. When the memoized function is called with arguments (`params`), it iterates over the arguments and traverses the cache hierarchy to check if the current argument is already cached.
+4. If the current argument is not found in the cache, a new entry is created in the cache hierarchy using a `Map`.
+5. If the final cache level contains the result (`RES`), it is returned from the cache.
+6. If the result is not found in the cache, the original function (`fn`) is called with the provided arguments (`params`) to calculate the result.
+7. The result is then stored in the cache for future use.
+8. The memoized function returns the result.
+
+# Complexity - 
+- The time complexity of the memoized function depends on the time complexity of the original function (`fn`), as well as the efficiency of cache lookups and insertions in the `Map` data structure.
+- The space complexity is influenced by the number of unique argument combinations and the size of the cached results.
+
+Overall, the memoization technique improves performance by avoiding redundant function calls and reusing cached results when possible.
