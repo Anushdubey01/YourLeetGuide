@@ -1,0 +1,19 @@
+# Intuition - 
+The code aims to count the number of good strings within a specific range of integers while considering the constraints on the maximum number of zeros (zero) and ones (one) allowed in the string.
+
+# Approach - 
+The code utilizes dynamic programming to calculate the number of good strings. It maintains an array `dp` of size `high + 1`, where `dp[i]` represents the number of good strings of length `i`. Initially, `dp[0]` is set to 1 since an empty string is considered a good string.
+
+The code then iterates from `1` to `high` and updates `dp[i]` based on the following conditions:
+1. If `i` is greater than or equal to the threshold `zero`, it adds the value of `dp[i - zero]` to `dp[i]` to consider the number of good strings by including an additional zero.
+2. If `i` is greater than or equal to the threshold `one`, it adds the value of `dp[i - one]` to `dp[i]` to consider the number of good strings by including an additional one.
+
+During each iteration, if `i` is greater than or equal to the lower range (`low`), the value of `dp[i]` is added to the `ans` variable, which keeps track of the total count of good strings.
+
+Finally, the code returns the `ans` variable as the result.
+
+# Complexity - 
+- Time Complexity: The code has a loop that iterates from `1` to `high`, performing constant-time operations inside the loop. Therefore, the time complexity is **O(high).**
+- Space Complexity: The code uses an array `dp` of size `high + 1` to store the intermediate results. Thus, the space complexity is **O(high).**
+
+In conclusion, the code effectively counts the number of good strings within the given range by leveraging dynamic programming, resulting in an efficient solution.
