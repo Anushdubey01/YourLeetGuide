@@ -1,0 +1,21 @@
+Intuition -
+
+    The given program aims to find the maximum score by selecting pairs of numbers from the given nums array based on certain conditions.
+    The program uses dynamic programming and memoization to avoid redundant computations.
+
+Approach -
+
+    The dp function is the main recursive function that computes the maximum score.
+    It takes four parameters: a (representing the current level), mask (a bitmask representing the remaining available numbers), nums (the input array), and m (the size of the input array).
+    The base case is when mask becomes zero, indicating that no more numbers are available to select.
+    The function computes the maximum score by considering all possible pairs of numbers from nums.
+    It iterates over i and j to find all valid pairs (where i < j) and calculates the score based on the current level a, the GCD of the selected pair (gcd(nums[i], nums[j])), and the recursive call to dp with an updated level and bitmask.
+    The maximum score among all pairs is stored in maxVal.
+    The result for the current level and bitmask is memoized in the lookup hashmap using the key value.
+    The function returns the maximum score for the given level and bitmask.
+
+Complexity -
+
+    Time complexity: The dynamic programming approach with memoization avoids redundant computations, resulting in a time complexity
+    of O(m^3 * 2^m), where m is the size of the nums array.
+    Space complexity: The space complexity is O(m * 2^m) due to the lookup hashmap and the recursion stack used in the dynamic programming approach.

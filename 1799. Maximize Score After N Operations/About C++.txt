@@ -1,0 +1,18 @@
+# Intuition - 
+- The given program aims to find the maximum score that can be obtained by performing a specific operation on a set of numbers.
+- The score is calculated based on the product of the current index and the greatest common divisor (GCD) of two numbers at different indices.
+
+# Approach - 
+1. The `dp` function is a recursive function that uses memoization to avoid redundant calculations.
+2. The function takes the current index `a`, the bitmask `mask` to represent the chosen numbers, the array of numbers `nums`, and the size of `nums` as inputs.
+3. If `mask` becomes 0, it means all the numbers have been chosen, and the recursion stops. In this case, the function returns 0.
+4. The function uses `a` and `mask` to create a unique key for memoization in the `lookup` map.
+5. If the result for the given key is not present in the `lookup` map, the function proceeds with the calculations.
+6. It iterates through the numbers in `nums` using two nested loops to find pairs of distinct indices (i, j) where both `i` and `j` are set in the `mask`.
+7. For each pair (i, j), it calculates the score by multiplying `a` with the GCD of `nums[i]` and `nums[j]`, and recursively calls `dp` for the next index and the updated `mask`.
+8. The maximum score among all possible pairs is stored in `maxVal`.
+9. Finally, the calculated `maxVal` is stored in the `lookup` map for the current key, and the function returns the maximum score.
+
+# Complexity - 
+- Time complexity: The time complexity of the program depends on the number of distinct subproblems. Since there are `m` numbers, and each number can be chosen or not chosen, there are 2^m possible states. The function `dp` is called once for each state, and the nested loops iterate through `m` numbers, resulting in a total time complexity of O(2^m * m^2).
+- Space complexity: The space complexity is determined by the memoization table `lookup`, which stores the results for each subproblem. The size of the `lookup` map is bounded by the number of distinct subproblems, which is O(2^m). Hence, the space complexity is O(2^m).
