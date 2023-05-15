@@ -1,0 +1,7 @@
+# Intuition -  The program swaps the values of two nodes in a linked list. It uses two pointers, 'x' and 'y', to track the nodes to be swapped. It also uses a third pointer, 't', to iterate through the linked list.
+
+# Approach -  The program iterates through the linked list to find the k-th node from the beginning and assigns it to 'x'. It also moves the 't' pointer to the same node. Then, it iterates through the linked list until the 't' pointer reaches the last node, while moving the 'y' pointer along with it. Finally, it swaps the values of the 'x' and 'y' nodes.
+
+# Complexity -  
+- Time Complexity: The time complexity of this program is **O(n),** where n is the length of the linked list. This is because the program iterates through the linked list twice. 
+- Space Complexity: The space complexity is **O(1)** as it uses a constant amount of additional space regardless of the size of the linked list.
