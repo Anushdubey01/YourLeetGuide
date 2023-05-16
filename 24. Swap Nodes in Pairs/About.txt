@@ -1,0 +1,21 @@
+# Intuition -
+The given code implements the "swapPairs" function, which swaps every two adjacent nodes in a linked list. Here's a breakdown of the code's approach and complexity:
+
+# Approach - 
+1. The code defines a helper function called "getLength" that calculates the length of the linked list.
+2. The length of the linked list is obtained by calling the "getLength" function.
+3. A dummy node is created with a value of 0 and its next pointer is set to the head of the linked list.
+4. Two pointers, "prev" and "curr," are initialized to the dummy node and the head of the linked list, respectively.
+5. Using a loop, the code swaps pairs of nodes by rearranging the pointers.
+6. Finally, the modified linked list is returned by accessing the next node of the dummy node.
+
+# Complexity -
+- Time Complexity - **O(n)**
+- Space Complexity - **O(1).**
+
+# Explanation
+- The code iterates over the linked list once to calculate its length, taking O(n) time.
+- The swapping operation is performed on half of the linked list, which takes O(n/2) iterations.
+- Within each iteration, the code performs constant-time operations to swap the pointers.
+- Therefore, the overall time complexity is O(n).
+- The code uses a constant amount of additional space for the dummy node, "prev," and "curr" pointers, resulting in O(1) space complexity.
