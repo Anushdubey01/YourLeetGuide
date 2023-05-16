@@ -1,0 +1,12 @@
+# Intuition - 
+The given code represents a solution for vertical traversal of a binary tree. Here's an analysis of the approach and complexity:
+
+# Approach - 
+1. The code uses a depth-first search (DFS) approach to traverse the binary tree and collect the node values along with their corresponding coordinates (x, y).
+2. It maintains a TreeMap, `xToSortedPairs`, where the key is the x-coordinate and the value is a list of pairs (-y, val) representing the y-coordinate and node value.
+3. After the traversal, it sorts the pairs in each list based on y-coordinate and, in case of a tie, based on node value.
+4. Finally, it extracts the values from the sorted pairs and adds them to the result list, `ans`, in the order of the sorted pairs.
+
+# Complexity - 
+- Time complexity: **O(n log n),** where n is the number of nodes in the binary tree. The code performs a DFS traversal, which takes **O(n)** time. Sorting the pairs for each x-coordinate takes O(log n) time for each list, and since there can be at most n lists, the total sorting time is O(n log n).
+- Space complexity: **O(n),** where n is the number of nodes in the binary tree. The space is primarily used for the TreeMap, `xToSortedPairs`, which can store up to n pairs. Additionally, the recursive DFS call stack requires O(h) space, where h is the height of the tree. In the worst case of a skewed tree, h can be equal to n, resulting in O(n) space usage.
