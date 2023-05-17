@@ -1,0 +1,20 @@
+## Intuition - 
+
+The given program is designed to find the maximum sum of pairs of nodes in a linked list. It does so by first finding the middle node of the list, and then reversing the second half of the list. Finally, it traverses through both halves of the list simultaneously, comparing the sum of pairs of nodes and returning the maximum.
+
+## Approach - 
+
+1. Initialize a variable `ans` to 0 to keep track of the maximum sum of pairs of nodes.
+2. Initialize two pointers `slow` and `fast` to the head of the linked list.
+3. Traverse through the linked list with the `slow` and `fast` pointers, such that `slow` moves one step at a time and `fast` moves two steps at a time. When `fast` reaches the end of the list or the second-to-last node, `slow` will be at the middle node of the list.
+4. Reverse the second half of the linked list starting from `slow` and set the resulting linked list to `tail`.
+5. Traverse through both halves of the linked list simultaneously using `head` and `tail` pointers, comparing the sum of pairs of nodes at each step with the current value of `ans`. If the sum of the current pair of nodes is greater than `ans`, update the value of `ans`.
+6. Return `ans`.
+
+Additionally, the `reverseList` method is used to reverse the second half of the linked list. This method iterates through the linked list with a `prev` pointer and a `head` pointer, reversing the `next` pointers of each node as it goes. Finally, it returns the new head of the reversed list (which was the tail of the original list).
+
+## Complexity - 
+
+The time complexity of this program is O(n), where n is the length of the linked list. This is because the program traverses through the entire linked list twice (once with the `slow` and `fast` pointers, and once with the `head` and `tail` pointers), and reverses a portion of the list once (with the `reverseList` method). Each traversal and reversal takes O(n) time, resulting in a total time complexity of O(n).
+
+The space complexity of this program is O(1), since it uses a constant amount of additional memory regardless of the size of the linked list. The only extra memory used is for the `ans`, `slow`, `fast`, `head`, `tail`, `prev`, and `next` variables, which all take up a constant amount of space.
