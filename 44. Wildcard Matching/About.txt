@@ -1,0 +1,18 @@
+Intuition:
+The code utilizes a dynamic programming approach to solve the problem. It builds a 2D boolean array `dp` where `dp[i][j]` represents whether the substring `s[0..i)` matches the pattern `p[0..j)`. It iterates over the characters of the pattern and updates the `dp` array accordingly.
+
+Approach:
+1. Initialize the `dp` array with size `(m+1) x (n+1)`, where `m` is the length of string `s` and `n` is the length of pattern `p`. Set `dp[0][0]` to `true` as an empty string matches an empty pattern.
+2. Iterate over the characters of the pattern using a loop:
+   a. If the current character in the pattern is '*', set `dp[0][j+1]` to the value of `dp[0][j]`. This is because '*' can match an empty string.
+3. Iterate over the characters of the string `s` and the pattern `p` using two nested loops:
+   a. If the current character in the pattern is '*', two possibilities arise:
+      - `matchEmpty` represents the case where '*' matches an empty sequence in `s`, so its value is `dp[i+1][j]`.
+      - `matchSome` represents the case where '*' matches the current character in `s`, so its value is `dp[i][j+1]`.
+      - Set `dp[i+1][j+1]` to the logical OR of `matchEmpty` and `matchSome`, indicating whether the wildcard matches at least one character in `s`.
+   b. If the current characters in `s` and `p` match or the current character in `p` is '?', set `dp[i+1][j+1]` to the value of `dp[i][j]`. This means that the current characters contribute to the match.
+4. Finally, return `dp[m][n]`, which represents whether the entire string `s` matches the entire pattern `p`.
+
+Complexity:
+- Time complexity: The code has a nested loop structure that iterates over all characters of `s` and `p`, resulting in a time complexity of O(m * n), where m is the length of string `s` and n is the length of pattern `p`.
+- Space complexity: The space complexity is O(m * n) since it uses a 2D boolean array `dp` of size (m+1) x (n+1) to store the intermediate results of matching substrings.
