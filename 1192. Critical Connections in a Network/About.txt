@@ -1,0 +1,22 @@
+# Intuition - 
+The algorithm uses a depth-first search (DFS) approach to traverse the graph and identify critical connections. It assigns ranks to nodes based on the order of their visitation during the DFS traversal. The rank of a node represents the minimum rank of any node that it can reach through forward edges.
+
+# Approach - 
+1. Initialize an adjacency list representation of the graph using the given connections.
+2. Initialize an array `rank` to store the rank of each node. Initially, all ranks are set to `NO_RANK` (-2), indicating that they have not been visited.
+3. Call the `getRank` function with the initial node (0), passing the graph, current rank (0), rank array, and an empty list (`ans`) to store the critical connections.
+4. In the `getRank` function:
+   a. If the rank of the current node has already been determined (not `NO_RANK`), return the rank.
+   b. Set the rank of the current node to the current rank.
+   c. Initialize a variable `minRank` to track the minimum rank encountered during the DFS traversal.
+   d. Iterate through all the neighbors (`v`) of the current node (`u`).
+   e. If `v` is visited or it is the parent of `u` (indicated by `NO_RANK`), skip to the next neighbor.
+   f. Recursively call the `getRank` function on `v` with an incremented rank (`myRank + 1`).
+   g. If the next rank is equal to `myRank + 1`, it means that `(u, v)` is a critical connection. Add it to the `ans` list.
+   h. Update `minRank` to the minimum of `minRank` and the next rank.
+   i. Mark the current node as visited by setting its rank to `rank.length`.
+   j. Return `minRank` as the minimum rank encountered during the DFS traversal.
+
+# Complexity - 
+- Time Complexity: The time complexity of this algorithm is **O(V + E),** where V is the number of nodes (vertices) in the graph and E is the number of edges. This is because the algorithm uses a DFS traversal to visit each node and its neighbors once.
+- Space Complexity: The space complexity is **O(V + E)** as well. The adjacency list representation of the graph requires O(V + E) space, and the `rank` array and `ans` list both require O(V) space. The recursive call stack also contributes to the space complexity, but it is limited to O(V) in the worst case for a connected graph.
