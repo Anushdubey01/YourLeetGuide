@@ -1,0 +1,22 @@
+# Intuition - 
+The code aims to determine whether a given graph is bipartite or not. A bipartite graph is a graph whose vertices can be divided into two disjoint sets such that every edge connects a vertex from one set to the other. The code uses a depth-first search (DFS) approach to traverse the graph and assign states to each node to check if it can be part of a bipartite graph.
+
+# Approach - 
+1. Initialize an array `states` to keep track of the state assigned to each node. A state of 0 represents an unvisited node, 1 represents being in one set, and -1 represents being in the other set.
+2. Iterate through each node in the graph.
+3. If the state of the current node is non-zero, continue to the next iteration.
+4. Call the `dfs` function with the current node, assigning the state of 1. If the `dfs` function returns `false`, it means that the current node or its adjacent nodes violate the bipartite condition, and the graph is not bipartite. Return `false`.
+5. If all nodes have been visited and the bipartite condition is satisfied for each node, return `true` indicating that the graph is bipartite.
+
+The `dfs` function:
+1. If the state of the current node is non-zero, return `true` if it matches the expected state (based on the bipartite condition), or `false` otherwise.
+2. If the current node has no adjacent nodes, return `true` as it doesn't affect the bipartite condition.
+3. Assign the state to the current node based on the bipartite condition.
+4. Iterate through each adjacent node of the current node.
+5. Recursively call the `dfs` function with the adjacent node, assigning the opposite state (-state) and check if it returns `false`. If it does, return `false` indicating the violation of the bipartite condition.
+6. If all adjacent nodes satisfy the bipartite condition, return `true`.
+
+# Complexity Analysis - 
+- The code iterates through each node in the graph once, so the time complexity of the `isBipartite` function is O(n), where n is the number of nodes in the graph.
+- The `dfs` function is called once for each node, and within each call, it iterates through the adjacent nodes. In the worst case, each edge is visited once, resulting in a time complexity of O(V + E), where V is the number of vertices and E is the number of edges in the graph.
+- The space complexity is O(n) for storing the `states` array and the recursive stack for DFS, where n is the number of nodes in the graph.
