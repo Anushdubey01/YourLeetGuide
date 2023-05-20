@@ -1,0 +1,27 @@
+# Intuition - 
+The code aims to justify a given list of words into lines with a maximum width specified by `maxWidth`. It iterates through the words, adding them to a row until the row reaches or exceeds the maximum width. Then, it adjusts the spacing between words in the row to justify the text and adds the justified row to the result list. Finally, it handles the last row separately to ensure it is left-justified.
+
+# Approach - 
+1. Create an empty list `ans` to store the resulting justified lines.
+2. Create an empty list `row` to represent the current row being built, and initialize `rowLetters` to 0, which tracks the total length of words in the current row.
+3. Iterate through each word in the input `words`.
+4. Check if adding the current word to the current row would exceed the maximum width (`maxWidth`).
+   a. If it exceeds, calculate the number of spaces needed to justify the row.
+   b. If the row contains only one word, evenly distribute the spaces at the end of the word.
+   c. If the row contains more than one word, distribute the spaces between the words evenly.
+   d. Join the words in the row using `StringBuilder` and add the justified row to `ans`.
+   e. Clear the row and reset `rowLetters` to 0.
+5. Add the current word to the row and update `rowLetters` accordingly.
+6. After iterating through all the words, handle the last row separately to left-justify it.
+   a. Join the words in the row using spaces as separators.
+   b. Create a `StringBuilder` with the joined row.
+   c. Calculate the number of spaces needed to reach the maximum width.
+   d. Append the required number of spaces to the end of the last row.
+   e. Add the last row to `ans`.
+7. Return the list of justified lines.
+
+# Complexity - 
+- Let N be the total number of characters in all the words combined.
+- The code iterates through each word once, resulting in a time complexity of **O(N).**
+- The space complexity is also **O(N)** because the justified lines are stored in a list.
+- The number of iterations depends on the length of the `words` array and the length of the resulting `ans` list, but it is not directly proportional to N.

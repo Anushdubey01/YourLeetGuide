@@ -1,0 +1,30 @@
+# Intuition - 
+- The code is checking if a given string represents a valid number.
+- It uses a set of boolean variables to keep track of certain conditions and patterns within the string.
+- The code iterates through the characters of the string and performs specific checks based on the encountered character.
+
+# Approach - 
+1. Trim the input string to remove leading and trailing spaces.
+2. If the trimmed string is empty, return false since an empty string cannot represent a valid number.
+3. Initialize boolean variables: seenNum, seenDot, and seenE to keep track of different components of a number.
+4. Iterate through each character of the string using a for loop.
+5. Check the character using a switch statement and perform specific actions based on the character encountered:
+   - If a dot is encountered:
+     - If a dot has already been seen or an 'e' has been seen before, return false since multiple dots or dots after 'e' are not allowed.
+     - Set seenDot to true.
+   - If an 'e' or 'E' is encountered:
+     - If 'e' or 'E' has already been seen or no digit has been seen before, return false.
+     - Set seenE to true and seenNum to false.
+   - If a '+' or '-' is encountered:
+     - If it is not the first character and the previous character is not 'e', return false since '+' or '-' should only appear at the start or after 'e'.
+     - Set seenNum to false.
+   - For any other character:
+     - If it is not a digit, return false.
+     - Set seenNum to true.
+6. After the loop, return the value of seenNum.
+   - If at least one digit has been seen, it means the string represents a valid number, so return true.
+   - Otherwise, return false.
+
+# Complexity - 
+- The code has a Time Complexity of **O(n),** where n is the length of the input string. This is because it iterates through each character of the string once.
+- The space complexity is **O(1)** since the code uses a fixed set of boolean variables and does not require additional data structures that grow with the input size.
