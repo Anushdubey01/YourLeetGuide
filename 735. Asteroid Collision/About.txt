@@ -1,0 +1,21 @@
+The given program implements a solution for the asteroid collision problem. It takes an array of integers representing asteroids moving in a straight line and returns an array of integers after simulating the collisions between the asteroids.
+
+Intuition:
+The program utilizes a stack data structure to simulate the asteroid collisions. It iterates through the array of asteroids and performs the following actions:
+
+1. If the current asteroid is positive (moving to the right), it is pushed onto the stack since it cannot collide with any previous asteroids.
+2. If the current asteroid is negative (moving to the left), it indicates a potential collision. The program compares the magnitude of the negative asteroid with the positive asteroids on top of the stack.
+   - If the magnitude of the negative asteroid is greater than the positive asteroid on top of the stack, the positive asteroid is destroyed by popping it from the stack.
+   - If the magnitude of the negative asteroid is equal to the positive asteroid on top of the stack, both asteroids are destroyed by popping the positive asteroid from the stack.
+   - If the magnitude of the negative asteroid is smaller than the positive asteroid on top of the stack, the negative asteroid is destroyed, and the program moves to the next asteroid without modifying the stack.
+
+At the end of the iteration, the remaining asteroids on the stack represent the surviving asteroids after all collisions.
+
+Approach:
+The program uses a stack to process the asteroids. It iterates through the array once, pushing and popping elements from the stack as necessary. The approach has a time complexity of O(n), where n is the number of asteroids in the input array.
+
+Complexity:
+- Time Complexity: O(n) - The program iterates through the array of asteroids once, performing constant-time operations for each element.
+- Space Complexity: O(n) - The space used by the stack is proportional to the number of surviving asteroids, which can be at most n in the worst case. The returned array also requires O(n) space to store the surviving asteroids.
+
+Overall, the program efficiently solves the asteroid collision problem by utilizing a stack to simulate the collisions and has a linear time complexity.
