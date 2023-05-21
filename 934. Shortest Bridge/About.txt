@@ -1,0 +1,26 @@
+Intuition:
+The intuition behind the code is to identify the two islands in the grid and then use a breadth-first search (BFS) to expand from one island until it reaches the other island, keeping track of the shortest distance traversed.
+
+Approach:
+1. The code first identifies one of the islands by using the `markGridTwo` method with a depth-first search (DFS) approach. It searches for the first cell with a value of 1 and marks all connected cells of that island with a value of 2. It also adds the coordinates of the marked cells to the queue `q`.
+2. It then starts a BFS loop using the queue `q` to perform the expansion from the marked island. It iterates until the queue becomes empty, representing the completion of the search.
+3. Inside the BFS loop, it retrieves the coordinates of the current cell from the front of the queue and checks its neighboring cells. If a neighboring cell is within the grid bounds and has a value of 1, it means the BFS has reached the other island, and the code returns the current distance `ans`.
+4. If a neighboring cell is within the grid bounds and has a value of 2, it means it has already been visited, so the code continues to the next neighboring cell.
+5. If a neighboring cell satisfies the above conditions, it marks it as visited by setting its value to 2, adds its coordinates to the queue `q`, and continues the BFS.
+6. If the BFS completes without finding the other island, the code throws an `IllegalArgumentException`.
+
+Complexity:
+Let's analyze the time and space complexity of the code.
+
+1. Time Complexity:
+   - The `markGridTwo` method, which uses a DFS approach, visits each cell in the grid once, resulting in a time complexity of O(n), where n is the total number of cells in the grid.
+   - The BFS loop runs until the queue `q` becomes empty. In the worst case, each cell in the grid could be added to the queue once, resulting in a time complexity of O(n).
+   - Combining the above steps, the overall time complexity is O(n).
+
+2. Space Complexity:
+   - The space complexity is determined by the space used by the queue `q` and the recursive stack space used by the DFS method `markGridTwo`.
+   - The queue `q` can hold at most n elements, where n is the total number of cells in the grid. Therefore, the space complexity for the queue is O(n).
+   - The DFS method `markGridTwo` uses recursive calls. The maximum depth of the recursive calls would be the number of cells in the grid, resulting in a space complexity of O(n).
+   - Combining the above factors, the overall space complexity is O(n).
+
+In summary, the code has a time complexity of O(n) and a space complexity of O(n), where n is the total number of cells in the grid.
