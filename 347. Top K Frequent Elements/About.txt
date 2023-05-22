@@ -1,0 +1,17 @@
+# Intuition - 
+The intuition behind the program is to find the `k` most frequent elements in the given array `nums`. To achieve this, the program uses a `HashMap` to count the frequency of each element in `nums`. Then, it uses a min-heap (implemented as a priority queue) to keep track of the `k` most frequent elements encountered so far.
+
+# Approach - 
+
+1. Create a `HashMap` called `count` to store the frequency of each element in `nums`.
+2. Iterate over `nums` and update the frequency count in the `count` map using the `merge` method.
+3. Create a min-heap called `minHeap` to store elements of type `T`, where `T` is a custom class that contains the number and its frequency.
+4. Iterate over the `count` map and for each entry, create a `T` object with the number and frequency, and add it to `minHeap`.
+5. If the size of `minHeap` exceeds `k`, remove the element with the minimum frequency using `poll()` to maintain a heap of size `k`.
+6. Finally, extract the `k` elements from `minHeap` and store them in the `ans` array.
+7. Return the `ans` array containing the `k` most frequent elements in `nums`.
+
+# Complexity - 
+- The time complexity of the program is dominated by the operations performed on the `minHeap` and the `count` map. The construction of the `count` map takes **O(n)** time, where n is the length of the `nums` array. The insertion and removal operations on the `minHeap` have a time complexity of O(log k) each, and they are performed at most n times. Therefore, the overall time complexity of the program is **O(n log k).**
+
+- The space complexity of the program is **O(n)** because the `count` map can potentially store all the distinct elements in `nums`, and the `minHeap` can store at most k elements. Additionally, the `ans` array requires **O(k)** space.
