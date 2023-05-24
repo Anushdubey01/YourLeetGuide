@@ -1,0 +1,21 @@
+Intuition -
+
+The goal is to find the maximum possible score by selecting k elements from two given arrays, nums1 and nums2. The score is calculated by multiplying the sum of the selected elements from nums1 by the corresponding element from nums2. To maximize the score, we need to choose the highest possible elements from both arrays.
+Approach -
+
+    Create a pair array, A, where each element consists of a number from nums2 and the corresponding number from nums1. The pair elements will be sorted in descending order based on the values from nums2.
+    Initialize a minHeap to store the selected elements from nums1 in ascending order.
+    Initialize variables ans (maximum score), sum (sum of selected elements from nums1), and iterate through each pair element in A.
+    For each pair element, add the corresponding element from nums1 to the minHeap and update the sum accordingly.
+    If the size of the minHeap exceeds k, remove the smallest element from it and subtract it from the sum.
+    If the size of the minHeap reaches k, update ans by calculating the product of sum and the current element from nums2 and taking the maximum.
+    Return the final ans, which represents the maximum possible score.
+
+Complexity Analysis -
+
+    Sorting the pair array A takes O(n log n) time, where n is the length of nums1 (assuming nums1 and nums2 have the same length).
+    Iterating through each pair element in A takes O(n) time.
+    Inserting and removing elements from the minHeap takes O(log k) time each.
+    Therefore, the overall time complexity of this approach is O(n log n + n log k), where n is the length of the input arrays.
+    The space complexity is O(n) to store the pair array A and O(k) for the minHeap.
+
