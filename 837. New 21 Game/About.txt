@@ -1,0 +1,19 @@
+# Intuition - 
+The New 21 Game is a game in which you start with a score of 0 and draw numbers from 1 to maxPts. After each draw, the score is the sum of the numbers drawn. You win the game if your score is at least k but not exceeding n. The goal is to calculate the probability of winning the game.
+
+# Approach - 
+The program uses dynamic programming to solve the problem. It creates an array `dp` of size `n + 1` to store the probabilities of reaching each score from 0 to n. Initially, `dp[0]` is set to 1.0 because the probability of starting with a score of 0 is 1.
+
+The program then uses a sliding window approach to calculate the probabilities for scores from 1 to n. It maintains a variable `windowSum` that represents the sum of probabilities within the window. At each iteration, the probability `dp[i]` is calculated by dividing `windowSum` by `maxPts`, which represents the average probability of reaching the current score.
+
+If the current score `i` is less than `k`, the program adds the probability `dp[i]` to `windowSum`. This is because we can continue drawing numbers to increase the score until it reaches or exceeds `k`. Once the score reaches `k`, we stop adding probabilities to `windowSum`.
+
+If the current score `i` is greater than or equal to `k`, the program adds the probability `dp[i]` to the final answer `ans`. This is because we can no longer draw numbers once the score reaches `k`, so the probability of winning the game is accumulated.
+
+To maintain the sliding window of size `maxPts`, the program subtracts the probability `dp[i - maxPts]` from `windowSum` if the current score `i` is greater than `maxPts`. This ensures that the window only includes probabilities within the desired range.
+
+Finally, the program returns the value of `ans`, which represents the probability of winning the game.
+
+# Complexity - 
+- The Time Complexity of this program is **O(n)** because it iterates over `n` scores once to calculate the probabilities.
+- The Space Complexity is **O(n)** because it uses an array `dp` of size `n + 1` to store the probabilities.
