@@ -1,0 +1,14 @@
+# Intuition - 
+The intuition behind the program is to use dynamic programming to calculate the maximum number of stones Alice can collect from a given state of the game. The program utilizes the concept of suffix sums to efficiently calculate the sum of remaining stones after a particular index.
+
+# Approach - 
+1. The `stoneGameII` function initializes the dynamic programming matrix `dp` and the suffix sum array `suffixSum` and then calls the recursive helper function `stoneGameII` with initial parameters 0 (starting index) and 1 (M value).
+2. The recursive `stoneGameII` function implements memoization to avoid redundant calculations. It checks if the maximum number of stones Alice can get from the current state (given by `dp[i][M]`) has already been calculated. If so, it returns the precalculated value.
+3. If the calculated `dp[i][M]` value is not available, it proceeds to calculate the maximum number of stones Alice can get from the current state.
+4. The function calculates the opponent's (Bob's) best score `opponent` by considering all possible choices of X (from 1 to 2M) and recursively calling `stoneGameII` for the next state (i + X) with a maximum M value of either M or X.
+5. Finally, the function calculates and stores the maximum number of stones Alice can get from the current state as `dp[i][M] = suffixSum[i] - opponent`.
+6. The function returns the maximum number of stones Alice can collect from the initial state (0, 1), which is stored in `dp[0][1]`.
+
+# Complexity - 
+- The Time Complexity -  of the program is **O(n^3),** where n is the number of piles. This is because the `stoneGameII` function has nested loops, with the outer loop iterating n times and the inner loop iterating 2M times, resulting in a maximum of 2n iterations. Since `stoneGameII` function is called recursively, the overall complexity becomes **O(n^3).**
+- The Space Complexity - is **O(n^2)** due to the dp matrix, which has dimensions n x n. Additionally, the suffixSum array requires **O(n)** space.
