@@ -1,0 +1,20 @@
+Intuition:
+The given program solves the Stone Game III problem. In this problem, Alice and Bob are playing a game with a list of stone values. Each stone has a certain value, and the goal is to maximize the relative score of Alice. The relative score is the difference between Alice's score and Bob's score. Alice and Bob take turns picking stones from the list, and Alice always starts. In each turn, a player can choose to pick 1, 2, or 3 stones from the remaining list. The game continues until there are no more stones left. The program aims to determine the winner of the game (Alice, Bob, or a tie) based on the stone values.
+
+Approach:
+The program uses dynamic programming to solve the problem. It maintains an array `dp` to store the maximum relative score Alice can achieve starting from each position in the `stoneValue` array. Initially, all elements in `dp` are set to `Integer.MIN_VALUE` to indicate that they have not been calculated yet.
+
+The program defines a recursive helper function `stoneGameIII` that takes the `stoneValue` array and the current index `i` as parameters. This function calculates the maximum relative score Alice can achieve starting from the given index.
+
+If the index `i` is equal to the length of the `stoneValue` array, it means there are no more stones left to pick, and the function returns 0.
+
+If the maximum relative score for the current index `i` has already been calculated and stored in the `dp` array, the function directly returns the precalculated value.
+
+Otherwise, the function calculates the maximum score by trying all possible moves. It iterates from the current index `i` up to `i + 3` or the end of the `stoneValue` array (whichever comes first). In each iteration, it calculates the sum of stone values from index `i` to `j` and subtracts the maximum relative score Alice can achieve starting from index `j + 1` recursively. The function updates the `dp` array with the maximum score for the current index `i`.
+
+Finally, the main function `stoneGameIII` initializes the `dp` array, calls the helper function for index 0, and determines the winner based on the calculated score. If the score is greater than 0, it returns "Alice." If the score is less than 0, it returns "Bob." Otherwise, it returns "Tie."
+
+Complexity:
+The time complexity of this program is O(n), where n is the length of the `stoneValue` array. This is because the program uses dynamic programming to avoid redundant calculations and calculates the maximum score for each index only once.
+
+The space complexity of this program is O(n) as well. It uses an additional array `dp` of size n to store the maximum scores for each index.
