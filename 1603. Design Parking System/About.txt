@@ -1,0 +1,13 @@
+Intuition:
+The given program represents a parking system with three types of parking slots: big, medium, and small. The program initializes the number of available slots for each type during the creation of a parking system object. The `addCar` method is used to add a car to the parking system. It takes the type of the car (1 for big, 2 for medium, and 3 for small) and checks if there is an available slot for that type. If there is an available slot, the count for that type is decremented, indicating that a car has been added, and the method returns `true`. Otherwise, if there are no available slots for that type, the count remains unchanged, and the method returns `false`.
+
+Approach:
+The parking system is implemented using an array called `count`, where the index represents the car type (0 for big, 1 for medium, and 2 for small), and the value at that index represents the count of available slots for that car type. During the initialization of the parking system, the counts of available slots for each type are provided and stored in the `count` array.
+
+When a car is added, the `addCar` method takes the car type as input and checks if there is an available slot for that type. It does this by accessing the count for that car type in the `count` array and decrementing it. If the decremented count is greater than or equal to zero, it means there is an available slot, so the method returns `true`. Otherwise, if the decremented count is negative, it means there are no available slots for that type, so the count remains unchanged, and the method returns `false`.
+
+Complexity:
+1. Initialization: The complexity of initializing the parking system is O(1) because it involves storing the counts of available slots for each type in the `count` array, which takes constant time regardless of the number of slots.
+2. Adding a car: The complexity of adding a car using the `addCar` method is O(1) because it involves accessing the count for the specified car type and decrementing it, which takes constant time regardless of the number of cars or slots.
+
+Overall, the time complexity of initializing the parking system and adding a car is constant, O(1), in this program.
