@@ -1,0 +1,28 @@
+The given program implements an Underground System for tracking check-ins and check-outs at different stations. The program uses two classes, `CheckIn` and `CheckOut`, to represent the check-in and check-out information respectively. The `UndergroundSystem` class provides methods for checking in, checking out, and calculating the average time between two stations.
+
+**Intuition:**
+The program aims to keep track of the check-in and check-out times for each customer, as well as the total number of trips and total time taken for each route. By storing this information, the program can calculate the average time between any two stations.
+
+**Approach:**
+The `UndergroundSystem` class maintains two HashMaps, `checkIns` and `checkOuts`, to store the check-in and check-out information respectively. The `checkIns` HashMap maps an ID to a `CheckIn` object containing the station name and time of check-in. The `checkOuts` HashMap maps a route (represented as a string concatenation of startStation and endStation) to a `CheckOut` object containing the number of trips and the total time taken for that route.
+
+The `checkIn` method takes an ID, station name, and time as input. It creates a new `CheckIn` object and stores it in the `checkIns` HashMap with the ID as the key.
+
+The `checkOut` method takes an ID, station name, and time as input. It retrieves the corresponding `CheckIn` object from the `checkIns` HashMap using the ID, removes the entry from the HashMap, and calculates the route by concatenating the start and end station names. If the route does not exist in the `checkOuts` HashMap, it creates a new entry with a `CheckOut` object initialized with 0 trips and 0 total time. It then increments the number of trips and updates the total time for the route based on the difference between the check-out time and the check-in time.
+
+The `getAverageTime` method takes the start and end station names as input. It retrieves the corresponding `CheckOut` object from the `checkOuts` HashMap using the concatenated route. It calculates the average time by dividing the total time by the number of trips, ensuring the division is done with a double value to obtain a precise result.
+
+**Complexity:**
+1. For the `checkIn` method:
+   - Time complexity: O(1) - It takes constant time to create a `CheckIn` object and store it in the `checkIns` HashMap.
+   - Space complexity: O(1) - The additional space used is constant.
+
+2. For the `checkOut` method:
+   - Time complexity: O(1) - It takes constant time to retrieve the `CheckIn` object, remove it from the `checkIns` HashMap, and update the `checkOuts` HashMap.
+   - Space complexity: O(1) - The additional space used is constant.
+
+3. For the `getAverageTime` method:
+   - Time complexity: O(1) - It takes constant time to retrieve the `CheckOut` object and perform the average time calculation.
+   - Space complexity: O(1) - The additional space used is constant.
+
+Overall, the time and space complexities of the program are constant, indicating efficient operations regardless of the number of check-ins and check-outs.
