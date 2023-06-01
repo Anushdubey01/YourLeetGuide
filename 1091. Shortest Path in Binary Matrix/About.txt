@@ -1,0 +1,19 @@
+Intuition:
+The problem involves finding the shortest path from the top-left cell to the bottom-right cell in a binary matrix. Each cell can either be empty (0) or blocked (1). We need to determine the minimum number of steps required to reach the destination if we can only move horizontally, vertically, or diagonally to adjacent cells.
+
+Approach:
+1. The approach uses a breadth-first search (BFS) algorithm to explore the matrix and find the shortest path.
+2. We initialize a queue to store the coordinates of the cells to be visited.
+3. We start from the top-left cell and enqueue it.
+4. We use a 2D array, 'seen', to keep track of visited cells.
+5. While the queue is not empty, we process each cell in the queue:
+   - Increment the answer variable (to keep track of the number of steps taken).
+   - For each cell, we explore its neighboring cells in all eight directions.
+   - If a neighboring cell is within the matrix bounds, is empty (0), and has not been visited before, we enqueue it and mark it as visited in the 'seen' array.
+   - If the neighboring cell is the bottom-right cell, we return the answer plus one (to account for the current cell).
+6. If we have explored all possible paths without reaching the bottom-right cell, we return -1 to indicate that there is no valid path.
+
+Complexity:
+- Let N be the size of the input grid (N x N).
+- The time complexity of the BFS algorithm is O(N^2) since in the worst case, we may need to visit all cells of the grid.
+- The space complexity is O(N^2) as well, considering the space required for the queue, the 'seen' array, and other variables used in the algorithm.
