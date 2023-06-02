@@ -1,0 +1,21 @@
+Intuition:
+The intuition behind the program is to construct a graph where each bomb is represented as a node, and an edge exists between two nodes if the distance between the bombs is within the range of detonation. By performing a DFS traversal on this graph, we can determine the maximum number of bombs that can be detonated starting from each bomb.
+
+Approach:
+1. Initialize the maximum detonation count (`ans`) to 0 and create an array of lists, `graph`, to represent the graph.
+2. Iterate over the bombs array and initialize each element in the `graph` array as an empty list.
+3. For each pair of distinct bombs (represented by indices `i` and `j`):
+   - Calculate the squared distance between the two bombs using the `squaredDist` function.
+   - If the squared distance is within the detonation range of the bomb at index `i`, add index `j` to the adjacency list of `i` in the `graph` array.
+4. Iterate over each bomb:
+   - Initialize a set `seen` with the current bomb index.
+   - Perform a DFS traversal starting from the current bomb index, updating the `seen` set with each visited bomb.
+   - Update `ans` with the maximum size of `seen` encountered during the traversal.
+5. Return the final value of `ans`.
+
+Complexity:
+- The program iterates over the bombs array twice, resulting in a time complexity of O(n^2), where n is the number of bombs.
+- Constructing the adjacency list of the graph takes O(n^2) time, as there are n * (n-1) pairs of bombs to consider.
+- The DFS traversal is performed once for each bomb, resulting in O(n) traversals.
+- Overall, the time complexity of the program is O(n^2).
+- The space complexity is O(n) for the `graph` array and the `seen` set, as well as the recursive stack space used for DFS.
