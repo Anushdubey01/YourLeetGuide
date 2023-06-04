@@ -1,0 +1,19 @@
+Intuition:
+The intuition behind the solution is to use the Union-Find data structure to keep track of connected components. Initially, each node is considered as a separate component. As we traverse the adjacency matrix, whenever we encounter a connection between two nodes, we merge their components using the Union operation. Finally, we return the total number of remaining components.
+
+Approach:
+1. The program defines a UnionFind class that represents the Union-Find data structure. It initializes with the number of nodes (n), creates an id array to store the component IDs for each node, and a rank array to store the rank of each component.
+2. The unionByRank method is used to merge components of two nodes. It first finds the root IDs of the given nodes using the find method. If the root IDs are the same, it means they are already in the same component, so no further action is needed. Otherwise, it compares the ranks of the components. If one rank is smaller than the other, the root of the smaller rank component is updated to point to the root of the larger rank component. If the ranks are equal, one component is chosen arbitrarily to be the parent, and the rank of the other component is incremented. The count variable is decremented to keep track of the number of remaining components.
+3. The getCount method simply returns the current count of components.
+4. The Solution class implements the findCircleNum method, which takes the adjacency matrix as input and returns the number of connected components.
+5. It initializes a UnionFind object (uf) with the number of nodes (n) obtained from the adjacency matrix's length.
+6. It iterates over each node in the adjacency matrix using nested loops.
+7. If a connection is found between nodes i and j (isConnected[i][j] == 1), it calls the unionByRank method of UnionFind to merge their components.
+8. Finally, it returns the count of remaining components obtained from the UnionFind object.
+
+Complexity Analysis:
+- The initialization of the UnionFind data structure takes O(n) time, where n is the number of nodes.
+- The nested loops in the findCircleNum method iterate over all the elements of the adjacency matrix, resulting in a time complexity of O(n^2), where n is the number of nodes.
+- The unionByRank method has a near-constant time complexity, as it involves path compression and union by rank operations.
+- Therefore, the overall time complexity of the program is O(n^2), where n is the number of nodes in the graph.
+- The space complexity is O(n) for the UnionFind data structure.
