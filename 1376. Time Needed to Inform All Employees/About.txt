@@ -1,0 +1,20 @@
+Intuition:
+The program uses a depth-first search (DFS) approach to traverse the hierarchy of employees and calculate the time required for each employee to receive information. It maintains a memoization map to store the calculated times for each employee to avoid redundant calculations.
+
+Approach:
+1. Initialize the answer variable `ans` to 0 and create a memoization map `memo` to store calculated times.
+2. Iterate over all the employees using a loop variable `i`.
+3. For each employee `i`, calculate the time required using the `dfs` function and update the answer `ans` with the maximum time obtained so far.
+4. Finally, return the maximum time `ans` as the result.
+
+The `dfs` function:
+1. Check if the memoization map `memo` already contains the time for the current employee `i`. If so, return the stored time.
+2. Check if the current employee `i` is the head employee (`headID`). If it is, return 0 as the time required for the head employee to receive information is 0.
+3. Find the parent of the current employee `i` using the `manager` array.
+4. Calculate the time required for the current employee `i` by adding the information time of the parent employee (`informTime[parent]`) with the time required for the parent employee to receive information (`dfs(parent, headID, manager, informTime, memo)`).
+5. Store the calculated time in the memoization map `memo` for future reference.
+6. Return the calculated time.
+
+Complexity Analysis:
+- Time Complexity: The time complexity of the program is O(n), where n is the number of employees. This is because the program visits each employee once during the DFS traversal.
+- Space Complexity: The space complexity of the program is O(n) as it uses the memoization map `memo` to store the calculated times for each employee. Additionally, the DFS recursion stack also requires space proportional to the height of the employee hierarchy. In the worst case, where the hierarchy is linear, the space complexity would be O(n), but in a balanced hierarchy, it would be less.
