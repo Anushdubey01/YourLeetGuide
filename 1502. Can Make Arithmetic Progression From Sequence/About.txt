@@ -1,0 +1,23 @@
+Intuition:
+The given problem aims to determine if the given array can form an arithmetic progression, where the difference between any two consecutive elements is constant. To solve this, we need to check if the difference between the maximum and minimum elements of the array is divisible by (n - 1), where n is the size of the array.
+
+Approach:
+1. Initialize the variables n, max, min, range, and diff.
+2. Calculate the size of the array n.
+3. Find the maximum element max and the minimum element min in the array using the max_element and min_element functions.
+4. Calculate the range as the difference between max and min.
+5. Check if range % (n - 1) is not equal to 0. If it is not divisible, return false as it is not possible to form an arithmetic progression.
+6. Calculate the diff as the quotient of range divided by (n - 1).
+7. If the diff is 0, return true as all elements are the same, and any difference is valid.
+8. Initialize an unordered set seen to keep track of the elements encountered so far.
+9. Iterate through each element a in the array.
+   a. Check if (a - min) % diff is not equal to 0. If it is not divisible, return false as it violates the arithmetic progression property.
+   b. Check if the element a is already present in the set seen. If it is, return false as it violates the uniqueness property of elements in an arithmetic progression.
+   c. If both conditions pass, insert the element a into the set seen.
+10. Return true after the loop if all elements satisfy the arithmetic progression conditions.
+
+Complexity Analysis:
+- The time complexity of finding the maximum and minimum elements in the array is O(n).
+- The time complexity of iterating through each element in the array is O(n).
+- The space complexity of the program is O(n) due to the unordered set used to store the seen elements.
+Therefore, the overall time complexity of the program is O(n), and the space complexity is O(n).
