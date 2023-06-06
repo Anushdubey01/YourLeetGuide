@@ -1,0 +1,18 @@
+Intuition:
+The program aims to find the number of distinct subsequences of string t in string s. A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
+
+Approach:
+The program uses dynamic programming to solve the problem. It creates a 2D array `dp` with dimensions (m+1) x (n+1), where m and n are the lengths of strings s and t, respectively.
+
+The base case initializes `dp[i][0]` to 1 for all values of i from 0 to m. This represents the number of subsequences of an empty string t in any non-empty string s, which is always 1.
+
+Then, the program iterates over i from 1 to m and j from 1 to n. For each pair of indices (i, j), it checks if the character at index (i-1) in s is equal to the character at index (j-1) in t. If they are equal, it means we can form a subsequence by either including the current character or excluding it. In this case, `dp[i][j]` is set to the sum of the number of subsequences without the current character (`dp[i-1][j]`) and the number of subsequences with both characters (`dp[i-1][j-1]`).
+
+If the characters are not equal, it means we cannot include the current character in the subsequence. Therefore, `dp[i][j]` is set to the number of subsequences without the current character, which is `dp[i-1][j]`.
+
+Finally, the program returns `dp[m][n]`, which represents the total number of distinct subsequences of t in s.
+
+Complexity:
+The time complexity of this program is O(m * n), where m and n are the lengths of strings s and t, respectively. This is because the program uses a nested loop to iterate over all pairs of indices (i, j) from 1 to m and 1 to n.
+
+The space complexity is O(m * n) as well, as the program uses a 2D array `dp` with dimensions (m+1) x (n+1) to store the intermediate results.
