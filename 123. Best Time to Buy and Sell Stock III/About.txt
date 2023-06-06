@@ -1,0 +1,17 @@
+# Intuition - 
+The program uses dynamic programming to solve the problem. It maintains four variables: `sellTwo`, `holdTwo`, `sellOne`, and `holdOne`. These variables represent the maximum profit at various stages of the algorithm.
+
+# Approach -
+1. Initialize `sellTwo` and `sellOne` to 0, as no transactions have been made yet.
+2. Initialize `holdTwo` and `holdOne` to the smallest possible integer value (`Integer.MIN_VALUE`), indicating that no stocks have been bought yet.
+3. Iterate through each price in the `prices` array.
+4. Update `sellTwo` by taking the maximum value between the current `sellTwo` and the sum of `holdTwo` and the current price. This accounts for the possibility of selling stocks bought in the second transaction.
+5. Update `holdTwo` by taking the maximum value between the current `holdTwo` and the difference between `sellOne` and the current price. This accounts for the possibility of buying stocks in the second transaction.
+6. Update `sellOne` by taking the maximum value between the current `sellOne` and the sum of `holdOne` and the current price. This accounts for the possibility of selling stocks bought in the first transaction.
+7. Update `holdOne` by taking the maximum value between the current `holdOne` and the negation of the current price. This accounts for the possibility of buying stocks in the first transaction.
+8. After iterating through all prices, the final value of `sellTwo` represents the maximum profit that can be achieved by performing at most two transactions.
+
+# Complexity -
+The time complexity of the program is **O(n),** where n is the length of the `prices` array. This is because the program performs a single pass through the array, updating the variables in constant time for each price.
+
+The space complexity of the program is **O(1)** since it uses a fixed number of variables to store the intermediate results, regardless of the size of the input array.
