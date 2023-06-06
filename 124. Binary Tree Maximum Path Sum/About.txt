@@ -1,0 +1,16 @@
+Intuition:
+The given program is designed to find the maximum path sum in a binary tree. The path can start and end at any node in the tree, and it can traverse upwards or downwards. To find the maximum path sum, the program uses a recursive approach that calculates the maximum path sum for each node and updates the global maximum accordingly.
+
+Approach:
+The `maxPathSum()` method serves as the entry point for the program. It calls the `maxPathSumDownFrom()` method, passing the root node of the binary tree. The `maxPathSumDownFrom()` method recursively calculates the maximum path sum for each node in a bottom-up manner.
+
+In the `maxPathSumDownFrom()` method, the base case is when the current node is null, in which case the method returns 0. Otherwise, it recursively calculates the maximum path sum for the left and right subtrees by calling `maxPathSumDownFrom()` on each subtree. The maximum path sum for a subtree is the maximum between 0 and the maximum path sum of its left or right subtree. This ensures that negative path sums are not included in the final result.
+
+The maximum path sum for the current node is calculated as the sum of the node's value, the maximum path sum of the left subtree, and the maximum path sum of the right subtree. This sum is compared with the current maximum path sum (`ans`), and if it is greater, the `ans` variable is updated.
+
+Finally, the method returns the maximum path sum that includes the current node. This is the maximum between the sum of the node's value and the maximum path sum of its left or right subtree. This value will be used by the parent node to calculate its own maximum path sum.
+
+Complexity:
+The time complexity of this program is O(n), where n is the number of nodes in the binary tree. This is because the program traverses each node exactly once.
+
+The space complexity is O(h), where h is the height of the binary tree. This is the maximum number of recursive calls on the call stack at any given time. In the worst case, the binary tree can be skewed, resulting in a height of n, which leads to a space complexity of O(n). However, in a balanced binary tree, the height is log(n), resulting in a space complexity of O(log(n)).
