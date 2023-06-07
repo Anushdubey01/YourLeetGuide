@@ -1,0 +1,24 @@
+The given code is a solution to a problem that involves finding the minimum number of bit flips required to convert two integers, `a` and `b`, into a third integer, `c`. The solution uses a bitwise approach to iterate over the bits of `c` and count the necessary flips.
+
+Here's a breakdown of the intuition, approach, and complexity of the code:
+
+Intuition:
+To determine the minimum number of flips required to convert `a` and `b` to `c`, the code iterates over the binary representation of `c` one bit at a time. For each bit, it checks the corresponding bits of `a` and `b` to see if they match the bit of `c`. Based on the match or mismatch, the appropriate number of flips is counted.
+
+Approach:
+1. Initialize the variable `ans` to 0, which will store the minimum number of flips.
+2. Use a loop to iterate from `i = 0` to `i = kMaxBit - 1`, where `kMaxBit` is set to 30. This means the loop will iterate over the 30 bits of the integers.
+3. Inside the loop, check if the `i`-th bit of `c` is 1 using `(c >> i & 1) == 1`.
+   - If the `i`-th bit of `c` is 1:
+     - Check if both the `i`-th bits of `a` and `b` are 0 using `((a >> i & 1) == 0 && (b >> i & 1) == 0)`.
+     - If the condition is true, increment `ans` by 1, indicating that a flip is needed to change the bits of `a` and `b`.
+   - If the `i`-th bit of `c` is 0:
+     - Check if the `i`-th bit of `a` is 1 using `(a >> i & 1) == 1`.
+     - If true, increment `ans` by 1, indicating a flip is needed for `a`.
+     - Check if the `i`-th bit of `b` is 1 using `(b >> i & 1) == 1`.
+     - If true, increment `ans` by 1, indicating a flip is needed for `b`.
+4. After the loop, return the value of `ans`, which represents the minimum number of flips required to convert `a` and `b` into `c`.
+
+Complexity:
+The time complexity of this solution is O(1) since the loop iterates a fixed number of times (30 bits). Regardless of the input values of `a`, `b`, and `c`, the number of iterations remains constant.
+The space complexity is also O(1) since only a single variable, `ans`, is used to store the result.
