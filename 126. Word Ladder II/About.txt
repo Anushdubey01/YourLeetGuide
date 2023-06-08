@@ -1,0 +1,19 @@
+**Intuition:**
+The problem requires finding all the shortest transformation sequences from the `beginWord` to the `endWord` using words from a given `wordList`. The idea is to use a combination of Breadth-First Search (BFS) and Depth-First Search (DFS) to explore all possible paths and find the shortest ones.
+
+**Approach:**
+1. Convert the `wordList` into a set `st` for efficient deletion and lookup operations.
+2. Initialize a queue `q` and add the `beginWord` to it. Also, initialize a map `mpp` to store the word and its corresponding level in the transformation sequence. Set the level of `beginWord` as 1.
+3. Perform a BFS traversal using the queue. For each word in the queue, check all possible transformations by replacing each character with letters from 'a' to 'z'. If the transformed word exists in `st`, add it to the queue, remove it from `st`, and assign its level as `steps + 1` in the map `mpp`.
+4. If the `endWord` is found during the BFS traversal, break out of the loop.
+5. After the BFS traversal, initialize an empty list `ans` to store the final transformation sequences.
+6. If the `endWord` exists in `mpp`, perform a reverse DFS traversal starting from the `endWord` using the `dfs` function. Backtracking is used to find all possible transformation sequences by checking the previously visited words and their levels in `mpp`.
+7. During the DFS traversal, if the current word is equal to the `beginWord`, it means a transformation sequence has been found. Reverse the sequence and add it to the `ans` list.
+8. Finally, return the `ans` list containing all the shortest transformation sequences.
+
+**Complexity Analysis:**
+- The BFS traversal has a time complexity of O(N * M * M), where N is the number of words in the word list and M is the length of each word. For each word, we perform M character replacements and check if the transformed word exists in the word list, resulting in a total of N * M * M operations.
+- The DFS traversal has a time complexity of O(N * M * M), as we explore all possible paths from the `endWord` to the `beginWord`.
+- Constructing the result has a time complexity of O(N * L), where N is the number of transformation sequences and L is the average length of each sequence.
+- Therefore, the overall time complexity of the program is O(N * M * M + N * L).
+- The space complexity is O(N * M * M) to store the graph and O(L) for the call stack during DFS traversal, where L is the length of the transformation sequence.
