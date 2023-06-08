@@ -1,0 +1,22 @@
+Intuition:
+The program aims to count the number of negative integers in the given 2D grid. The grid is structured such that the numbers are sorted in non-increasing order from left to right and from top to bottom. Therefore, there is an opportunity to optimize the counting process.
+
+Approach:
+1. Initialize the necessary variables:
+   - `m` and `n` represent the dimensions of the grid.
+   - `ans` is the count of negative numbers, initially set to 0.
+   - `i` is set to the last row index (m - 1) to start from the bottom row.
+   - `j` is set to 0 to start from the first column.
+
+2. Perform a while loop until either `i` goes below 0 (out of bounds) or `j` reaches `n` (end of columns):
+   - Check if the current grid value at index `[i][j]` is less than 0.
+     - If it is negative, increment `ans` by the number of remaining columns (n - j).
+       This is because the numbers are sorted in non-increasing order, so all the values to the right of the current index will also be negative.
+       Decrease `i` to move up one row.
+     - If it is non-negative, increment `j` to move to the next column.
+
+3. Return the final value of `ans`, which represents the count of negative numbers in the grid.
+
+Complexity:
+- Time complexity: The program uses a single while loop that iterates over the grid from bottom to top and left to right. In the worst case, the loop visits every cell in the grid once, resulting in a time complexity of O(m + n), where m is the number of rows and n is the number of columns in the grid.
+- Space complexity: The program uses a constant amount of extra space to store the variables, resulting in a space complexity of O(1).
