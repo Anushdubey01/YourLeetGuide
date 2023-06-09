@@ -1,0 +1,24 @@
+Intuition:
+The program uses a breadth-first search (BFS) approach to find the shortest path. It starts from the beginWord and explores all possible transformations by changing one character at a time. Each transformed word is checked if it exists in the wordSet (a HashSet containing the words from wordList) and if so, it is added to the queue for further exploration. The process continues until the queue is empty or the endWord is found.
+
+Approach:
+1. Create a HashSet called wordSet and add all the words from the wordList into it for efficient lookup.
+2. Check if the endWord is present in the wordSet. If not, return 0 as it is not possible to transform the beginWord to the endWord.
+3. Initialize a queue, q, with the beginWord.
+4. Use a while loop to continue the BFS until the queue is empty.
+5. Inside the loop, increment the ans variable by 1 to keep track of the transformation sequence length.
+6. Iterate over the elements in the queue. For each element:
+   a. Convert it to a StringBuilder for easy modification.
+   b. Iterate over each character in the StringBuilder and try replacing it with every lowercase letter from 'a' to 'z'.
+   c. Check if the transformed word is equal to the endWord. If so, return ans + 1 since we found the shortest transformation sequence.
+   d. If the transformed word is in the wordSet, add it to the queue for further exploration and remove it from the wordSet to avoid revisiting it.
+   e. After iterating over all characters, restore the original character in the StringBuilder.
+7. If the endWord is not found after exploring all possible transformations, return 0.
+
+Complexity:
+- Let n be the length of the wordList and m be the length of the words.
+- Constructing the wordSet takes O(n) time and O(n) space.
+- The BFS process visits each word once, and for each word, it tries replacing each character with 26 possible letters.
+  Therefore, the overall time complexity of the BFS is O(m * 26) = O(m).
+- The space complexity is determined by the wordSet and the queue. The wordSet uses O(n) space, and the queue can contain at most n words in the worst case. Thus, the space complexity is O(n).
+- Overall, the program has a time complexity of O(m) and a space complexity of O(n).
