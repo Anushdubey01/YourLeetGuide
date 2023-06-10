@@ -1,0 +1,26 @@
+The given problem is to find the maximum number of points on the same line in a given set of points.
+
+Intuition:
+To find the maximum number of points on the same line, we can iterate through each pair of points and calculate the slope of the line passing through them. If two points have the same slope, it means they lie on the same line. We can keep track of the number of points with each slope and find the maximum count.
+
+Approach:
+1. Initialize the variable `ans` to store the maximum number of points on the same line.
+2. Define a helper function `gcd` to calculate the greatest common divisor (gcd) of two numbers.
+3. Define another helper function `getSlope` that takes two points `p` and `q` and returns the slope of the line passing through them. It calculates the differences in x-coordinates and y-coordinates of the points and uses the gcd function to simplify the slope.
+4. Iterate through each point in the `points` list using an index `i` and a corresponding point `p`.
+5. Initialize a dictionary `slopeCount` to keep track of the count of points with each slope.
+6. Initialize variables `samePoints` and `maxPoints` to keep track of the count of points that are the same as the current point (`p`) and the maximum count of points on the same line, respectively.
+7. Iterate through the remaining points in the `points` list starting from index `i + 1` using index `j` and corresponding point `q`.
+8. If `p` and `q` are the same point, increment the `samePoints` count.
+9. Otherwise, calculate the slope between `p` and `q` using the `getSlope` function and increment the count of points with that slope in the `slopeCount` dictionary.
+10. Update the value of `maxPoints` to the maximum count of points with the same slope.
+11. After iterating through all pairs of points, update the `ans` variable with the maximum of the current `ans` value, `samePoints` plus `maxPoints`.
+12. Finally, return the `ans` value as the maximum number of points on the same line.
+
+Complexity:
+- Let n be the total number of points.
+- The outer loop iterates n times.
+- The inner loop iterates (n-1) + (n-2) + ... + 1 ≈ n^2 / 2 times in the worst case.
+- The `gcd` function has a time complexity of O(log(min(a, b))), where a and b are the inputs.
+- The overall time complexity of the algorithm is O(n^2 * log(max(x, y))), where x and y are the maximum absolute values of x-coordinates and y-coordinates in the given points.
+- The space complexity is O(n) to store the `slopeCount` dictionary.
