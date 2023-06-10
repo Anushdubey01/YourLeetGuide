@@ -1,0 +1,16 @@
+Intuition:
+The program uses a sliding window approach to find the longest semi-repetitive substring. It keeps track of the starting index (`i`) and ending index (`j`) of the current substring. It also maintains variables `count`, `len`, and `res` to track the count of repeated characters, the length of the current substring, and the maximum length found so far, respectively.
+
+Approach:
+1. Initialize variables `i`, `j`, `count`, `len`, and `res` to appropriate initial values.
+2. Start a loop while `j` is less than the length of the string `s`.
+3. Check if the character at index `j` is the same as the character at index `j-1`. If it is, increment the `count` variable.
+   a. If `count` becomes 1, store the index `j` as `firstCons`.
+   b. If `count` is greater than 1, update `i` to `firstCons`, update `firstCons` to `j`, reset `count` to 1, and update `len` to the new length of the substring (`j-i`).
+4. Increment `len`, `j`, and update `res` as the maximum of `len` and `res`.
+5. Repeat steps 3-4 until the loop ends.
+6. Return the value of `res`, which represents the length of the longest semi-repetitive substring.
+
+Complexity:
+- Time complexity: The program iterates through the input string once, so the time complexity is O(n), where n is the length of the string `s`.
+- Space complexity: The program uses a constant amount of additional space, so the space complexity is O(1).
