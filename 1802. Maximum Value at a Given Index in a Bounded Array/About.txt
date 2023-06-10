@@ -1,0 +1,20 @@
+# Intuition - 
+The program uses a binary search approach to find the maximum value. It assumes that the maximum value can be any number between 0 and 'maxSum'. It iteratively narrows down the search space by adjusting the mid-point and checking if the sum of the array elements up to the given index is greater than or equal to 'maxSum'.
+
+# Approach - 
+1. Subtract 'n' from 'maxSum' since we are interested in finding the maximum value, not the sum.
+2. Initialize the search space with 'l' as 0 and 'r' as 'maxSum'.
+3. Perform a binary search on the search space until 'l' is less than 'r'.
+4. Inside the binary search loop:
+   - Calculate the midpoint 'm' as the average of 'l' and 'r'.
+   - Check if the sum of the array elements up to the given index using 'm' as the maximum value is greater than or equal to 'maxSum'.
+   - If true, update 'r' to 'm' since the maximum value can be further reduced.
+   - If false, update 'l' to 'm + 1' since the maximum value needs to be increased.
+5. After the binary search loop ends, check if the sum of the array elements up to the given index using 'l' as the maximum value is greater than 'maxSum'.
+6. If true, return 'l', otherwise return 'l + 1'.
+
+# Complexity - 
+- The time complexity of the binary search loop is O(log(maxSum)).
+- The 'getSum' function has a constant time complexity as it performs a few arithmetic operations.
+- Therefore, the overall time complexity of the program is O(log(maxSum)).
+- The space complexity is O(1) as the program uses a constant amount of space.
