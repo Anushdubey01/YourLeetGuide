@@ -1,0 +1,26 @@
+# Intuition - 
+The given problem deals with finding the minimum element in a rotated sorted array. The array has been rotated, which means it has been shifted by some unknown number of positions to the right. We need to find the smallest element in this rotated array.
+
+# Approach -
+The approach used in the provided code is a modified version of the binary search algorithm. Here are the steps:
+
+1. Initialize two pointers, "l" and "r," which represent the left and right boundaries of the search range, respectively. Initially, "l" is set to the start of the array (index 0), and "r" is set to the end of the array (index nums.length - 1).
+
+2. Perform a binary search by entering a loop that continues until "l" becomes greater than or equal to "r." This means that the search range has narrowed down to a single element, which will be the minimum element.
+
+3. Calculate the midpoint of the current search range using the formula: m = (l + r) / 2.
+
+4. Compare the element at the midpoint, nums[m], with the element at the right boundary, nums[r]. There are three possible cases:
+
+   a. If nums[m] is equal to nums[r], it means that both elements are the same, and we can safely exclude nums[r] from consideration. We decrement "r" by 1 to shrink the search range.
+
+   b. If nums[m] is less than nums[r], it means that the minimum element lies in the left half of the search range, including the element at index "m." So, we update "r" to be equal to "m" and continue the search in the left half.
+
+   c. If nums[m] is greater than nums[r], it means that the minimum element lies in the right half of the search range, excluding the element at index "m." So, we update "l" to be equal to "m + 1" and continue the search in the right half.
+
+5. Once the loop terminates, "l" will be pointing to the minimum element in the array. Return the value of nums[l].
+
+# Complexity -
+The time complexity of this approach is **O(log N),** where N is the number of elements in the input array. This is because the binary search algorithm divides the search range in half at each iteration, leading to a logarithmic time complexity.
+
+The space complexity is **O(1)** since only a constant amount of additional space is used to store the variables "l," "r," and "m."
