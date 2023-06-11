@@ -1,0 +1,18 @@
+The provided code implements a SnapshotArray class that allows storing and retrieving snapshots of an array with set and get operations. Each snapshot records the changes made to the array since the last snapshot.
+
+Intuition:
+The intuition behind the SnapshotArray is to store the changes made to each index of the array in a list. Each element of the list represents a snapshot with a snapshot ID and the corresponding value at that index. When a set operation is called, the code checks if the current snapshot ID matches the snapshot ID of the last change at the given index. If they match, it updates the value; otherwise, it adds a new entry representing the new snapshot. The get operation retrieves the value of an index at a specific snapshot ID.
+
+Approach:
+1. The constructor initializes an array of lists, where each list represents the changes made to an index in the array. It starts with a default snapshot ID of 0 and a value of 0 for each index.
+2. The set operation takes an index and a value. It retrieves the last change made to that index using the list and checks if the snapshot ID matches the current snapshot ID. If they match, it updates the value; otherwise, it adds a new entry to the list representing the new snapshot.
+3. The snap operation increments the snapshot ID and returns the previous snapshot ID.
+4. The get operation takes an index and a snapshot ID. It performs a binary search on the list of changes for that index to find the greatest snapshot ID that is less than or equal to the given snapshot ID. Then, it returns the corresponding value.
+
+Complexity:
+- Constructor: The constructor initializes the array of lists and adds a default snapshot entry for each index. It runs in O(length) time, where length is the given length of the array.
+- set operation: The set operation finds the last change made to an index, which takes O(log n) time using binary search, where n is the number of snapshots for that index. Adding a new snapshot entry takes O(1) time. Overall, the set operation has a time complexity of O(log n) in the worst case.
+- snap operation: The snap operation increments the snapshot ID, which takes O(1) time.
+- get operation: The get operation performs a binary search on the list of changes for an index, which takes O(log n) time, where n is the number of snapshots for that index. Retrieving the value at the found index takes O(1) time. Overall, the get operation has a time complexity of O(log n) in the worst case.
+
+The space complexity of the program is O(length * snapshots), where length is the given length of the array and snapshots is the total number of snapshots taken.
