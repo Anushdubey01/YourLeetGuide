@@ -1,0 +1,12 @@
+Intuition:
+The given problem aims to find the number of equal pairs in a square grid. An equal pair is defined as a row and column in the grid where all the elements in the row are the same as the corresponding elements in the column. The solution needs to count the total number of such equal pairs.
+
+Approach:
+To solve the problem, we iterate through each cell of the grid using nested loops. For each cell (i, j), we compare the elements in the corresponding row (i) and column (j). We use a variable k to iterate through the elements of the row (i) and compare them with the elements of the column (j). If at any point the elements are not equal, we break out of the loop and move to the next cell. If we reach the end of the row without breaking out of the loop, it means all the elements in the row are equal to the corresponding elements in the column, and we increment the answer variable (ans) by 1.
+
+Finally, we return the total count of equal pairs (ans).
+
+Complexity:
+The time complexity of this solution is O(n^3), where n represents the size of the grid. This is because we have nested loops that iterate through each cell (i, j) in the grid, and for each cell, we iterate through the elements of the corresponding row (i) and column (j) to compare them. As a result, the time complexity increases with the cube of the size of the grid.
+
+The space complexity of this solution is O(1) since we are not using any additional data structures that grow with the input size.
