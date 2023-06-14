@@ -1,0 +1,18 @@
+Intuition:
+The program aims to find the minimum difference between any two nodes in a binary search tree (BST). The intuition behind the solution is to perform an in-order traversal of the BST, keeping track of the previous visited node's value. By comparing the current node's value with the previous value, we can update the minimum difference.
+
+Approach:
+1. Initialize the minimum difference (`ans`) to a maximum value, `Integer.MAX_VALUE`.
+2. Initialize a variable `prev` to -1, which will store the value of the previously visited node. Setting it to -1 ensures that the first node encountered will be considered as the previous node during the comparison.
+3. Create a stack (`stack`) to store the nodes during traversal.
+4. Start with the root node and perform the following steps until the root becomes null and the stack is empty:
+   a. Traverse left: While the root is not null, push each node encountered onto the stack and move to its left child.
+   b. Process the current node: Pop a node from the stack, which becomes the current node. Compare the `prev` value with the current node's value. If `prev` is greater than or equal to 0, update `ans` by taking the minimum between `ans` and the difference between the current node's value and `prev`.
+      - This comparison ensures that `ans` is updated only after the first node is visited, as `prev` is initially set to -1.
+      - For subsequent nodes, the difference is calculated and compared with the current `ans` value to update it if necessary.
+   c. Update `prev` and traverse right: Set `prev` to the current node's value and move to its right child.
+5. Return the minimum difference (`ans`).
+
+Complexity Analysis:
+- Time complexity: The program performs an in-order traversal of the BST, which takes O(n) time, where n is the number of nodes in the tree.
+- Space complexity: The program uses a stack to store nodes during traversal. In the worst case, when the tree is skewed, the stack can hold all n nodes, resulting in O(n) space complexity. However, in the average case, the space complexity is O(log n), where log n is the height of the balanced tree.
