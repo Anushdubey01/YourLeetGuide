@@ -1,0 +1,20 @@
+Intuition:
+The program aims to find the level in a binary tree that has the maximum sum of node values. It uses a breadth-first search (BFS) approach to traverse the tree level by level. At each level, it calculates the sum of node values and updates the maximum level sum if a higher sum is found. Finally, it returns the level with the maximum sum.
+
+Approach:
+1. Initialize the answer variable `ans` to 1 and the maximum level sum variable `maxLevelSum` to the minimum possible value.
+2. Create a queue `q` to store the nodes of the tree. Start by adding the root node to the queue.
+3. Start a loop where the level variable `level` is initially set to 1. Iterate while the queue is not empty.
+4. Inside the loop, initialize a variable `levelSum` to 0 to store the sum of node values at the current level.
+5. Use another loop to process all the nodes at the current level. Iterate while the size of the queue (`q.size()`) is greater than 0.
+6. Poll the first node from the queue and add its value to the `levelSum`.
+7. If the polled node has a left child, add it to the queue.
+8. If the polled node has a right child, add it to the queue.
+9. After processing all nodes at the current level, check if the `levelSum` is greater than the `maxLevelSum`.
+10. If it is, update the `maxLevelSum` with the `levelSum` and update the `ans` with the current level `level`.
+11. Increment the `level` variable for the next iteration.
+12. Return the `ans` variable, which represents the level with the maximum sum.
+
+Complexity Analysis:
+- Time Complexity: The program traverses all the nodes of the binary tree once, so the time complexity is O(N), where N is the number of nodes in the tree.
+- Space Complexity: The space complexity is O(M), where M is the maximum number of nodes at any level in the binary tree. In the worst case, the queue can store all the nodes at the lowest level, resulting in O(M) space usage.
