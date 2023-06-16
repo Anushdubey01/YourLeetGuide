@@ -1,0 +1,35 @@
+Intuition:
+The program aims to count the number of ways to arrange a given list of integers such that no two consecutive numbers are adjacent. It uses a dynamic programming approach to calculate combinations using Pascal's Triangle.
+
+Approach:
+1. The program starts by initializing the `comb` list, which will store the combinations calculated using Pascal's Triangle.
+2. The `numOfWays` function is called with the given list of integers `nums`. It generates the combinations and assigns them to the `comb` variable.
+3. The `ways` function is recursively called with the given list `nums`.
+   - If the size of `nums` is 2 (base case), it returns 1 since there is only one way to arrange two numbers without violating the consecutive rule.
+   - Otherwise, it splits the list into two parts, `left` and `right`, based on the first element.
+   - It calculates the number of combinations for the current arrangement using `comb` and stores it in `ans`.
+   - The function recursively calls itself for the `left` and `right` lists and multiplies the results with `ans`.
+   - Finally, it returns the value of `ans` modulo `kMod`.
+4. The `generate` function is called to generate Pascal's Triangle.
+   - It initializes an empty list `comb`.
+   - It iterates `numRows` times and creates a temporary array filled with 1's.
+   - The temporary array is converted to a list and added to `comb`.
+   - It then iterates from the second row and updates the elements of `comb` by summing the corresponding elements from the previous row.
+   - The updated `comb` is returned.
+
+Complexity:
+Let's analyze the time and space complexity of the program:
+
+1. Time Complexity:
+   - The `generate` function has a time complexity of O(numRows^2) as it iterates numRows times and updates each row with constant time operations.
+   - The `ways` function recursively calls itself for each subproblem, resulting in a binary tree-like recursive structure. The number of recursive calls is proportional to the number of nodes in this tree.
+   - The total number of nodes in the tree can be approximated to 2^n, where n is the size of the input list `nums`.
+   - Since each node's computation takes O(1) time, the total time complexity of `ways` can be approximated to O(2^n).
+   - Therefore, the overall time complexity of the program is O(numRows^2 + 2^n).
+
+2. Space Complexity:
+   - The `generate` function uses additional space to store Pascal's Triangle in the `comb` list, which has a space complexity of O(numRows^2).
+   - The `ways` function uses additional space for the recursive calls. The maximum depth of the recursion is equal to the size of the input list `nums`, resulting in a space complexity of O(n).
+   - Overall, the space complexity of the program is O(numRows^2 + n).
+
+It's important to note that the time and space complexity approximations mentioned above may vary based on the actual implementation details and language-specific optimizations.
