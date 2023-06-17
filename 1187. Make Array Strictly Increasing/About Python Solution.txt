@@ -1,0 +1,28 @@
+Intuition:
+The program aims to find the minimum number of steps required to make the array `arr1` strictly increasing by modifying its elements. The modifications can be made by either replacing an element in `arr1` with a larger element from `arr2` or keeping the original element in `arr1`.
+
+Approach:
+The approach used in the program is dynamic programming. It maintains a dictionary `dp` to store the minimum steps required to reach a certain value in the previous round. The initial state is set with `-1` as the key and `0` as the value to indicate that no steps have been taken yet.
+
+The `arr2` list is sorted in ascending order to facilitate searching for the next greater value. For each element `a` in `arr1`, a new `nextDp` dictionary is created with a default value of infinity. This dictionary will store the updated minimum steps for the next round.
+
+For each `val` and `steps` in `dp.items()`, two possibilities are considered:
+
+1. If the current element `a` in `arr1` is greater than `val`, it is possible to use `a` without any modifications. The minimum steps to reach `a` are updated in `nextDp` if it is smaller than the existing value.
+
+2. The program tries to find the next greater value in `arr2` using the `bisect_right` function. If such a value exists, it can replace `val` in `arr1`. The minimum steps are updated in `nextDp` by adding 1 to the number of steps taken so far.
+
+After iterating through all elements in `arr1`, if `nextDp` is empty, it means there is no way to make `arr1` strictly increasing, and the program returns -1. Otherwise, `dp` is updated with `nextDp`, and the process continues for the next round.
+
+Finally, the program returns the minimum value among the values in `dp`.
+
+Complexity:
+Let `n` be the length of `arr1`, and let `m` be the length of `arr2`.
+
+- Sorting `arr2` takes O(m log m) time.
+- The main loop iterates through each element in `arr1`, resulting in O(n) iterations.
+- Within each iteration, the program performs constant time operations to update `nextDp`.
+- Finding the next greater value in `arr2` using `bisect_right` takes O(log m) time.
+- Computing the minimum value in `dp` takes O(n) time.
+
+Overall, the time complexity of the program is O(n * (m + log m)), and the space complexity is O(m) for the `dp` and `nextDp` dictionaries.

@@ -1,0 +1,19 @@
+# Intuition - 
+The given problem is to determine the minimum number of steps required to make an array, `arr1`, strictly increasing by modifying its elements. The modifications can be made by either replacing an element in `arr1` with a larger element from `arr2` or keeping the original element in `arr1`.
+
+# Approach - 
+The approach used in the solution is dynamic programming. The solution maintains a `Map<Integer, Integer>` called `dp`, where the key represents the value reached in the previous round, and the value represents the minimum steps required to reach that value. Initially, `dp` is initialized with `-1` as the key and `0` as the value, indicating that no steps have been taken yet.
+
+The `arr2` array is sorted in ascending order to easily search for the next greater value. Then, for each element `a` in `arr1`, a new `nextDp` map is created to store the updated minimum steps for the next round. For each value `val` in `dp`, two possibilities are considered:
+
+1. If the current element `a` in `arr1` is greater than `val`, it is possible to use `a` without any modifications. Therefore, the minimum steps to reach `a` is updated in `nextDp`.
+
+2. The solution also tries to find the next greater value in `arr2` (using the `firstGreater` function) that can replace `val`. If such a value exists, the minimum steps are updated in `nextDp` by adding 1 to the number of steps taken so far.
+
+After iterating through all the elements in `arr1`, if `nextDp` is empty, it means there is no way to make `arr1` strictly increasing, so the function returns -1. Otherwise, `dp` is updated with `nextDp` and the process continues for the next round.
+
+Finally, the minimum number of steps to make `arr1` strictly increasing is determined by finding the minimum value in `dp` and returning it.
+
+# Complexity - 
+ - Time Complexity - is **O(n * (m + log m)),** and 
+ - Space Complexity - is **O(m)** for the `dp` and `nextDp` maps.
