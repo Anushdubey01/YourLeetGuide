@@ -1,0 +1,22 @@
+Intuition:
+The problem asks us to count the number of increasing paths in a given grid. An increasing path is defined as a path from one cell to another cell such that each cell in the path has a higher value than its previous cell. We need to find all the possible increasing paths starting from each cell in the grid.
+
+Approach:
+To solve this problem, we can use a dynamic programming approach with memoization (top-down approach). We'll define a recursive function `dfs` that takes in the current cell's coordinates (i, j) and returns the number of increasing paths starting from that cell.
+
+In the `countPaths` function, we initialize the answer variable `ans` to 0. We also initialize a 2D array `dp` of size mxn, where `dp[i][j]` represents the number of increasing paths starting from the cell (i, j). We set all elements of `dp` to -1 initially.
+
+We then iterate through each cell in the grid using two nested loops. For each cell, we call the `dfs` function to find the number of increasing paths starting from that cell. We add the result to `ans` and take the modulus with `kMod` to avoid overflow.
+
+Inside the `dfs` function, we check if `dp[i][j]` has already been computed. If it has, we return the precomputed value. Otherwise, we set `dp[i][j]` to 1 since the current cell itself contributes 1 length to the increasing path.
+
+We then iterate through all four possible directions (up, down, left, right) using the `dirs` array. For each direction, we calculate the new coordinates (x, y) by adding the corresponding offsets to (i, j). If the new coordinates are out of bounds or the value at the new cell is less than or equal to the current cell, we skip it.
+
+If the new cell is valid, we recursively call the `dfs` function with the new coordinates (x, y) and add the result to `dp[i][j]`. Finally, we take the modulus with `kMod` to avoid overflow.
+
+After calculating the number of increasing paths starting from the current cell, we return `dp[i][j]`.
+
+Complexity Analysis:
+- The grid has a size of m x n, so the time complexity of the `countPaths` function is O(m * n).
+- Inside the `dfs` function, each cell is visited only once and its result is memoized, so the time complexity of the `dfs` function is O(1) for each cell.
+- The space complexity is O(m * n) to store the `dp` array.
