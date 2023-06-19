@@ -1,0 +1,14 @@
+Intuition:
+The intuition behind the solution is to use dynamic programming to build up the solution incrementally. The `dp` array is used to store the fewest number of coins needed to make up each amount from 0 to the target amount. By iteratively considering each coin denomination and updating the `dp` array, the algorithm finds the minimum number of coins needed for each amount.
+
+Approach:
+1. Create an array `dp` of size `amount + 1` and initialize all elements to `amount + 1`, except `dp[0]` which is initialized to 0. This ensures that the minimum number of coins needed to make up an amount is initially set to a large value (amount + 1) for all amounts except 0.
+2. Iterate over each coin denomination in the `coins` array.
+3. For each coin denomination, iterate from that coin's value to the target amount (i.e., from `coin` to `amount`).
+4. For each amount `i`, update `dp[i]` to the minimum of its current value and `dp[i - coin] + 1`. This means considering the possibility of using the current coin denomination and adding one more coin to the solution.
+5. After iterating through all coin denominations and amounts, the final value of `dp[amount]` will represent the minimum number of coins needed to make up the target amount.
+6. If `dp[amount]` is still equal to `amount + 1`, it means it was not possible to make up the target amount, so return -1. Otherwise, return `dp[amount]` as the minimum number of coins.
+
+Complexity:
+- The time complexity of this approach is O(coins.length * amount) because it involves nested loops over the coins array and amounts up to the target amount.
+- The space complexity is O(amount) since the `dp` array is used to store the minimum number of coins for each amount.
