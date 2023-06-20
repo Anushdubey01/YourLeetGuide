@@ -1,0 +1,17 @@
+Intuition:
+The program uses a sliding window approach to efficiently calculate the averages of the subarrays. It maintains a window of size `2k+1` and calculates the sum of the elements in the window. The average of the subarray is then calculated by dividing the sum by the window size.
+
+Approach:
+1. Initialize the variables: `n` as the length of the input array `nums`, `size` as `2k+1` representing the window size, and `ans` as an array of size `n` to store the average values.
+2. Fill the `ans` array with -1 as the default value.
+3. If `size` is greater than `n`, there are not enough elements to form a valid subarray, so return `ans`.
+4. Initialize a variable `sum` to keep track of the sum of elements in the window.
+5. Iterate through the first `size` elements of `nums` and add them to `sum`.
+6. Starting from index `k`, iterate until `i + k < n` to process the remaining elements in `nums`.
+   a. Assign `ans[i]` as the integer value of the division of `sum` by `size`, representing the average of the current subarray.
+   b. If `i + k + 1 < n`, update `sum` by subtracting `nums[i - k]` and adding `nums[i + k + 1]`. This adjusts the window by removing the leftmost element and adding the rightmost element.
+7. Return the `ans` array.
+
+Complexity:
+- Time complexity: The program has a time complexity of O(n), where n is the length of the input array `nums`. It iterates through the array once to calculate the sum of the initial window and then iterates through the remaining elements to update the window and calculate the averages.
+- Space complexity: The program has a space complexity of O(n) as it creates an array `ans` of size n to store the average values.
