@@ -1,0 +1,19 @@
+Intuition:
+The goal of the program is to find the minimum cost required to modify the numbers in the "nums" array to a target value. Each number can be modified independently, and the cost of modifying a number depends on its difference from the target value and the corresponding cost value in the "cost" array.
+
+Approach:
+1. Find the lowest and highest numbers in the "nums" array using the `min()` and `max()` methods from the `Arrays` class.
+2. Use binary search to find the target value that results in the minimum cost. Initialize the lower bound (`lowestNum`) as the lowest number and the upper bound (`highestNum`) as the highest number.
+3. In each iteration, calculate the cost for the middle value (`mid`) of the current range using the `calculateCost()` method.
+4. Also, calculate the cost for the next value after the middle value (`mid + 1`).
+5. Compare the two costs and update the minimum cost (`minimumCost`) accordingly.
+6. Adjust the range by updating the lower bound (`lowestNum`) or the upper bound (`highestNum`) based on the comparison of the costs.
+7. Repeat steps 3-6 until the lower bound becomes equal to or greater than the upper bound.
+8. Return the minimum cost.
+
+Complexity:
+- Finding the lowest and highest numbers takes O(N) time, where N is the length of the "nums" array.
+- Binary search is performed on the range of numbers, which takes O(log N) iterations.
+- For each iteration, calculating the cost takes O(N) time.
+- Therefore, the overall time complexity of the program is O(N log N).
+- The space complexity is O(1) as the program uses a constant amount of additional space for variables.
