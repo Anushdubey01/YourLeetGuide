@@ -1,0 +1,14 @@
+Intuition:
+The program aims to find the maximum profit that can be obtained by buying and selling stocks with a transaction fee. It uses a dynamic programming approach to keep track of the maximum profit at each step.
+
+Approach:
+The program utilizes the concept of buying and selling stocks to maximize the profit. It iterates through the prices array, updating the sell and hold variables accordingly. The sell variable keeps track of the maximum profit that can be obtained by selling the stock at the current price. The hold variable represents the maximum profit that can be obtained by holding the stock at the current price.
+
+At each iteration, the program updates the sell and hold variables based on the current price. The sell variable is updated by comparing the previous sell value with the profit obtained by selling the stock at the current price (hold + price). The hold variable is updated by comparing the previous hold value with the profit obtained by holding the stock at the current price (sell - price - fee).
+
+Finally, the program returns the maximum profit stored in the sell variable, which represents the maximum profit that can be obtained by selling all the stocks.
+
+Complexity:
+The time complexity of the program is O(n), where n is the length of the prices array. This is because the program iterates through the prices array once.
+
+The space complexity of the program is O(1) since it uses a constant amount of additional space to store the sell and hold variables, regardless of the size of the input array.
