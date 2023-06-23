@@ -1,0 +1,17 @@
+# Intuition - 
+The program aims to find the total cost of hiring candidates for a job. The cost of hiring each candidate is given in the `costs` array. The hiring process involves two queues, `minHeapL` and `minHeapR`, representing the left and right sides of the array, respectively. The queues are used to track the candidates with the minimum costs. 
+
+# Approach - 
+1. Initialize the answer `ans` to 0, and set two pointers `i` and `j` to the start and end of the `costs` array, respectively.
+2. Create two priority queues, `minHeapL` and `minHeapR`, to store the minimum costs.
+3. Iterate `hired` from 0 to `k-1` (the number of candidates to hire).
+4. While the size of `minHeapL` is less than `candidates` and `i` is less than or equal to `j`, add the `costs[i]` to `minHeapL` and increment `i`.
+5. While the size of `minHeapR` is less than `candidates` and `i` is less than or equal to `j`, add the `costs[j]` to `minHeapR` and decrement `j`.
+6. If `minHeapL` is empty, add the top element of `minHeapR` to `ans` and remove it from the queue.
+7. If `minHeapR` is empty, add the top element of `minHeapL` to `ans` and remove it from the queue.
+8. If both `minHeapL` and `minHeapR` have elements, compare the top elements of both queues. Add the smaller element to `ans` and remove it from its respective queue.
+9. Return the final value of `ans`.
+
+# Complexity Analysis - 
+- The time complexity of the program is O(k * candidates) as the main loop runs for `k` iterations, and each iteration involves adding elements to the two priority queues with a maximum size of `candidates`.
+- The space complexity is O(candidates), where `candidates` is the maximum size of the two priority queues.
