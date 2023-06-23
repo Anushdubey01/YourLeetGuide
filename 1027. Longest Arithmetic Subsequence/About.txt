@@ -1,0 +1,13 @@
+Intuition:
+The program aims to find the length of the longest arithmetic subsequence in the given array. An arithmetic subsequence consists of a sequence of numbers in which the difference between consecutive elements remains constant.
+
+Approach:
+The approach used in this program is dynamic programming. The program maintains a 2D array of HashMaps, `dp`, where `dp[i]` represents a HashMap that stores the length of the arithmetic subsequence ending at index `i`. The key of each entry in the HashMap is the difference between the current element and a previous element, and the value is the length of the subsequence. 
+
+The program iterates over each element in the input array. For each element `nums[i]`, it iterates over all previous elements `nums[j]` (where `j` < `i`) to calculate the difference `diff`. It then updates `dp[i]` by adding 1 to the length of the subsequence stored in `dp[j]` for the corresponding difference `diff`. If the difference `diff` doesn't exist in `dp[j]`, the program uses a default value of 1. 
+
+The program also keeps track of the maximum subsequence length (`ans`) seen so far and updates it whenever a longer subsequence is found. Finally, it returns the maximum subsequence length.
+
+Complexity:
+- Time complexity: The program uses nested loops to iterate over the array, resulting in a time complexity of O(n^2), where n is the length of the input array.
+- Space complexity: The program uses a 2D array of HashMaps, which requires O(n) space. Additionally, each HashMap can store at most n - 1 entries, resulting in a total space complexity of O(n^2).
