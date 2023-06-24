@@ -1,0 +1,19 @@
+Intuition:
+The problem asks us to find the maximum minimum height of two piles of rods that have the same height. We can think of it as finding a balanced arrangement of rods on two piles such that the height difference between the two piles is minimized. To solve this problem, we can use dynamic programming.
+
+Approach:
+1. We initialize a HashMap called dp, where the keys represent the height differences between the two piles and the values represent the maximum minimum height for that height difference.
+2. We start by setting the initial state dp[0] = 0, indicating that initially, both piles have the same height difference of 0, and the maximum minimum height is 0.
+3. We iterate through each rod in the given rods array.
+4. For each rod, we create a copy of the current state of dp to avoid modifying it while iterating.
+5. We iterate through each height difference (diff) in the current state.
+6. For each height difference, we retrieve the corresponding maximum minimum height (height) from the current state.
+7. We update the dp map based on three possibilities:
+   - Don't use the current rod: dp[diff] remains the same.
+   - Put the current rod on the taller pile: dp[diff + h] is updated with the maximum value between its current value and the maximum minimum height of the current height difference (diff).
+   - Put the current rod on the shorter pile: dp[abs(diff - h)] is updated with the maximum value between its current value and the maximum minimum height of the current height difference (diff) plus the minimum value between the current height difference (diff) and the height of the current rod (h).
+8. After iterating through all rods, we return dp[0], which represents the maximum minimum height of two balanced piles.
+
+Complexity Analysis:
+- The given program has a time complexity of O(N * S), where N is the number of rods and S is the sum of all rod lengths. This is because for each rod, we iterate through the current state of the dp map, which has at most S elements.
+- The space complexity of the program is O(S), as we use the dp map to store the maximum minimum heights for each height difference.
