@@ -1,0 +1,27 @@
+**Intuition:**
+The given program solves the problem of counting the number of possible routes from a start location to a finish location, given a certain amount of fuel. The fuel represents the maximum distance that can be traveled from each location. The objective is to find all the routes that can be traversed from the start location to the finish location while respecting the fuel constraints.
+
+**Approach:**
+The program uses a recursive approach with memoization to solve the problem efficiently. It maintains a 2D array `dp` to store the intermediate results. The `dp` array has dimensions `[locations.length][fuel + 1]`, where `locations.length` represents the number of locations and `fuel + 1` represents the maximum fuel capacity plus one.
+
+The main function `countRoutes` initializes the `dp` array and calls the recursive function `count` to calculate the number of routes.
+
+The recursive function `count` takes the current location, finish location, remaining fuel, and the `dp` array as parameters. It uses the following steps to calculate the number of routes:
+
+1. If the remaining fuel is less than 0, it means the fuel capacity has been exceeded, so there are no valid routes from the current location. Return 0.
+2. If the result for the current location and remaining fuel is already calculated and stored in the `dp` array, return the stored result.
+3. Initialize the result to 0.
+4. If the current location is the finish location, increment the result by 1 since we have reached the destination.
+5. Iterate through all possible next locations from the current location.
+    - If the next location is the same as the current location, skip it.
+    - Calculate the fuel consumed to move from the current location to the next location using `Math.abs(locations[current] - locations[next])`.
+    - Recursively call the `count` function with the next location, finish location, reduced fuel, and the `dp` array.
+    - Add the returned result to the overall result.
+6. Take the modulo `kMod` of the result to ensure the result stays within the specified bounds.
+7. Store the result in the `dp` array for future reference.
+8. Return the final result.
+
+**Complexity Analysis:**
+- The time complexity of the program is `O(N * F)`, where `N` is the number of locations and `F` is the maximum fuel capacity. This is because the `count` function is called for each combination of location and remaining fuel, and each combination is calculated once.
+- The space complexity of the program is `O(N * F)` as well. The `dp` array requires this amount of space to store the intermediate results.
+- Since the `dp` array is of size `locations.length` multiplied by `fuel + 1`, the space complexity is directly proportional to the size of the input.
