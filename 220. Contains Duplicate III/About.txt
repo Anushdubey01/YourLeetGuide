@@ -1,0 +1,19 @@
+Intuition:
+The program checks whether there exist two elements in the given array `nums` such that their indices differ at most by `indexDiff` and the absolute difference between their values is at most `valueDiff`.
+
+Approach:
+1. First, we perform some basic checks to handle edge cases. If the length of the array is 0, or `indexDiff` is less than or equal to 0, or `valueDiff` is negative, we return false.
+2. We determine the minimum value in the array `nums` using the `min()` method of `Arrays.stream()`. We assign it to `minValue`.
+3. We calculate the range of values that a bucket can hold. We add 1 to `valueDiff` and cast it to a long to ensure proper calculations. We assign it to `valueRange`.
+4. We use a HashMap called `bucket` to store values and their corresponding bucket keys.
+5. We iterate through each element of `nums` using a loop. For each element, we perform the following checks:
+   - We calculate the bucket key for the current element using the `getBucketKey()` method.
+   - If the bucket already contains the key, it means we have found two elements with a small index difference and their values differ by at most `valueDiff`, so we return true.
+   - We also check the adjacent buckets: the left bucket (key - 1) and the right bucket (key + 1). If they exist in the bucket and satisfy the value difference condition, we return true.
+   - If the above conditions are not met, we add the current element to the bucket with its corresponding key.
+   - Additionally, if the current index is greater than or equal to `indexDiff`, we remove the element at the index `i - indexDiff` from the bucket to maintain the sliding window.
+6. If we have iterated through all the elements without finding any matches, we return false.
+
+Complexity:
+- Time complexity: The program runs in O(n) time, where n is the length of the `nums` array. We iterate through each element once.
+- Space complexity: The program uses O(n) space. The HashMap `bucket` can store up to n elements, and the space used for variables is negligible.
