@@ -1,0 +1,13 @@
+**Intuition:**
+The problem requires finding the skyline of a set of buildings. The skyline represents the outline formed by the top edges of the buildings when viewed from a distance. The task is to determine the coordinates of the points where the skyline changes.
+
+**Approach:**
+The approach used in this solution is a divide-and-conquer strategy. The `getSkyline` function recursively divides the set of buildings into smaller subsets until each subset contains only one building or no buildings. The base cases handle the scenarios when there are no buildings or only one building.
+
+For more than one building, the algorithm divides the buildings into two halves. It then recursively calls `getSkyline` on each half to obtain the left and right skylines. Finally, the skylines from the left and right halves are merged using the `merge` function.
+
+The `merge` function takes the left and right skylines and combines them to produce the final skyline. It iterates over the skylines and determines the points where the skyline changes. It keeps track of the current maximum heights from the left and right skylines and chooses the point with the smaller x-coordinate. The `addPoint` function is used to add the points to the result skyline, taking care of merging points with the same x-coordinate.
+
+**Complexity Analysis:**
+- Time Complexity: The time complexity of this approach is O(N log N), where N is the number of buildings. The `getSkyline` function recursively divides the set of buildings into halves until reaching the base cases. Since each level of recursion processes all the buildings once, the overall time complexity is dominated by the number of recursive calls, which is O(log N). Within each recursive call, merging the skylines takes O(N) time, resulting in a total time complexity of O(N log N).
+- Space Complexity: The space complexity is O(N log N) as well. This is due to the recursive calls that create separate lists for each subset of buildings, leading to a stack space usage of O(log N). Additionally, the `merge` function may create a new list for the merged skyline, resulting in additional space usage of O(N). Overall, the space complexity is dominated by the recursive stack and the merged skyline list.
