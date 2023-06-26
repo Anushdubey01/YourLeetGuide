@@ -1,0 +1,19 @@
+The given code solves the problem of finding the shortest palindrome by appending characters to the beginning of the given string `s` to make it a palindrome.
+
+The method `shortestPalindrome` takes a string `s` as input and follows these steps to find the shortest palindrome:
+
+1. Create a new string `t` by reversing the original string `s` using a `StringBuilder` and calling the `reverse` method on it.
+
+2. Iterate over the characters of the reversed string `t` using a for loop with index `i`.
+
+3. Inside the loop, check if the original string `s` starts with the substring of `t` starting from index `i`. If it does, it means the remaining part of `t` starting from index `i` is a palindrome.
+
+4. If the condition in step 3 is true, construct the shortest palindrome by concatenating the substring of `t` from index 0 to i (excluding i) with the original string `s`. This will result in a palindrome that starts with the reversed part of `s` from index i.
+
+5. If no palindrome is found during the loop, it means the original string `s` itself is a palindrome. In that case, concatenate the reversed string `t` with `s` to get the shortest palindrome.
+
+6. Return the shortest palindrome obtained from either step 4 or step 5.
+
+The time complexity of this approach is O(n^2), where n is the length of the input string `s`. This is because, in the worst case, the loop iterates n times, and each iteration performs a substring comparison which takes O(n) time.
+
+The space complexity is O(n), as we create a new string `t` with the same length as `s` to store the reversed version of the string.
