@@ -1,0 +1,21 @@
+Intuition:
+The program aims to find the k smallest pairs from two given arrays, `nums1` and `nums2`. The pairs are formed by taking one element from `nums1` and one element from `nums2`. The sum of the selected pair is used as the basis for comparison to determine the smallest pairs.
+
+Approach:
+1. Create a `Pair` class to store the indices and sum of pairs.
+2. Initialize an empty `result` list to store the k smallest pairs.
+3. Create a min-heap using a `PriorityQueue` to keep track of the smallest sums.
+4. Iterate over the first k elements of `nums1` (or the entire `nums1` if its length is less than k):
+   - Create a new pair with `index1` as the current index, `index2` as 0 (the initial index of `nums2`), and `sum` as the sum of the corresponding elements from `nums1` and `nums2`.
+   - Add the pair to the min-heap.
+5. While the min-heap is not empty and the size of `result` is less than k:
+   - Retrieve the pair with the smallest sum from the min-heap.
+   - Add the corresponding pair of elements from `nums1` and `nums2` to the `result` list.
+   - If there are more elements in `nums2` for the current pair of `nums1` elements:
+     - Create a new pair with the same `index1`, increment `index2` by 1, and calculate the sum using the next element from `nums2`.
+     - Add the new pair to the min-heap.
+6. Return the `result` list containing the k smallest pairs.
+
+Complexity:
+- Time complexity: The program iterates over the first k elements of `nums1` and performs operations on the min-heap, which has a maximum size of k. Therefore, the time complexity is O(k log k).
+- Space complexity: The space used by the `result` list is proportional to k. The min-heap can also contain up to k pairs. Therefore, the space complexity is O(k).
