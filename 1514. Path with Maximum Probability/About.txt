@@ -1,0 +1,24 @@
+Intuition:
+The given program solves the problem of finding the maximum probability of reaching the end node from the start node in a directed weighted graph. The graph is represented using an adjacency list, where each node is associated with a list of pairs representing its neighbors and the corresponding edge probabilities.
+
+Approach:
+1. Initialize a priority queue (maxHeap) to store nodes with their current probability of reaching them.
+2. Start with the start node and a probability of 1.0.
+3. While the maxHeap is not empty:
+   - Retrieve the node with the highest probability from the maxHeap.
+   - If the retrieved node is the end node, return the probability.
+   - Mark the retrieved node as visited.
+   - Iterate over its neighbors:
+     - If the neighbor is already visited, skip it.
+     - Calculate the probability to reach the neighbor by multiplying the current probability with the edge probability.
+     - Add the neighbor and its updated probability to the maxHeap.
+4. If the end node is not reachable, return 0.
+
+Complexity Analysis:
+- Let N be the number of nodes and E be the number of edges in the graph.
+- Building the adjacency list takes O(E) time.
+- The while loop will run at most N times since each node can be visited only once.
+- Within the while loop, iterating over the neighbors takes O(degree) time, where degree is the maximum number of neighbors a node can have.
+- Adding nodes to the maxHeap and retrieving the node with the highest probability each time takes O(log N) time.
+- Therefore, the overall time complexity of the program is O(E + N * (degree + log N)).
+- The space complexity is O(N) for the adjacency list, maxHeap, and visited array.
