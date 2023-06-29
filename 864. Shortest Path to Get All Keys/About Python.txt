@@ -1,0 +1,23 @@
+Intuition:
+The problem requires finding the shortest path to collect all keys in a given grid. The grid consists of different types of cells, including walls, open cells, keys, and locks. The goal is to collect all the keys by navigating through the grid, while avoiding walls and unlocking locks with the corresponding keys. 
+
+Approach:
+1. Iterate through the grid to find the initial position of the character '@' and count the total number of keys present.
+2. Initialize a queue to perform breadth-first search (BFS) and a visited array to keep track of visited states.
+3. Enqueue the initial state (startRow, startCol, keys) into the queue and mark it as visited.
+4. Perform BFS until the queue is empty:
+   a. Retrieve the front element from the queue.
+   b. Check if all keys are collected. If so, return the number of steps.
+   c. Explore the adjacent cells in all four directions.
+   d. Update the new position and the collected keys accordingly.
+   e. If the new position is valid and has not been visited with the current set of keys, enqueue it into the queue and mark it as visited.
+   f. Repeat the process for all elements in the current level.
+   g. Increment the number of steps.
+5. If it is not possible to collect all keys, return -1.
+
+Complexity:
+- Let m be the number of rows and n be the number of columns in the grid.
+- Finding the initial position and counting the keys takes O(m*n) time.
+- The BFS traversal visits each cell at most once, so the time complexity is O(m*n).
+- The space complexity is O(m*n) for the visited array and the queue in the worst case, as all cells can be visited.
+- The overall time and space complexity of the solution is O(m*n).

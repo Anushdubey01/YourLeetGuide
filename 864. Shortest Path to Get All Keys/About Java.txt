@@ -1,0 +1,21 @@
+Intuition:
+The problem requires finding the shortest path to collect all the keys in a grid-based maze. We can use a breadth-first search (BFS) algorithm to explore the maze and find the shortest path.
+
+Approach:
+1. Initialize variables to store the dimensions of the grid, the bitmask representing all the keys, and the starting position.
+2. Iterate through the grid to find the starting position and count the total number of keys, updating the bitmask accordingly.
+3. Create a queue to perform BFS, and a 3D visited array to keep track of visited states.
+4. Add the initial state (starting position and bitmask of collected keys) to the queue and mark it as visited.
+5. Initialize a variable to keep track of the number of steps taken.
+6. While the queue is not empty, process each state in the queue:
+   - Expand the current state by exploring in all four directions (up, down, left, right).
+   - Check if the expanded state has collected all the keys. If so, return the number of steps taken.
+   - If the expanded position is a wall, skip it.
+   - If the expanded position is a key, update the bitmask of collected keys.
+   - If the expanded position is a lock and the corresponding key has not been collected, skip it.
+   - If the expanded position is a valid position and has not been visited with the same bitmask, add it to the queue and mark it as visited.
+7. If it's not possible to collect all keys, return -1.
+
+Complexity:
+- The time complexity of the solution is O(m * n * 2^k), where m is the number of rows, n is the number of columns, and k is the number of keys in the maze.
+- The space complexity is O(m * n * 2^k) for the visited array and the queue.
