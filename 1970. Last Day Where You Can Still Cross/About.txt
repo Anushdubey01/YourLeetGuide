@@ -1,0 +1,16 @@
+Intuition:
+The given program aims to find the latest day on which it is possible to cross a grid of cells from the first row to the last row. Each cell can either be occupied (1) or unoccupied (0), and you can only move to adjacent unoccupied cells (up, down, left, right) or cells with a lower day number. The goal is to determine the latest day on which it is possible to reach the last row.
+
+Approach:
+The program utilizes a binary search approach to find the latest possible day for crossing the grid. It starts with a left pointer `l` at day 1 and a right pointer `r` at the last day in the `cells` array. The middle index `m` is calculated as `(l + r) / 2`, and the function `canWalk()` is called to check if it is possible to cross the grid on day `m`.
+
+The `canWalk()` function initializes a matrix representing the grid with all cells initially set to 0 (unoccupied). It then marks the cells up to day `m` in the `cells` array as occupied (1) in the matrix. It uses a queue to perform a breadth-first search (BFS) starting from the cells in the first row that are unoccupied. It iteratively explores neighboring cells and marks them as occupied while checking if the last row can be reached. If the last row is reachable, the function returns true; otherwise, it returns false.
+
+If `canWalk(m, row, col, cells)` returns true, it means it is possible to cross the grid on day `m`, and the answer `ans` is updated to `m`. In this case, the left pointer `l` is moved to `m + 1` to search for a later day. Otherwise, if the function returns false, it means it is not possible to cross the grid on day `m`, and the right pointer `r` is moved to `m - 1` to search for an earlier day.
+
+The binary search continues until the left pointer `l` becomes greater than the right pointer `r`, indicating that the search space has been exhausted. At this point, the answer `ans` represents the latest day on which it is possible to cross the grid, and it is returned.
+
+Complexity Analysis:
+The time complexity of the program is O(log n), where n is the number of cells in the `cells` array. This is because the program utilizes a binary search, which reduces the search space in half at each step.
+
+The space complexity of the program is O(row * col), as it utilizes a matrix to represent the grid, where row and col are the dimensions of the grid. Additionally, a queue is used for the BFS traversal, which can store a maximum of row * col cells in the worst case.
