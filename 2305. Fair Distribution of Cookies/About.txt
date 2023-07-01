@@ -1,0 +1,50 @@
+Intuition:
+The given code aims to distribute cookies among children in such a way that the maximum number of cookies received by any child is minimized. The Java code uses a recursive approach to find the solution, while the Python code is the equivalent implementation in Python.
+
+Approach:
+
+-Java code:
+1. Initialize variables: `answer` to store the minimum maximum number of cookies received by any child and `counter` array to keep track of the number of cookies assigned to each child.
+2. The `distributeCookies` method is the entry point, which takes an array of cookies and the number of children as input.
+3. Set `answer` to `Integer.MAX_VALUE` to ensure it gets updated with a valid minimum value.
+4. Create the `counter` array with size `k`, initialized with zeros.
+5. Call the `findMaximum` method with the cookies array, starting index 0, and `k` as arguments.
+6. Return the value of `answer` as the result.
+7. The `findMaximum` method is a recursive function that performs backtracking to explore all possible distributions of cookies.
+8. Base case: If the current index is equal to the length of the cookies array, calculate the maximum number of cookies received by any child.
+9. Iterate over each child and update the maximum value by taking the maximum of the current child's count and the previous maximum.
+10. Update `answer` with the minimum of its current value and the calculated maximum.
+11. Return from the method.
+12. Recursive case: Iterate over each child and assign the current cookie to that child.
+13. Make a recursive call to `findMaximum` with the next index, cookies array, and `k`.
+14. Revert the assignment by subtracting the current cookie count from the child.
+15. Check if the count of the current child is zero. If true, break the loop to avoid unnecessary iterations.
+16. The backtracking process continues until all possible distributions are explored.
+
+-Python code:
+1. Define a class named `Solution`.
+2. Initialize variables: `answer` to store the minimum maximum number of cookies received by any child and `counter` list to keep track of the number of cookies assigned to each child.
+3. Define the `distributeCookies` method that takes a list of cookies and the number of children as input.
+4. Set `answer` to `float('inf')` to ensure it gets updated with a valid minimum value.
+5. Create the `counter` list with size `k`, initialized with zeros.
+6. Call the `findMaximum` method with the cookies list, starting index 0, and `k` as arguments.
+7. Return the value of `answer` as the result.
+8. Define the `findMaximum` method, which is a recursive function to perform backtracking.
+9. Base case: If the current index is equal to the length of the cookies list, calculate the maximum number of cookies received by any child.
+10. Iterate over each child and update the maximum value by taking the maximum of the current child's count and the previous maximum.
+11. Update `answer` with the minimum of its current value and the calculated maximum.
+12. Return from the method.
+13. Recursive case: Iterate over each child and assign the current cookie to that child.
+14. Make a recursive call to `findMaximum` with the next index, cookies list, and `k`.
+15. Revert the assignment by subtracting the current cookie count from the child.
+16. Check if the count of the current child is zero. If true, break the loop to avoid unnecessary iterations.
+17. The backtracking process continues until all possible distributions are explored.
+
+Both the Java and Python versions follow a similar approach, using backtracking to explore all possible combinations of cookie distribution and finding the minimum maximum value.
+
+Complexity:
+The time complexity of the code is O(k^N), where N is the number of cookies and k is the number of children. This is because for each cookie, there are k possibilities (children) to consider, and this process is repeated for each cookie. As a result, the number of recursive calls grows exponentially.
+
+The space complexity of the code is O(k), as it uses an array of size k to keep track of the number of cookies assigned to each child. The depth of the recursive calls is at most k, corresponding to the number of children.
+
+Overall, the code has an exponential time complexity and a linear space complexity with respect to the number of children.
