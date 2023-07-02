@@ -1,0 +1,18 @@
+**Intuition:**
+The program aims to find the maximum number of processed requests that can be achieved by either processing or skipping each request. Each request consists of two vertices, and the goal is to balance the degrees of the vertices such that all vertices have a degree of zero.
+
+**Approach:**
+The program uses a depth-first search (DFS) approach to iterate through all possible combinations of processing and skipping the requests. It starts with an initial state where all vertex degrees are zero. The `dfs` function is recursively called for each request.
+
+In the `dfs` function:
+1. If all requests have been processed (`i == requests.length`), it checks if all vertex degrees are zero. If so, it updates the `ans` variable with the maximum of the current processed requests count and the previous maximum.
+2. If all requests have not been processed yet, two recursive calls are made:
+   - The first call skips the current request and continues with the next request (`dfs(i + 1, processedReqs, requests, degree)`).
+   - The second call processes the current request by decrementing the degree of the first vertex and incrementing the degree of the second vertex. Then it continues with the next request (`dfs(i + 1, processedReqs + 1, requests, degree)`).
+   - After each recursive call, the changes made to the degrees are reversed to backtrack and explore other possibilities.
+
+The program keeps track of the maximum number of processed requests (`ans`) and returns it as the result.
+
+**Complexity:**
+- Time complexity: The program explores all possible combinations of processing and skipping the requests using a depth-first search. Therefore, the time complexity is exponential, O(2^N), where N is the number of requests.
+- Space complexity: The space complexity is O(N), where N is the number of requests. This is due to the recursion depth, as well as the space used to store the degree array and the function call stack.
