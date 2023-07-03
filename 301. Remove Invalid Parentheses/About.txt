@@ -1,0 +1,14 @@
+# Intuition -
+The problem asks for removing the minimum number of parentheses to make the input string valid. A valid string has balanced parentheses, meaning every opening parenthesis must have a corresponding closing parenthesis. The task is to generate all possible valid expressions by removing the minimum number of parentheses.
+
+# Approach -
+1. First, we need to count the number of mismatched left and right parentheses in the input string. This will help us determine the minimum number of parentheses to be removed.
+2. We use a depth-first search (DFS) approach to generate all possible valid expressions. Starting from the beginning of the string, we iterate through each character.
+3. During the DFS, we skip duplicate consecutive characters to avoid redundant computations. If the character is an opening parenthesis and we have leftCount > 0, we remove that opening parenthesis and continue the DFS. If the character is a closing parenthesis and we have rightCount > 0, we remove that closing parenthesis and continue the DFS.
+4. At each step, we reduce the respective leftCount or rightCount and move to the next character. We keep track of the start index to avoid revisiting previously processed characters.
+5. If we reach a point where leftCount == 0 and rightCount == 0 and the current string is valid, we add it to the list of valid expressions.
+6. Finally, we return the list of valid expressions.
+
+# Complexity Analysis - 
+- **Time Complexity: O(2^N * N),** where N is the length of the input string. In the worst case, we have 2^N possible combinations of parentheses, and for each combination, we need to validate the string, which takes O(N) time.
+- **Space Complexity: O(N),** where N is the length of the input string. The space is used for the recursion stack during the DFS process, and in the worst case, the depth of recursion can be N. Additionally, the space required for storing the valid expressions is also proportional to N in the worst case.
