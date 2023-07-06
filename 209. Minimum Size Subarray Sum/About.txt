@@ -1,0 +1,17 @@
+Intuition:
+The goal of this program is to find the minimum length of a contiguous subarray in the given array 'nums' whose sum is greater than or equal to the target value 's'. 
+
+Approach:
+The approach used in this program is the sliding window technique. It involves using two pointers, 'l' and 'r', to define a sliding window that represents the current subarray. The 'l' pointer indicates the left boundary of the subarray, while the 'r' pointer indicates the right boundary. Initially, both pointers are set to the start of the array.
+
+The program starts by iterating the 'r' pointer over the array 'nums'. At each step, the current element is added to the 'sum' variable. 
+
+After adding the element, the program enters a while loop to shrink the window from the left side. It checks if the sum of the subarray is greater than or equal to the target value 's'. If it is, the current subarray length (r - l + 1) is compared with the current minimum length 'ans'. If the current subarray length is smaller than 'ans', it becomes the new 'ans'. The left pointer 'l' is then incremented, and the element at the left boundary is subtracted from the sum.
+
+This process continues until the sum becomes less than the target value 's'. The 'r' pointer is then incremented to expand the window again, and the process is repeated. This sliding window approach ensures that we consider all possible subarrays that meet the condition.
+
+Finally, the program returns the minimum length 'ans' if it has been updated during the iterations. If 'ans' remains equal to Integer.MAX_VALUE, it means no subarray was found, so the program returns 0.
+
+Complexity:
+- Time Complexity: The program uses a single loop to iterate over the array 'nums' once. The while loop inside the main loop can have a maximum of 'n' iterations in total, where 'n' is the length of the array. Therefore, the overall time complexity is O(n).
+- Space Complexity: The program uses a constant amount of extra space to store variables such as 'ans', 'sum', 'l', and 'r'. Hence, the space complexity is O(1).
