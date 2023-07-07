@@ -1,0 +1,30 @@
+# Intuition:
+The given problem requires finding the maximum number of consecutive answers in the `answerKey` string, with the ability to flip at most `k` answers. To approach this, we can use a sliding window technique to maintain a valid window while keeping track of the maximum count of consecutive answers.
+
+# Approach:
+1. Initialize variables:
+   - `ans` to store the maximum number of consecutive answers found.
+   - `maxCount` to keep track of the maximum count of either 'T' or 'F' encountered so far.
+   - `count` to store the count of 'F' and 'T' answers using an array of size 2, where `count[0]` represents the count of 'F' and `count[1]` represents the count of 'T'.
+
+2. Use a sliding window approach:
+   - Initialize two pointers `l` and `r` at the beginning of the string.
+   - Iterate through the `answerKey` string from left to right, incrementing `r` each time.
+
+3. Update `maxCount` and `count`:
+   - If the character at index `r` is 'T', increment `count[1]`; otherwise, increment `count[0]`.
+   - Update `maxCount` by taking the maximum value between the current `maxCount` and the updated count.
+
+4. Adjust the window size:
+   - If the window size (r - l + 1) becomes greater than `maxCount + k`, it means we have more flips than allowed, so we need to shrink the window from the left side.
+   - While the window size is not valid (greater than `maxCount + k`), move the left pointer (`l`) to the right and decrement the corresponding count.
+   - This step ensures that the window contains at most `k` flips.
+
+5. Update `ans`:
+   - At each iteration, update `ans` by taking the maximum value between the current `ans` and the window size (r - l + 1), representing the maximum consecutive answers found so far.
+
+6. Return the maximum number of consecutive answers (`ans`).
+
+# Complexity Analysis:
+- The time complexity of the code is O(n), where n is the length of the `answerKey` string. This is because we iterate through the string once using the sliding window approach.
+- The space complexity is O(1) since we use a constant amount of extra space to store the variables (`ans`, `maxCount`, `count`, `l`, `r`).
