@@ -1,0 +1,17 @@
+Intuition:
+The goal of this code is to distribute k marbles among adjacent pairs of weights. Each adjacent pair has a combined weight, and the marbles need to be distributed in such a way that the difference between the total weight of the pairs with the fewest marbles and the total weight of the pairs with the most marbles is minimized.
+
+Approach:
+1. Create a new array A with a length of weights.length - 1. This array will store the sum of weights for each adjacent pair.
+2. Initialize two variables, min and max, to 0. These variables will represent the minimum and maximum total weights of the pairs after distributing the marbles.
+3. Calculate the sum of weights for each adjacent pair and store it in array A.
+4. Sort array A in ascending order.
+5. Iterate from i = 0 to k - 1 and do the following:
+   a. Add the i-th element of array A to min.
+   b. Add the (A.length - 1 - i)-th element of array A to max.
+6. Return the difference between max and min.
+
+Complexity Analysis:
+- The code has a time complexity of O(n log n) because of the sorting operation performed on array A.
+- Here, n represents the length of the weights array.
+- The space complexity is O(n) because of the auxiliary array A used to store the sums of adjacent pairs.
