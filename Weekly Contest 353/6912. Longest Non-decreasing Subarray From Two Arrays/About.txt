@@ -1,0 +1,23 @@
+Intuition:
+The given problem asks for finding the length of the longest non-decreasing subsequence that can be obtained by picking elements from two given arrays, `nums1` and `nums2`. The subsequences are constructed based on the condition that the chosen elements must maintain non-decreasing order when combined from both arrays.
+
+Approach:
+To solve the problem, we can use dynamic programming. We define two arrays, `dp1` and `dp2`, of the same length as the input arrays. The `dp1[i]` represents the length of the longest non-decreasing subsequence ending at index `i` in `nums1`, and `dp2[i]` represents the length of the longest non-decreasing subsequence ending at index `i` in `nums2`.
+
+We initialize `dp1[0]` and `dp2[0]` as 1, as the longest non-decreasing subsequence of length 1 can only be formed by selecting a single element.
+
+Then, we iterate from index 1 to `n-1`, where `n` is the length of the arrays. For each index `i`, we update `dp1[i]` and `dp2[i]` based on the following conditions:
+
+1. If `nums1[i]` is greater than or equal to `nums1[i-1]`, we can extend the non-decreasing subsequence ending at index `i-1` by including `nums1[i]` in `nums1`. Thus, `dp1[i]` is updated to `dp1[i-1] + 1`. We also update `maxLength` if `dp1[i]` is greater than the current maximum length.
+
+2. Similarly, if `nums2[i]` is greater than or equal to `nums2[i-1]`, we can extend the non-decreasing subsequence ending at index `i-1` by including `nums2[i]` in `nums2`. Thus, `dp2[i]` is updated to `dp2[i-1] + 1`. We also update `maxLength` if `dp2[i]` is greater than the current maximum length.
+
+3. If `nums1[i]` is greater than or equal to `nums2[i-1]`, we can extend the non-decreasing subsequence ending at index `i-1` in `nums2` by including `nums1[i]`. In this case, we update `dp1[i]` to `dp2[i-1] + 1`, as we are considering elements from both arrays. We also update `maxLength` if `dp1[i]` is greater than the current maximum length.
+
+4. Similarly, if `nums2[i]` is greater than or equal to `nums1[i-1]`, we can extend the non-decreasing subsequence ending at index `i-1` in `nums1` by including `nums2[i]`. In this case, we update `dp2[i]` to `dp1[i-1] + 1`, as we are considering elements from both arrays. We also update `maxLength` if `dp2[i]` is greater than the current maximum length.
+
+After iterating through all indices, we return the value of `maxLength`, which represents the length of the longest non-decreasing subsequence that satisfies the given conditions.
+
+Complexity Analysis:
+- The time complexity of this approach is O(n), where n is the length of the input arrays. We iterate through the arrays once to calculate the values of `dp1` and `dp2`.
+- The space complexity is O(n) as we use two additional arrays, `dp1` and `dp2`, of the same length as the input arrays to store the intermediate results.

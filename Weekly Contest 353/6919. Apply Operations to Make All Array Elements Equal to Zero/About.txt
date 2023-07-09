@@ -1,0 +1,18 @@
+Intuition:
+The goal is to check if it is possible to make all the elements in the array equal to zero by applying the given operation. We iterate through the array and decrease the elements in each subarray of size `k` to zero. If at the end all elements are zero, we return `true`; otherwise, we return `false`.
+
+Approach:
+1. Initialize the length of the array as `n`.
+2. Iterate through the array from index `0` up to `n - k` (inclusive) to consider all relevant subarrays.
+3. For each subarray, check if the first element (`nums[i]`) is greater than `0`.
+4. If the element is greater than `0`, initialize a variable `min` with the value of `nums[i]`.
+5. Iterate through the subarray from index `i` to `i + k - 1` and subtract `min` from each element.
+6. After applying the operation to all relevant subarrays, iterate through the modified array.
+7. If any element is not equal to zero, return `false`.
+8. If all elements are zero, return `true`.
+
+Complexity Analysis:
+- Time Complexity: The algorithm iterates through the array twice: once to decrease the elements in the subarrays, and once to check if all elements are zero. Therefore, the time complexity is O(n), where n is the length of the array.
+- Space Complexity: The algorithm uses a constant amount of extra space, so the space complexity is O(1).
+
+Overall, the code has a linear time complexity and constant space complexity.

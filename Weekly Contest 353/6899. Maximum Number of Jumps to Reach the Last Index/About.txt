@@ -1,0 +1,21 @@
+Intuition:
+The problem requires us to find the maximum number of jumps that can be made to reach the last index of the array. Each jump can be made from one index to another, satisfying a certain condition. We need to devise a solution that maximizes the number of jumps and returns the maximum achievable number.
+
+Approach:
+1. Initialize an array `dp` of size `lent` (length of the `nums` array) to store the maximum achievable number of jumps from each index.
+2. Traverse the `nums` array from the second-to-last index to the first index (i.e., from `lent-2` to `0`).
+3. For each index `i`, initialize `max` to 0 and `lastt` to 0.
+4. Traverse the `nums` array from `i+1` to `lent-1`.
+5. For each index `j`, calculate the difference `fir` between `nums[j]` and `nums[i]`.
+6. If `fir` is within the range `[less, target]`, update `max` to the maximum value between `max` and the value stored in `dp[j]`.
+7. If `j` is not the last index, update `max` with the maximum value encountered so far.
+8. If `j` is the last index, check if `1` is greater than the current `max`. If so, update `max` and set `lastt` to 1.
+9. After traversing all indices `j` for the current index `i`, check if `lastt` is equal to 1. If true, set `dp[i]` to 1.
+10. If `lastt` is not equal to 1 and `max` is greater than 0, set `dp[i]` to `max + 1`.
+11. Finally, check the value stored in `dp[0]`. If it is greater than 0, return `dp[0]` as the maximum achievable number of jumps. Otherwise, return `-1` to indicate that it is not possible to reach the last index.
+
+Complexity Analysis:
+- Time Complexity: The code has a nested loop that traverses the `nums` array. The outer loop runs `lent-1` times, and the inner loop runs on average `lent/2` times. Therefore, the time complexity is O(n^2), where n is the length of the `nums` array.
+- Space Complexity: The space complexity is O(n) as we are using an additional array `dp` of size `lent` to store the maximum achievable number of jumps from each index.
+
+Note: In the code, the variable `lent` seems to be a typo, and it should be replaced with `len` to represent the length of the `nums` array.

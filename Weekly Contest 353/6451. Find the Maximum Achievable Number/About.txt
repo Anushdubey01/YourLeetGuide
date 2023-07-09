@@ -1,0 +1,12 @@
+Intuition:
+The program aims to find the maximum achievable number by applying a certain operation to the given number `num` for a maximum of `t` times.
+
+Approach:
+1. Initialize the maximum achievable number `maxAchievable` as `num + 2*t`. This is because we can increase or decrease `num` by 1 a maximum of `t` times in either direction.
+2. Return `maxAchievable` as the maximum achievable number.
+
+Complexity Analysis:
+- Time Complexity: The time complexity of this program is O(1) because it performs a constant number of operations.
+- Space Complexity: The space complexity is also O(1) as it only requires a constant amount of space to store the `maxAchievable` variable.
+
+The program simply calculates the maximum achievable number based on the given inputs. It doesn't involve any complex logic or computations.
