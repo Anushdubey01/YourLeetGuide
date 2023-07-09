@@ -1,0 +1,30 @@
+Intuition:
+
+The goal of the code is to find the largest variance between two characters in the given string s. The variance is defined as the difference between the number of occurrences of one character and the number of occurrences of another character in the string. The code considers all possible pairs of characters and calculates the variance for each pair. It returns the maximum variance found.
+Approach:
+
+    Initialize ans as 0 to store the maximum variance.
+    Iterate through all possible pairs of characters c1 and c2 from 'a' to 'z'.
+    If c1 is not equal to c2, calculate the variance using the kadane function and update ans with the maximum variance found.
+    Return the final ans value.
+
+The kadane function is a helper function that calculates the variance between characters a and b in the given string s.
+
+    Initialize ans as 0 to store the maximum variance.
+    Initialize countA and countB as 0, representing the counts of characters a and b respectively.
+    Initialize canExtendPrevB as false, indicating whether the previous character encountered was b.
+    Iterate through each character c in the string s.
+    If c is neither a nor b, continue to the next iteration.
+    If c is equal to a, increment countA by 1. Otherwise, increment countB by 1.
+    If countB is greater than 0, calculate the variance as countA - countB and update ans with the maximum variance found.
+    If countB is 0 and canExtendPrevB is true, calculate the variance as countA - 1 and update ans with the maximum variance found.
+    If countB is greater than countA, reset countA and countB to 0 and set canExtendPrevB to true.
+    Return the final ans value.
+
+Complexity Analysis:
+
+    Time Complexity: The code has two nested loops, one iterating through all possible pairs of characters and the other iterating through each character in the string. The number of iterations is constant since we are iterating from 'a' to 'z' characters. Therefore, the time complexity is O(1).
+
+    Space Complexity: The code uses a constant amount of extra space for storing variables. Thus, the space complexity is O(1).
+
+The code is optimized to find the largest variance by considering all possible pairs of characters. It efficiently calculates the variance for each pair and returns the maximum variance found.
