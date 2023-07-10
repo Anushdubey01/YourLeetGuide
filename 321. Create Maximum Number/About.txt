@@ -1,0 +1,17 @@
+**Intuition:**
+The problem requires finding the maximum number that can be formed by selecting k elements from two input arrays, nums1 and nums2. The elements should maintain their relative order within each array. The solution involves dividing the problem into smaller subproblems, finding the maximum numbers that can be formed by selecting a certain number of elements from each array, and then merging those numbers to form the overall maximum number.
+
+**Approach:**
+1. Initialize the result array of size k to store the maximum number.
+2. Iterate over the number of elements (i) to be selected from nums1, which ranges from 0 to the minimum of k and the length of nums1.
+   - Calculate the corresponding number of elements (j) to be selected from nums2, which is equal to k - i.
+   - Find the maximum subsequence of length i from nums1 using the `findMax` function.
+   - Find the maximum subsequence of length j from nums2 using the `findMax` function.
+   - Merge the two subsequences obtained from nums1 and nums2 using the `merge` function.
+   - If the merged sequence is greater than the current result, update the result to the merged sequence.
+3. Return the resulting maximum number.
+
+**Complexity Analysis:**
+Let n be the length of nums1 and m be the length of nums2.
+- The overall time complexity of the solution is O((n + m)^3) since we have three nested loops: one for iterating over the number of elements to be selected from nums1, one for iterating over the elements of nums1 and nums2 in the `merge` function, and one for iterating over the elements of nums in the `findMax` function.
+- The space complexity is O(k) since we are using a result array of size k to store the maximum number.
