@@ -1,0 +1,12 @@
+# Intuiton - The given code is a method `isSelfCrossing` that takes an integer array `x` as input and determines if the array represents a self-crossing shape or not. The intuition behind the code is to iterate through the array starting from the fourth element and check for various conditions that indicate a self-crossing shape.
+
+# Approach:
+1. If the length of the array is less than or equal to 3, it is not possible to form a self-crossing shape, so the method returns `false`.
+2. The loop starts from the fourth element of the array and iterates until the end.
+3. Within each iteration, the code checks three different conditions to determine if a self-crossing shape is encountered.
+4. If any of the conditions are satisfied, the method returns `true` indicating a self-crossing shape is present.
+5. If none of the conditions are met after iterating through the entire array, the method returns `false`.
+
+# Complexity:
+- Time Complexity: The code iterates through the given array once, starting from the fourth element. Therefore, the time complexity is O(n), where n is the length of the array.
+- Space Complexity: The code uses a constant amount of extra space for variables and does not depend on the input size. Hence, the space complexity is O(1).
