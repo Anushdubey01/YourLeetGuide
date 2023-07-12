@@ -1,0 +1,17 @@
+Intuition:
+The given program aims to find the eventual safe nodes in a directed graph. An eventual safe node is a node that, after a finite number of steps, leads to a terminal (or safe) state where there are no outgoing edges.
+
+Approach:
+The program uses a depth-first search (DFS) approach to determine if a cycle exists starting from each node. It maintains an array `states` to keep track of the state of each vertex during the DFS traversal. The `eventualSafeNodes` function initializes an empty list `safeNodes` to store the eventual safe nodes.
+
+For each vertex in the graph, it checks if there is no cycle by calling the `hasCycle` function. If there is no cycle, the vertex is considered safe, and it is added to the `safeNodes` list.
+
+The `hasCycle` function checks the state of the current vertex `vertex` in the `states` array. If the state is `VISITING`, it indicates the presence of a cycle, so the function returns `true`. If the state is `VISITED`, it means the vertex has already been processed and determined to be safe, so the function returns `false`.
+
+If the vertex is not currently being visited or visited, it sets its state to `VISITING` to mark it as being visited. Then, it recursively explores the neighbors of the current vertex by calling `hasCycle` on each neighbor. If any of the neighbors lead to a cycle (i.e., the `hasCycle` function returns `true`), the function returns `true` indicating the presence of a cycle.
+
+If no cycle is found after exploring all neighbors, the state of the current vertex is set to `VISITED` to mark it as safe, and the function returns `false`.
+
+Complexity Analysis:
+- The time complexity of the `eventualSafeNodes` function is O(V + E), where V is the number of vertices and E is the number of edges in the graph. This is because for each vertex, the `hasCycle` function may visit all its neighboring vertices in the worst case.
+- The space complexity is O(V), where V is the number of vertices. This is due to the space required to store the `states` array, which has a length equal to the number of vertices in the graph.
