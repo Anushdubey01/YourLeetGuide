@@ -1,0 +1,26 @@
+**Intuition:**
+
+The code aims to find the maximum sum of events that can be attended given a limited number of attendance slots. Each event has a start time, end time, and value associated with it. The objective is to maximize the sum of values of attended events while respecting the constraint of the maximum number of attendance slots available.
+
+**Approach:**
+
+1. The code starts by initializing a dynamic programming (DP) array, `dp`, of size `events.length` x `k+1` to store the maximum sum of events for each subproblem. The value `dp[i][j]` represents the maximum sum of events that can be attended starting from the i-th event and with j attendance slots remaining.
+
+2. The `events` array is sorted in ascending order based on the start time of each event. This sorting is necessary to ensure that the events are considered in chronological order during the recursive computation.
+
+3. The `maxValue` function is called with the `events` array, starting index 0, the available number of attendance slots `k`, and the `dp` array. This function recursively computes the maximum sum of events by considering two cases:
+   - Attend the current event: The value of the current event is added to the maximum sum obtained by attending the next event that starts after the current event ends. The number of attendance slots is reduced by 1.
+   - Skip the current event: The maximum sum is computed by considering the next event without using an attendance slot.
+
+4. The `binarySearch` function is used to find the index `j` such that `events[j][0]` is the smallest start time greater than or equal to `events[i][1] + 1`. This search is performed in the sorted `events` array using binary search, which helps in finding the next eligible event efficiently.
+
+5. The computed maximum sum is stored in the `dp` array to avoid redundant computations. The value is then returned as the result.
+
+**Complexity Analysis:**
+
+- Let `n` be the number of events in the input.
+- Sorting the `events` array takes O(n log n) time complexity.
+- The `maxValue` function has a recursive structure that visits each event once, resulting in a time complexity of O(n).
+- The `binarySearch` function performs a binary search on the sorted `events` array, which has a time complexity of O(log n).
+- Therefore, the overall time complexity of the code is O(n log n).
+- The space complexity is O(n * k) to store the `dp` array.
