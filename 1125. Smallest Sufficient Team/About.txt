@@ -1,0 +1,16 @@
+## Intuition - 
+The code aims to solve a problem where we need to find the smallest team of candidates who possess all the required skills. We want to build a team that covers all the skills needed for a project, minimizing the number of team members.
+
+## Approach - 
+1. First, we create a mapping of skills to indices. This mapping helps us associate each skill with a unique number.
+2. We represent the required skills as a bitmask. A bitmask is a binary number that represents the presence or absence of each skill. It helps us efficiently check if a set of candidates has all the required skills.
+3. Next, we convert the skills of each candidate into a bitmask using the skills mapping. This step helps us represent the skills of each candidate in a compact way.
+4. We use a recursive function called `findTeam` to search for the smallest team that covers all the required skills. The function explores different combinations of candidates to find the optimal team.
+5. Inside the `findTeam` function, we check if the current team covers all the required skills. If it does, we update the `mainTeam` with the new smallest team found so far.
+6. We recursively explore the remaining candidates, considering both the case of including the current candidate and excluding them. This exploration helps us find the best combination of candidates that covers all the required skills.
+7. Finally, we convert the `mainTeam` from a list to an array and return it as the result.
+
+## Complexity Analysis -
+ - The time complexity of the given code is exponential, specifically **O(2^n),** where n is the number of candidates. This is because the recursive function `findTeam` explores all possible combinations of candidates to find the smallest team that covers all the required skills.
+
+ - The space complexity of the code is **O(n),** where n is the number of candidates. This is due to the space used to store the `mainTeam` and `localTeam` lists during the recursive process. The space used for these lists grows with the number of candidates but does not exceed it.
