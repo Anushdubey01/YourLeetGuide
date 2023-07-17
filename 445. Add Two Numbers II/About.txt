@@ -1,0 +1,18 @@
+Intuition:
+The given program aims to add two numbers represented as linked lists. Each node of the linked list contains a single digit, and the digits are in reverse order. The goal is to compute the sum of the two numbers and return the result as a linked list.
+
+Approach:
+1. Two stacks, `stack1` and `stack2`, are used to store the digits of the two input linked lists `l1` and `l2`, respectively. The digits are pushed onto the stacks in reverse order.
+2. A new linked list `head` is initialized as `null`, which will store the result in reverse order.
+3. A variable `carry` is initialized as 0 to keep track of the carry value during addition.
+4. Loop until there is a carry or any of the stacks are not empty:
+   - If `stack1` is not empty, pop the top node and add its value to `carry`.
+   - If `stack2` is not empty, pop the top node and add its value to `carry`.
+   - Create a new node with the value `carry % 10` (the least significant digit) and make it the new head.
+   - Update the `head` to the new node.
+   - Update `carry` by dividing it by 10.
+5. Once the loop ends, return the `head` as the resulting linked list.
+
+Complexity Analysis:
+- Time complexity: Let n be the length of the longer input linked list. The while loop iterates n times, where n is the maximum number of digits in the two input linked lists. Each iteration involves constant time operations such as pushing, popping, and creating new nodes. Therefore, the time complexity is O(n).
+- Space complexity: The space complexity is O(n) because the two stacks, `stack1` and `stack2`, can hold a maximum of n nodes combined. Additionally, the resulting linked list requires space to store n nodes. Therefore, the overall space complexity is O(n).
