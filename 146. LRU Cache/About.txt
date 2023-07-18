@@ -1,0 +1,27 @@
+# Intuition - 
+The LRUCache class implements a cache data structure that follows the "Least Recently Used" (LRU) eviction policy. It stores key-value pairs with a fixed capacity and automatically removes the least recently used item when the cache exceeds its capacity.
+
+# Approach - 
+The LRUCache class uses a combination of a doubly linked list and a HashMap to achieve efficient operations.
+
+1. The Node class represents a node in the doubly linked list. Each node stores a key-value pair and maintains references to the next and previous nodes in the list.
+
+2. The LRUCache class initializes the cache with a given capacity. It also initializes the cacheMap, a HashMap that maps keys to corresponding nodes in the doubly linked list.
+
+3. The doubly linked list is formed by maintaining head and tail sentinel nodes. The head node represents the most recently used item, and the tail node represents the least recently used item.
+
+4. When accessing a key-value pair (get operation), the LRUCache class first checks if the key is present in the cacheMap. If found, it moves the corresponding node to the head of the doubly linked list (indicating it as the most recently used item). It then returns the value.
+
+5. When inserting a key-value pair (put operation), the LRUCache class first checks if the key is already present in the cacheMap. If found, it updates the value and moves the corresponding node to the head of the doubly linked list.
+
+6. If the key is not present, it checks if the cache has reached its capacity. If so, it removes the node at the tail of the doubly linked list (indicating the least recently used item) and removes its entry from the cacheMap.
+
+7. Finally, it creates a new node with the given key-value pair, adds it to the head of the doubly linked list, and adds its entry to the cacheMap.
+
+# Complexity - 
+
+- Time Complexity: **O(1)** average case for both get and put operations. In the worst case, both operations have a time complexity of **O(capacity)** due to the removal of the least recently used item.
+
+- Space Complexity: **O(capacity)** for storing the key-value pairs in the cache. The cacheMap and doubly linked list nodes also require **O(capacity)** space.
+
+Overall, the LRUCache class offers efficient lookup and insertion operations with a fixed capacity.
