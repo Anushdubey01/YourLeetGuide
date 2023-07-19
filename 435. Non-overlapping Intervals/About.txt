@@ -1,0 +1,16 @@
+**Intuition:**
+The goal of the given program is to find the minimum number of arrows needed to burst all the balloons (intervals). Each interval represents a balloon, and we need to find the minimum number of arrows required to burst all the balloons without any overlapping intervals.
+
+**Approach:**
+1. First, the program checks if the `intervals` array is empty. If it is empty, it means there are no balloons, and the answer is 0. The program returns 0 in this case.
+2. The program then proceeds to sort the `intervals` array based on the end points of each interval in ascending order. This sorting is crucial for the next step.
+3. The program initializes two variables: `ans`, which stores the minimum number of arrows needed, and `currentEnd`, which represents the current ending point of the non-overlapping intervals.
+4. Starting from the second interval (index 1) in the sorted array, the program iterates through each interval:
+   - If the start point of the current interval is greater than or equal to the `currentEnd`, it means the current interval does not overlap with the previous one. In this case, the `currentEnd` is updated to the end point of the current interval, as we can shoot an arrow at this point without affecting the previous non-overlapping intervals.
+   - If the start point of the current interval is less than `currentEnd`, it means the current interval overlaps with the previous one. We need an additional arrow to burst this balloon (interval). Therefore, `ans` is incremented by 1.
+5. After the loop finishes, the program returns the value of `ans`, which represents the minimum number of arrows needed to burst all the balloons without any overlapping intervals.
+
+**Complexity:**
+ - Time Complexity: The overall time complexity of the program is O(n log n), dominated by the sorting step, where 'n' is the number of intervals.
+
+ - Space Complexity: The space complexity of the program is O(1), which is considered constant space, as it uses only a few variables without relying on additional data structures beyond the input array. The sorting operation is done in-place and does not require extra space.
