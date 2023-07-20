@@ -1,0 +1,27 @@
+# Intuition - 
+
+The problem requires finding the number of triplets (a, b, c) in the given list of integers `nums`, such that they can form a valid triangle. The Java and Python solutions aim to solve the same problem using different programming languages.
+
+# Approach - 
+
+The approach used in both solutions is similar. It involves sorting the input array in ascending order and then using a combination of two-pointer technique and iteration to count the valid triplets.
+
+1. Sort the input array `nums` in ascending order.
+2. Initialize a variable `answer` to store the count of valid triplets, which initially is set to 0.
+3. Iterate over the array using a pointer `c`, starting from the end of the array and going towards the beginning.
+   - For each `c`, use two pointers `a` and `b`, where `a` starts from the beginning (0) and `b` starts from `c-1`.
+   - While `a` is less than `b`, check if `nums[a] + nums[b] > nums[c]`. If this condition holds, it means all the values between `a` and `b` can form a valid triplet with `c`. So, we increment `answer` by `(b - a)` because for each `a`, there are `b - a` valid `b` values.
+   - If the condition is not met, increment `a` to move it towards the right, so that the sum of elements at `a` and `b` becomes larger.
+   - If the condition is met, decrement `b` to move it towards the left, so that the sum of elements at `a` and `b` becomes smaller.
+4. Repeat the process until `c` becomes less than or equal to 1.
+5. Return the final value of `answer`, which represents the count of valid triplets.
+
+# Complexity Analysis - 
+
+## Java Solution - 
+- Time Complexity: The time complexity is dominated by the sorting operation, which is **O(n log n),** where n is the number of elements in `nums`. The subsequent two-pointer loop has a linear time complexity of **O(n),** so the overall time complexity is **O(n log n).**
+- Space Complexity: The space complexity is O(1) since the algorithm does not use any additional data structures that depend on the input size.
+
+## Python Solution - 
+- Time Complexity: The time complexity is also **O(n log n)** due to the sorting operation. The two-pointer loop has a linear time complexity of **O(n),** similar to the Java solution, resulting in an overall time complexity of **O(n log n).**
+- Space Complexity: The space complexity is **O(1)** since the algorithm does not use any additional data structures that depend on the input size. However, note that in Python, the `sort()` method sorts the list in-place, while in Java, `Arrays.sort()` does an in-place sort as well.
