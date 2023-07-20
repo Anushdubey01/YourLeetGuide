@@ -1,0 +1,17 @@
+# Intuition - 
+The code aims to find the maximum number of envelopes that can be stacked inside each other. Each envelope is represented by a pair of integers (width, height), and to stack an envelope inside another, both the width and height of the outer envelope must be strictly greater than the inner envelope's width and height, respectively.
+
+# Approach - 
+The given code employs the Longest Increasing Subsequence (LIS) algorithm to solve the problem efficiently. The key observation is that if we sort the envelopes based on their width in ascending order, and in case of a tie, sort them in descending order of height, then the problem reduces to finding the LIS based on the heights.
+
+Here are the steps taken in the code:
+1. Sort the envelopes array using a custom comparator to arrange them first by width in ascending order and then by height in descending order.
+2. Initialize a variable `ans` to 0, which will store the length of the longest increasing subsequence of heights.
+3. Create an integer array `dp` of the same length as the envelopes array. The `dp` array will be used to keep track of the increasing subsequence of heights.
+4. Iterate through each envelope in the sorted array and find the correct position for its height in the `dp` array using binary search.
+5. Update the `dp` array accordingly to maintain the increasing subsequence property.
+6. Finally, return the value of `ans`, which represents the length of the longest increasing subsequence of heights, and consequently, the maximum number of envelopes that can be stacked.
+
+# Complexity - 
+ - Time Complexity: **O(n log n)** due to sorting and binary search.
+ - Space Complexity: **O(n)** for the `dp` array.
