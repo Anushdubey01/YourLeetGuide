@@ -1,0 +1,20 @@
+# Intuition - 
+The problem asks to find the number of Longest Increasing Subsequences (LIS) in the given array. A LIS is a subsequence of the array where the elements are arranged in increasing order. The intuition for this problem is to use dynamic programming to calculate the length and count of the LIS ending at each index of the array. By maintaining these two arrays, we can determine the number of LIS in the entire array.
+
+# Approach - 
+1. Create two arrays `length` and `count`, both of length `n`, where `n` is the length of the input array `nums`.
+2. Initialize both arrays with 1, as each element in the array is a LIS of length 1 by itself.
+3. Loop through the input array starting from index 1.
+4. For each element at index `i`, compare it with all elements from index 0 to `i-1`.
+5. If `nums[j] < nums[i]`, it means `nums[i]` can extend the LIS ending at `nums[j]`.
+6. Update `length[i]` and `count[i]` based on the values of `length[j]` and `count[j]`.
+   - If `length[j] + 1 > length[i]`, it means a longer LIS can be formed by extending the LIS ending at `nums[j]`. So, update `length[i]` and `count[i]` accordingly.
+   - If `length[j] + 1 == length[i]`, it means there is more than one way to extend the LIS. So, just update `count[i]`.
+7. Track the maximum length (`maxLength`) of LIS seen so far.
+8. After the loop, `maxLength` will be the length of the Longest Increasing Subsequence in the array.
+9. Finally, loop through the `length` and `count` arrays to count the number of LIS with length `maxLength`.
+10. Return the count of LIS with length `maxLength`.
+
+# Complexity -
+- Time Complexity: The time complexity of the given solution is **O(n^2)** due to the nested loops. However, it can be optimized to **O(n log n)** using TreeMap or Binary Indexed Tree (BIT).
+- Space Complexity: The space complexity is **O(n)** due to the additional arrays `length` and `count`.
