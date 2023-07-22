@@ -1,0 +1,13 @@
+**Intuition:**
+The problem asks for the probability that a knight, starting from a given position (r, c) on an n x n chessboard, will remain on the board after making K moves. The knight can move to any of the eight possible positions, two steps horizontally and one step vertically, or two steps vertically and one step horizontally. We need to find the probability of the knight staying on the board after making K moves.
+
+**Approach:**
+The given solution uses dynamic programming to solve the problem. It initializes a 1D array `dp` of size n * n, where `dp[i * n + j]` represents the probability of the knight being at position (i, j) on the chessboard. The initial position probability (`dp[r * n + c]`) is set to 1.0 since the knight starts at this position.
+
+Then, for each move from 1 to K, it creates a new array `newDp`, where it calculates the probability for each position on the board after making that move. It iterates through the `dp` array, and for each non-zero probability at position (i, j), it calculates the new probabilities for the eight possible moves the knight can make and adds those probabilities to the corresponding positions in the `newDp` array.
+
+After calculating the probabilities for all K moves, it sums up all the probabilities in the `dp` array, which gives the final answer - the probability that the knight remains on the board after K moves.
+
+**Complexity:**
+- The time complexity of the solution is O(K * n^2), where K is the number of moves and n is the size of the chessboard (n x n).
+- The space complexity is O(n^2) because of the two 1D arrays `dp` and `newDp`, each of size n * n, used to store the probabilities.
