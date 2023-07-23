@@ -1,0 +1,16 @@
+# Intuition - 
+A Full Binary Tree (FBT) is a binary tree in which every node has either zero or two children. The problem is to generate all possible unique FBTs with a given number of nodes `n`. The goal is to find all FBT structures with exactly `n` nodes.
+
+# Approach - 
+The given solution uses a recursive approach with memoization to solve the problem efficiently. The idea is to divide the problem into subproblems by considering all possible left and right subtree combinations for each node. For a valid FBT with `n` nodes, we can have a left subtree with `0` to `n-1` nodes and a right subtree with `n-1` to `0` nodes. Since we need an odd number of nodes to form a FBT (every FBT has an odd number of nodes), we can iterate through all possible values of left subtree nodes (ranging from `0` to `n-1`) and calculate the corresponding right subtree nodes.
+
+The recursive function `allPossibleFBT(int n)` takes the input `n` (the number of nodes) and returns a list of all possible FBTs. If `n` is even, it immediately returns an empty list since an FBT cannot have an even number of nodes. If `n` is `1`, it returns a list containing a single node (the root of the FBT). Otherwise, it checks if the result for `n` is already present in the memoization map `memo`. If so, it returns the precalculated result.
+
+The function then initializes an empty list `ans` to store the result for `n`. It iterates through all possible left subtree node counts (`leftCount`) from `0` to `n-1` and calculates the corresponding right subtree node count (`rightCount`). For each combination of left and right subtrees, it recursively calls the `allPossibleFBT` function for both left and right subtrees and generates all possible FBT structures. It then constructs the current FBT by creating a new root node with value `0` and setting its left and right children to the respective left and right subtrees obtained from the recursive calls.
+
+After all possible FBTs are generated, the current result for `n` is stored in the memoization map `memo`, and the list of FBTs is returned.
+
+# Complexity - 
+ - Time Complexity -  The overall time complexity of the solution is `O(2^n)` due to the exponential growth of unique subproblems.
+
+ - Space Complexity -  The space complexity is `O(n)` as it is determined by the memoization map `memo` and the recursive call stack, each taking `O(n)` space in the worst case.
