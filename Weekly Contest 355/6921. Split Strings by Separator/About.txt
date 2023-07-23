@@ -1,0 +1,35 @@
+**Intuition:**
+
+The given code aims to split a list of words based on a specified separator character. It loops through each word in the input list and iterates through each character of the word. If the character is not the separator, it adds the character to a temporary string (`str`). When it encounters the separator, it adds the accumulated characters in `str` as a new word to the output list (`anst`). The process continues until all the words in the input list have been processed.
+
+**Approach:**
+
+1. Initialize an empty list `anst` to store the final result.
+2. Initialize an empty string `str` to accumulate characters and form words.
+3. Loop through each word in the input list of words:
+   a. Retrieve the current word `sr`.
+   b. Loop through each character in the current word `sr`:
+      - If the character is not equal to the separator, add it to the temporary string `str`.
+      - If the character is equal to the separator, add the accumulated string `str` as a word to the `anst` list, and then reset `str` to an empty string.
+      - If it reaches the last character of the word and `str` is not empty, add the accumulated string `str` as a word to the `anst` list, and then reset `str` to an empty string.
+4. After processing all words, return the final `anst` list containing the split words.
+
+**Overall Time Complexity:**
+
+Let's analyze the time complexity of the code step-by-step:
+
+1. The outer loop iterates through each word in the input list of words, and there are `lenWords` words in total.
+2. The inner loop iterates through each character of the current word, and the maximum length of any word is the length of the longest word in the input list.
+3. Within the inner loop, operations like `str += c` and `str.length()` take constant time since they involve basic string manipulation operations.
+
+Therefore, the overall time complexity of the code is approximately O(lenWords * lenMaxWord), where `lenMaxWord` represents the length of the longest word in the input list.
+
+**Overall Space Complexity:**
+
+1. The `anst` list is used to store the final split words. In the worst case, it can contain all the words from the input list, so its space complexity is O(lenWords).
+
+2. The `str` string is used to accumulate characters and form words. The maximum length of `str` at any point is the length of the longest word in the input list. Therefore, its space complexity is O(lenMaxWord).
+
+3. Other auxiliary variables like `sr`, `lenWords`, `lenSr`, `c`, and `separator` take constant space as they don't depend on the input size.
+
+Hence, the overall space complexity of the code is O(lenWords + lenMaxWord).
