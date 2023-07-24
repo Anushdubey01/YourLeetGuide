@@ -1,0 +1,16 @@
+# Intuition - 
+The intuition behind this solution is to use a HashMap to store the reverse of each word along with its index in the original array. This will allow us to efficiently check for palindrome pairs by comparing substrings of the words with the stored reversed words.
+
+# Approach - 
+1. Create an empty HashMap called "dict" to store the reversed words and their indices.
+2. Iterate through the given array of words and add the reverse of each word as the key and its index as the value to the "dict" HashMap.
+3. Iterate through the words again, and for each word, check for potential palindrome pairs.
+4. If the empty string exists in the "dict" and the current word is a palindrome, add the pair (current index, index of the empty string) to the result.
+5. For each word, iterate through its characters using two pointers (j) to split the word into left (l) and right (r) substrings.
+6. Check if the left substring (l) is present in the "dict" and is not the current word itself. If it is, and the right substring (r) is a palindrome, add the pair (current index, index of the left substring in "dict") to the result.
+7. Similarly, check if the right substring (r) is present in the "dict" and is not the current word itself. If it is, and the left substring (l) is a palindrome, add the pair (index of the right substring in "dict", current index) to the result.
+8. Return the "ans" list containing all the palindrome pairs.
+
+# Complexity - 
+- Time complexity: **O(n * k^2),** where n is the number of words in the array, and k is the average length of each word. This is because, in the worst case, we may need to iterate through each character of each word to check for palindrome pairs.
+- Space complexity: **O(n * k),** where n is the number of words in the array, and k is the average length of each word. The space is used to store the reversed words and their indices in the "dict" HashMap.
