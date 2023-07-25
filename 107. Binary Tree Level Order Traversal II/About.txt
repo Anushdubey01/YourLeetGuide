@@ -1,0 +1,18 @@
+# Intuition - 
+The given problem requires us to perform a level order traversal of a binary tree, but the result should be stored in a reverse order of levels. That is, the nodes of the last level should come first in the final result.
+
+# Approach - 
+1. We can perform a level order traversal using a queue and a list.
+2. We start by checking if the root is null. If it is, we return an empty list `ans`.
+3. Otherwise, we initialize an empty queue `queue` and add the `root` node to it.
+4. Then, we enter a while loop that runs until the `queue` is empty.
+5. Inside the while loop, we create a new list `currLevel` to store the elements of the current level.
+6. We obtain the size of the queue at the beginning of each level and process all the nodes in that level.
+7. For each node, we add its value to `currLevel` and enqueue its left and right children (if they exist).
+8. Once we finish processing all the nodes in the current level, we add `currLevel` to the front of the `ans` list, effectively reversing the order of levels.
+9. After the while loop ends, we have the final result in the `ans` list, containing the levels in reverse order.
+
+# Complexity - 
+- **Time complexity:** The algorithm visits each node once, so the time complexity is O(n), where n is the number of nodes in the binary tree.
+
+- **Space complexity:** The space complexity is O(min(m, n)), where m is the maximum width of the binary tree, and n is the total number of nodes. In the worst case, it is O(n), but for skewed trees, it can be O(1).
