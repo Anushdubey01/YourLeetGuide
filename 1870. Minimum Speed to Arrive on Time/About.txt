@@ -1,0 +1,16 @@
+# Intuition
+The problem asks us to find the minimum speed at which a person needs to travel to reach their destination on time. We are given the distance to be covered at different points and the total time in hours within which the person needs to reach the destination. We can use binary search to find the minimum speed required.
+
+# Approach
+1. We use binary search to find the minimum speed needed. Initialize the search space with `l = 1` and `r = 1e7`, which is a large upper bound for the speed.
+2. While `l <= r`, we calculate the midpoint `m` of the current search space.
+3. We then calculate the estimated time it will take to cover the distance using the `time()` function with the current midpoint speed `m`.
+4. If the estimated time is greater than the total available time (`hour`), it means the speed is too low, and we need to increase the speed, so we set `l = m + 1`.
+5. Otherwise, the speed is sufficient, so we store the speed in the `ans` variable and look for a smaller speed by setting `r = m - 1`.
+6. After the binary search, `ans` will hold the minimum speed required to reach the destination on time.
+
+The `time()` function calculates the estimated time it will take to cover the distance with the given speed. It sums up the time required to cover each segment of the distance at the given speed and returns the total time.
+
+# Complexity
+- Time complexity: The binary search runs in O(log n) time, and for each iteration, we call the `time()` function, which takes O(n) time, where n is the number of elements in the `dist` array. Therefore, the overall time complexity is O(n log n).
+- Space complexity: The space complexity is O(1) as we are using a constant amount of extra space to store variables (`ans`, `l`, `r`, and `m`). The input array `dist` doesn't count towards the space complexity.
