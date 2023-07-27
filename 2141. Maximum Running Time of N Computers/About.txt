@@ -1,0 +1,19 @@
+# Intuition -
+The problem requires finding the maximum running time that can be achieved by using some subset of batteries from the given array. We want to maximize the running time without wasting battery capacity.
+
+# Approach -
+The current implementation is already quite efficient, but we can further optimize it using a single pass through the array to find the maximum battery and calculate the remaining sum simultaneously. This way, we can avoid sorting the array and the need for multiple iterations.
+
+1. Initialize variables `maxBattery` and `sum` to keep track of the maximum battery value and the sum of all batteries, respectively. Set `maxBattery` to the minimum possible value (e.g., `Long.MIN_VALUE`) and `sum` to 0.
+2. Traverse the `batteries` array. For each battery:
+   - Update `maxBattery` by taking the maximum of its current value and the battery value.
+   - Increment the `sum` by the battery value.
+3. After the traversal, check if `maxBattery` is greater than the average of `sum / n`.
+   - If it is greater, reduce the problem size (`n`) by 1 and subtract `maxBattery` from `sum`.
+   - Calculate the next possible maximum battery value by taking the maximum of `(maxBattery - 1)` and `(sum / n)`.
+   - Repeat the above step until `maxBattery` is no longer greater than the average.
+4. Once the loop finishes, return the final `sum / n` as the maximum run time.
+
+# Complexity -
+- Time complexity: **O(n)**
+- Space complexity: **O(1)** (constant space used for variables)
