@@ -1,0 +1,15 @@
+# Intuition - 
+The problem asks us to determine whether the first player (Player 1) can win the game if both players play optimally. The players take turns selecting numbers from the given array `nums`. The goal is to maximize the difference between the sum of numbers chosen by Player 1 and the sum of numbers chosen by Player 2. We can use dynamic programming to solve this problem efficiently.
+
+# Approach - 
+The approach to solving this problem involves using dynamic programming to calculate the maximum difference that the first player can achieve over the second player when playing optimally.
+
+1. We'll use a 2D array `dp` of size `n x n`, where `n` is the length of the input array `nums`.
+2. `dp[i][j]` will represent the maximum difference that the first player can achieve over the second player when considering the subarray `nums[i..j]`.
+3. We'll start by filling the `dp` array for the base cases, i.e., when `i == j`, the first player can only choose one number, and the difference will be `nums[i]`.
+4. Then, we'll fill the rest of the `dp` array using a bottom-up approach. For each subarray `nums[i..j]`, we'll calculate the maximum difference that the first player can achieve by choosing either the first or the last number in the subarray and subtracting the maximum difference for the remaining subarray that the second player can achieve.
+5. The result of the problem will be stored in `dp[0][n - 1]`, which represents the maximum difference for the entire `nums` array.
+
+# Complexity - 
+- Time complexity: O(n^2) where n is the length of the input array `nums`. The nested loops iterate through all possible subarrays of `nums`.
+- Space complexity: O(n^2) for the `dp` array, where n is the length of the input array `nums`.
