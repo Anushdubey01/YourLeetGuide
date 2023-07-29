@@ -1,0 +1,20 @@
+Intuition -
+The problem is to determine the probability that two friends, A and B, can finish a certain amount of soup (n) in a specific scenario. Each time, either A serves 100ml of soup to B or B serves 75ml to A. The question is asking for the probability that A finishes the soup before B.
+
+Approach -
+The code implements a recursive depth-first search (DFS) with memoization to solve the problem efficiently. The memoization is used to store previously computed probabilities for certain amounts of soup that have already been visited during the recursion. This helps avoid redundant calculations and improves the overall performance of the algorithm.
+
+The soupServings function is the entry point, which checks if the amount of soup is greater than or equal to 4800 (25 * 200), in which case the probability is 1.0 because it is guaranteed that both A and B will finish the soup.
+
+Otherwise, if the amount of soup is less than 4800, the function calls the dfs function with the amount of soup adjusted to multiples of 25 to simplify the recursion. The dfs function calculates the probability of A finishing the soup before B by simulating all possible servings in four different recursive calls and combining their probabilities.
+
+The base cases in the dfs function check if either of the friends A or B has run out of soup (a <= 0 or b <= 0). If they both have run out of soup, the probability of A winning is 0.5 because both A and B finish the soup at the same time. If only A has run out of soup, the probability of A winning is 1.0 because B will finish the remaining soup. If only B has run out of soup, the probability of A winning is 0.0 because A will finish the soup before B.
+
+The memoization table memo stores the computed probabilities for different amounts of soup (a and b). Before computing the probability for a specific amount of soup, the code checks if it has already been computed and stored in the memoization table. If so, it returns the precomputed value instead of redoing the recursive computation.
+
+The recursive calls in the dfs function represent the possible servings that can happen. The probability of each outcome is multiplied by 0.25 (1/4) since each serving has a 1/4 probability of occurring.
+
+Complexity -
+Time Complexity: The memoization helps to avoid redundant computations, and each unique pair of (a, b) values is computed only once. The total number of unique pairs of (a, b) is O(n^2), where n is the initial amount of soup (n <= 4800). For each pair, the function makes four recursive calls. So, the overall time complexity is O(n^2) * 4 = O(n^2).
+
+Space Complexity: The memoization table memo has a size of O(n^2), where n is the initial amount of soup (n <= 4800). Hence, the space complexity is O(n^2). Additionally, there is a small constant space used for variables and the call stack during recursion, which can be considered negligible compared to the memoization table size.
