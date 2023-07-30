@@ -1,0 +1,16 @@
+# Intuition - 
+The problem involves printing a given string in a strange manner, where each character can be printed individually or together with its adjacent duplicate characters. The goal is to minimize the number of turns required to print the entire string.
+
+# Approach - 
+Both the provided Python and Java code implement the same approach to solve the problem using dynamic programming.
+
+1. Create a 2D array `dp`, where `dp[i][j]` represents the minimum number of turns required to print the substring `s[i:j+1]`.
+2. For substrings of length 1, the number of turns required is 1 since there's only one character.
+3. Iterate through substrings of increasing length (j), then iterate through substrings of decreasing length (i).
+4. For each substring, try all possible breaking points (k) to find the minimum number of turns.
+5. If the character at `s[k]` is the same as the character at `s[j]`, it means the characters from `k` to `j` can be printed together. In this case, update `dp[i][j]` using the minimum of the current value and `dp[i][k-1] + dp[k+1][j]`.
+6. Return the value at `dp[0][n-1]`, where `n` is the length of the input string, which represents the minimum number of turns needed to print the entire string.
+
+# Complexity - 
+- Time complexity: Both the Python and Java code have a time complexity of O(n^3), where n is the length of the input string. This is due to the triple nested loops used to fill the dp array.
+- Space complexity: Both the Python and Java code have a space complexity of O(n^2), as they use a 2D array (dp) of size n x n to store the intermediate results.
