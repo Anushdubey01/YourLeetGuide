@@ -1,0 +1,23 @@
+# Intuition
+The problem asks us to find the minimum cost to make two given strings `s1` and `s2` equal by performing delete operations. The cost of deleting a character from a string is equal to its ASCII value.
+
+# Approach
+The given solution uses dynamic programming to solve the problem efficiently. It initializes a 2D DP array `dp`, where `dp[i][j]` represents the minimum cost to make `s1[0..i)` and `s2[0..j)` equal. The DP array is of size `(m + 1) x (n + 1)`, where `m` is the length of `s1` and `n` is the length of `s2`.
+
+The solution follows the following steps:
+1. Initialize the base cases for the DP array:
+   - `dp[i][0]`: Represents the cost of deleting characters from `s1` to make it equal to an empty string (`s2` is empty). It is calculated as the sum of the ASCII values of characters in `s1[0..i)`.
+   - `dp[0][j]`: Represents the cost of deleting characters from `s2` to make it equal to an empty string (`s1` is empty). It is calculated as the sum of the ASCII values of characters in `s2[0..j)`.
+
+2. Iterate through the remaining cells of the DP array in row-major order (from top to bottom, left to right).
+   - If `s1[i - 1]` is equal to `s2[j - 1]`, it means no deletion is required. So, `dp[i][j] = dp[i - 1][j - 1]`.
+   - If `s1[i - 1]` is not equal to `s2[j - 1]`, it means a deletion is required. We have two options:
+     - Delete `s1[i - 1]` and find the minimum cost by adding the ASCII value of `s1[i - 1]` to the minimum cost to make `s1[0..i)` and `s2[0..j - 1)` equal. So, `dp[i][j] = dp[i - 1][j] + s1[i - 1]`.
+     - Delete `s2[j - 1]` and find the minimum cost by adding the ASCII value of `s2[j - 1]` to the minimum cost to make `s1[0..i - 1)` and `s2[0..j)` equal. So, `dp[i][j] = dp[i][j - 1] + s2[j - 1]`.
+   - Take the minimum of the two options as the final value of `dp[i][j]`.
+
+3. The value of `dp[m][n]` will represent the minimum cost to make `s1` and `s2` equal.
+
+# Complexity
+- Time complexity: The solution uses two nested loops to fill the DP array of size `(m + 1) x (n + 1)`. Thus, the time complexity is O(m * n), where `m` is the length of `s1` and `n` is the length of `s2`.
+- Space complexity: The DP array of size `(m + 1) x (n + 1)` is used to store the intermediate results. Hence, the space complexity is O(m * n).
