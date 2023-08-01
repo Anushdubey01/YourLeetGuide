@@ -1,0 +1,20 @@
+Intuition -
+The problem asks us to generate all possible combinations of k numbers from 1 to n. To do this, we can use a depth-first search (DFS) approach, where we explore all possible combinations recursively. The idea is to start with an empty combination and keep adding elements to it until we reach the desired size k. At each step, we can choose the current element to be included in the combination, and then proceed to the next elements.
+
+Approach -
+The approach is implemented using a recursive depth-first search function dfs. The function takes the following parameters:
+
+n: The maximum number (from 1 to n).
+k: The size of the combinations to be generated.
+s: The starting number for the current combination (to avoid repetitions).
+path: The current combination being formed.
+ans: The list of all valid combinations.
+In the dfs function:
+
+If the size of the current path is equal to k, it means we have formed a valid combination of size k. We add it to the answer list and return.
+Otherwise, we iterate from s to n, adding each number to the path, and making a recursive call to dfs with the updated path and s+1 as the new starting point. After the recursive call, we remove the last element from the path to backtrack and explore other possibilities.
+The main function combine initializes an empty list ans and calls the dfs function with appropriate initial values. Finally, it returns the ans, containing all valid combinations.
+
+Complexity -
+Time Complexity: The algorithm explores all possible combinations, and there are C(n, k) combinations to consider. Therefore, the time complexity is O(C(n, k)), where C(n, k) represents the number of combinations of n elements taken k at a time.
+Space Complexity: The space complexity is O(k) as we are using recursion and the maximum size of the call stack would be k. Additionally, the space complexity also includes the space needed to store the ans list, which is proportional to the number of valid combinations. In the worst case, the number of valid combinations can be C(n, k), so the overall space complexity is O(C(n, k)).
