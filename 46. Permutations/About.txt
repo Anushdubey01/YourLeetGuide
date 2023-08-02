@@ -1,0 +1,21 @@
+# Intuition
+The problem is to find all possible permutations of the given input list `nums`. One way to approach this problem is to use backtracking. We can start with an empty path and add elements one by one to the path, keeping track of the used elements to avoid repetition. When the path's length becomes equal to the length of the input list, we have found a valid permutation, and we can add it to the answer.
+
+# Approach
+1. Initialize an empty list `ans` to store all permutations.
+2. Start a depth-first search (`dfs`) function that takes the following parameters:
+   - `nums`: The input list of integers.
+   - `used`: A boolean array to keep track of used elements in the input list.
+   - `path`: A list to keep track of the current path being constructed.
+   - `ans`: The list to store all permutations.
+3. In the `dfs` function:
+   - If the size of the `path` is equal to the length of `nums`, it means we have found a valid permutation, so we add a copy of the `path` to the `ans`.
+   - Otherwise, for each element in the `nums` list:
+     - If the element is already used (`used[i] = true`), skip to the next element.
+     - Otherwise, mark the element as used (`used[i] = true`), add it to the `path`, and recursively call the `dfs` function with the updated `path`.
+     - After the recursive call, remove the last added element from the `path` and mark the current element as unused (`used[i] = false`).
+4. Return the final `ans` containing all permutations.
+
+# Complexity
+- Time complexity: The time complexity is O(n * n!), where n is the length of the `nums` list. This is because there are n! possible permutations, and to construct each permutation, we do a linear-time operation of copying the `path`.
+- Space complexity: The space complexity is O(n) as we use extra space for the boolean array `used`, `path`, and the call stack for recursive calls.
