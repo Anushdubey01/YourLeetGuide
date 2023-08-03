@@ -1,0 +1,13 @@
+# Intuition
+The problem seems to be related to counting black blocks in a 2D grid. The goal is to count the occurrences of different black block sizes in the given grid.
+
+# Approach
+To solve the problem, we will use a HashMap to keep track of the counts of different black block sizes. We will iterate through the given `coordinates` array, which represents the positions of black blocks in the grid. For each coordinate, we will consider a 2x2 submatrix with the current coordinate as the bottom-right corner and count the black cells in that submatrix.
+
+The submatrix is defined by the coordinates `(i, j), (i, j-1), (i-1, j), (i-1, j-1)`, where `(i, j)` is the current coordinate. To count the black cells in this submatrix, we will check if each cell is within the valid bounds of the grid. If it is, we will increment the count of the corresponding submatrix size in the HashMap.
+
+After counting all submatrices, we will count the occurrences of different block sizes in the HashMap and update the `ans` array accordingly.
+
+# Complexity
+- Time complexity: O(m*n) where `m` is the number of rows in the grid and `n` is the number of columns in the grid. The nested loops iterate through each cell in the grid once, and the HashMap operations take constant time.
+- Space complexity: O(m*n) where `m` is the number of rows in the grid and `n` is the number of columns in the grid. The HashMap can store at most `m*n` different submatrix sizes and their counts. Additionally, the `ans` array has a constant size of 5.
