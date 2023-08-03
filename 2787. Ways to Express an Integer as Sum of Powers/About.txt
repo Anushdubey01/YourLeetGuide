@@ -1,0 +1,17 @@
+# Intuition - 
+
+The given program aims to find the number of ways to climb a staircase with `n` steps, where at each step, you can take up to `x` steps at a time. The goal is to compute the total number of distinct ways to reach the top of the staircase.
+
+# Approach - 
+
+The approach used in the given program is dynamic programming, specifically the bottom-up approach. The program initializes an array `dp` of size `n+1`, where `dp[i]` represents the number of ways to reach the `i-th` step of the staircase.
+
+The outer loop runs from `a = 1` to the point where the number of steps (`ax = a^x`) is less than or equal to `n`. For each value of `a`, the inner loop iterates from `i = n` down to `ax`. In each iteration, the program updates `dp[i]` by adding the number of ways to reach the step `i - ax`, which means taking `a^x` steps and then reaching the current step. The result is then taken modulo `MOD` to keep the values within a reasonable range and prevent integer overflow.
+
+After the loops, the program returns `dp[n]`, which represents the total number of ways to reach the `n-th` step of the staircase.
+
+# Complexity - 
+
+- Time Complexity: The time complexity of the program is O(n * x), where `n` is the number of steps and `x` is the maximum number of steps that can be taken in one move. The outer loop runs for `O(n/x)` iterations, and the inner loop runs for `O(n)` iterations, leading to the overall time complexity of O(n * x).
+
+- Space Complexity: The space complexity of the program is O(n), which is the size of the `dp` array used to store intermediate results. The array requires O(n) space to hold the number of ways to reach each step from 0 to `n`.
