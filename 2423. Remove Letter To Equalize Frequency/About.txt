@@ -1,0 +1,13 @@
+# Intuition
+The problem asks us to check whether it is possible to rearrange the characters in the given word such that all characters have the same frequency. To achieve this, we can count the frequency of each character in the word and then try removing one occurrence of each character one by one and check if the remaining characters have equal frequencies.
+
+# Approach
+1. Create a HashMap to store the frequency of each character in the given word.
+2. Iterate through the word and count the frequency of each character.
+3. For each character in the word, reduce its frequency by one, and check if all the remaining characters in the HashMap have equal frequencies.
+4. If they do, return true, as it is possible to rearrange the characters to have equal frequencies.
+5. If no such rearrangement is possible, return false.
+
+# Complexity
+- Time complexity: O(n^2) where n is the length of the word. In the worst case, we may have to check all characters one by one and for each character, we may have to iterate through all the remaining characters to check their frequencies.
+- Space complexity: O(n) for the HashMap to store the character frequencies.

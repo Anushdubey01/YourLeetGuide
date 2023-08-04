@@ -1,0 +1,15 @@
+# Intuition
+The problem requires determining if a given string `s` can be segmented into words from a given dictionary `wordDict`. This is a typical problem that can be efficiently solved using dynamic programming.
+
+# Approach
+Both the Python and Java programs use dynamic programming to solve the problem. The approach is to use a boolean array (`dp` in Java, and `dp` list in Python) of length `n + 1` (where `n` is the length of the input string `s`). The element `dp[i]` will be set to `True` if the substring `s[0:i]` can be segmented into words from the dictionary `wordDict`, otherwise `False`.
+
+To determine the value of `dp[i]`, both programs use nested loops. The outer loop iterates from `1` to `n`, representing the length of the substrings of `s`. The inner loop iterates from `0` to `i - 1`, representing the possible breakpoints of the substring `s[0:i]`. The current substring being considered is `currentWord = s[j:i]`.
+
+The condition `dp[j]` checks if the substring `s[0:j]` can be segmented into words from `wordDict`. If `dp[j]` is `True`, and the `currentWord` exists in `wordSet` (Python) or `wordSet.contains(currentWord)` (Java), then it means that we can extend the segmentation up to index `i`. Thus, `dp[i]` is set to `True`, and we break from the inner loop.
+
+The time complexity of both implementations is `O(n^2)` because of the nested loops, and the space complexity is `O(n)` to store the `dp` array (or list).
+
+# Complexity
+- Time complexity: O(n^2)
+- Space complexity: O(n)
