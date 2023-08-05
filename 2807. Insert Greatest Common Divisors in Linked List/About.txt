@@ -1,0 +1,12 @@
+# Intuition
+The problem aims to insert the greatest common divisor (GCD) between adjacent nodes in a linked list. To achieve this, we need to find the GCD of each pair of adjacent nodes and insert a new node with this GCD between them.
+
+# Approach
+1. Define a helper function `findGCD` to calculate the GCD of two given integers. The function follows the Euclidean algorithm to find the GCD.
+2. Implement the `insertGreatestCommonDivisors` function to insert the GCD nodes between adjacent nodes in the linked list. We iterate through the list, calculate the GCD of adjacent nodes using the helper function, and insert a new node with the GCD value between them.
+
+# Complexity
+- Time complexity: O(n), where n is the number of nodes in the linked list. We traverse the list once to calculate the GCD between adjacent nodes.
+- Space complexity: O(1), as we only use a constant amount of additional space to store temporary variables during the calculations. The modifications are made in-place in the original linked list.
+
+The provided code correctly implements the approach to insert the GCD nodes between adjacent nodes in the linked list.
