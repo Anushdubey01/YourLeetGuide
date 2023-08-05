@@ -1,0 +1,13 @@
+# Intuition
+The problem can be solved using a frequency map to keep track of indices where each number appears in the `nums` list. For each number, we find the maximum distance between two indices where it appears and calculate the time needed to make all elements equal, considering the time taken to traverse this maximum distance.
+
+# Approach
+- Create a frequency map to store the indices of each number in the `nums` list.
+- For each number, find the maximum distance between two indices where it appears and calculate the time needed to traverse this maximum distance.
+- Update the result with the minimum time calculated for each number.
+
+# Complexity
+- Time complexity: O(n), where n is the size of the `nums` list. We traverse the list once to create the frequency map and then calculate the maximum distance and time for each number.
+- Space complexity: O(n), where n is the size of the `nums` list. We use a frequency map to store indices, which can have at most n entries.
+
+The code provided implements the above approach to find the minimum time needed to make all elements in the list equal and returns the result.
