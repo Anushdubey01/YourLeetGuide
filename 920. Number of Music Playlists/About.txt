@@ -1,0 +1,17 @@
+# Intuition
+The problem requires finding the number of possible playlists with the given constraints. We can use dynamic programming to solve this problem efficiently. The dynamic programming approach allows us to build the solution bottom-up, starting from smaller subproblems and gradually solving the larger ones.
+
+# Approach
+1. We'll use a 2D array `dp` to store the number of playlists with `i` songs and `j` different songs.
+2. Initialize `dp[0][0]` as 1, representing the base case when there are 0 songs and 0 different songs (one possible playlist: an empty playlist).
+3. We'll then iteratively calculate the number of playlists for each subproblem based on the number of songs and different songs.
+4. For each `i` (number of songs) from 1 to `goal` and each `j` (number of different songs) from 1 to `n`, we'll use the recurrence relation to update `dp[i][j]`:
+   - `dp[i][j] = dp[i - 1][j - 1] * (n - (j - 1)) + dp[i - 1][j] * max(0, j - k)`
+     - `dp[i - 1][j - 1] * (n - (j - 1))`: The last song is new, so we have `n - (j - 1)` choices for the last song. The number of playlists with `i-1` songs and `j-1` different songs can contribute to this.
+     - `dp[i - 1][j] * max(0, j - k)`: The last song is old (already in the playlist), so we have `max(0, j - k)` choices for the last song (at most `j - k` different songs allowed). The number of playlists with `i-1` songs and `j` different songs can contribute to this.
+   - After calculating `dp[i][j]`, we'll take the result modulo `kMod` to avoid integer overflow.
+5. The final answer will be in `dp[goal][n]`.
+
+# Complexity
+- Time complexity: The dynamic programming approach involves two nested loops, iterating from 1 to `goal` and `n` respectively. Therefore, the time complexity is O(goal * n).
+- Space complexity: We use a 2D array `dp` of size `(goal + 1) x (n + 1)` to store intermediate results, leading to a space complexity of O(goal * n).
