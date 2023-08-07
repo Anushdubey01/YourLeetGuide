@@ -1,0 +1,12 @@
+## Intuition
+The problem aims to determine if it's possible to split an array into subarrays with the sum of adjacent elements greater than or equal to a given threshold `m`. The task is to find if there's a pair of adjacent elements in the array that satisfies this condition.
+
+## Approach
+1. **Check Size**: If the size of the input array `nums` is less than 3, it is always possible to split the array. In this case, return `true`.
+
+2. **Adjacent Sum Comparison**: Iterate through the array from the second element to the last element. For each element at index `i`, compare the sum of the current element (`nums[i]`) and the previous element (`nums[i - 1]`) with the threshold `m`. If the sum is greater than or equal to `m`, return `true`, as this indicates a valid split. If no such pair is found, return `false`.
+
+## Complexity
+- Time complexity: The algorithm iterates through the array once, checking the sum of adjacent elements. Therefore, the time complexity is O(n), where n is the size of the input array.
+
+- Space complexity: The algorithm uses a constant amount of extra space for variables. Thus, the space complexity is O(1), indicating constant space usage regardless of the input size.
