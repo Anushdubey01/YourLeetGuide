@@ -1,0 +1,16 @@
+## Intuition
+The problem requires finding the maximum "safeness" factor for a given grid while avoiding a thief. The "safeness" factor represents the number of steps a person can take without encountering the thief. The task is to determine the maximum "safeness" factor such that a valid path exists from the top-left corner of the grid to the bottom-right corner without getting too close to the thief.
+
+## Approach
+1. **Distance Calculation**: The code starts by calculating the distance of each cell to the nearest thief using Breadth-First Search (BFS). It maintains a queue of cells to explore, iterates through the grid, and updates the distance values for each cell based on its proximity to a thief. This step is implemented in the `getDistToThief` function.
+
+2. **Binary Search**: The main function `maximumSafenessFactor` performs a binary search to find the maximum "safeness" factor. It initializes a range for the "safeness" factor and narrows down the range by iteratively checking if a valid path exists with the given "safeness" factor. If a valid path exists, it updates the lower bound of the range; otherwise, it updates the upper bound. This binary search approach ensures finding the maximum possible "safeness" factor.
+
+3. **Valid Path Check**: The `hasValidPath` function checks if a valid path exists from the top-left corner to the bottom-right corner while ensuring that the "safeness" factor is maintained. It uses BFS to explore cells and avoids cells where the distance to the thief is less than the current "safeness" factor.
+
+## Complexity
+- Time complexity: The time complexity of calculating the distance to the nearest thief using BFS is O(n^2), where n is the size of the grid. The binary search step runs in O(log n) iterations, and in each iteration, the BFS step is performed, resulting in a total time complexity of O(n^2 * log n).
+
+- Space complexity: The space complexity is dominated by the storage used for BFS queues and boolean arrays. The BFS queue can have at most n^2 cells in it, resulting in an O(n^2) space complexity. The boolean arrays `seen` and `distToThief` also require O(n^2) space. Thus, the overall space complexity is O(n^2).
+
+The provided code efficiently tackles the problem by calculating distances, performing binary search, and using BFS to validate paths while maintaining an optimal time and space complexity.
