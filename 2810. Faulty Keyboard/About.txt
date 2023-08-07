@@ -1,0 +1,20 @@
+## Intuition
+The problem involves processing a string and applying specific operations to modify the string based on certain conditions. The given operations involve inverting the order of characters when a specific character ('i') is encountered. The goal is to perform the operations as specified and return the resulting modified string.
+
+## Approach
+1. Initialize an empty `StringBuilder` (`sb`) to store the final modified string.
+2. Create an empty double-ended queue (deque) `dq` to store characters temporarily.
+3. Initialize a boolean variable `inversed` to track whether the order of characters should be inverted.
+4. Iterate through each character in the input string `s`:
+   - If the character is 'i', toggle the value of `inversed`.
+   - If `inversed` is true, add the character to the front of the deque (`dq`).
+   - Otherwise, add the character to the end of the deque (`dq`).
+5. After processing all characters, iterate through the deque and append each character to the `sb` (in the order they were added).
+6. If `inversed` is true, reverse the `sb` and convert it to a string before returning. Otherwise, directly convert `sb` to a string and return it.
+
+## Complexity
+- Time complexity: The algorithm iterates through each character of the input string once to perform the required operations. In the worst case, this takes linear time proportional to the length of the input string `s`, resulting in a time complexity of O(n), where n is the length of the input string.
+
+- Space complexity: The algorithm uses additional space to store the characters in the `dq` and the modified string in the `sb`. In the worst case, both the `dq` and `sb` can store all characters from the input string `s`. Therefore, the space complexity is also O(n), where n is the length of the input string.
+
+The provided code efficiently handles string manipulation with a linear time and space complexity while performing the required operations to achieve the desired outcome.
