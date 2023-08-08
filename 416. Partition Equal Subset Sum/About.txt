@@ -1,0 +1,12 @@
+Intuition -
+The problem is to determine if it's possible to partition an array of integers into two subsets of equal sum. If the total sum of the array is odd, it's not possible to partition the array into two equal-sum subsets. Otherwise, we can try to find a subset that adds up to half of the total sum.
+
+Approach -
+The code uses dynamic programming to solve the problem. It defines a function canPartition that calculates the sum of the input array, checks if it's even, and then calls the knapsack function to find if a subset of the array can add up to half of the total sum.
+
+The knapsack function initializes a 2D boolean array dp, where dp[i][j] is true if a subset of the first i elements can add up to the value j. It iterates through each element in the array and for each element, it iterates through possible target sums from 0 to the given subset sum. If the current element's value is greater than the target sum, it inherits the value from the previous row in the table. Otherwise, it considers whether including the current element or excluding it can achieve the target sum.
+
+Complexity -
+Time complexity: The outer loop in the knapsack function runs for n elements, and the inner loop runs for subsetSum iterations. So, the overall time complexity is O(n * subsetSum), where n is the number of elements in the array and subsetSum is half of the total sum of the array.
+
+Space complexity: The space complexity is O(n * subsetSum) due to the 2D dp array.
