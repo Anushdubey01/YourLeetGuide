@@ -1,0 +1,14 @@
+# Intuition -
+The problem is asking you to minimize the maximum difference between any pair of numbers while maintaining a certain number of pairs. You want to find a value that can be a potential candidate for the minimized maximum difference, and then verify if you can achieve the required number of pairs with that value.
+
+# Approach -
+1. First, the given array `nums` is sorted in ascending order.
+2. The binary search algorithm is used to find the candidate value for the minimized maximum difference. The binary search is conducted on the range of possible maximum differences, which is between the smallest and largest numbers in the sorted `nums` array.
+3. Inside the binary search loop, the function `countPairs(nums, maxDiff)` is used to count how many pairs can be formed with a maximum difference of `maxDiff`.
+4. If the count of pairs with a maximum difference of `maxDiff` is greater than or equal to the required number of pairs `p`, then it means we can potentially minimize the maximum difference further, so the `right` boundary of the binary search is adjusted to `middle`.
+5. If the count of pairs is less than `p`, then it means we need to increase the maximum difference, so the `left` boundary of the binary search is adjusted to `middle + 1`.
+6. The binary search continues until the `left` and `right` boundaries meet.
+
+# Complexity - 
+- Time complexity: The most time-consuming part of the algorithm is the binary search, which has a time complexity of O(log N), where N is the length of the `nums` array. Inside the binary search loop, the `countPairs` function is called, which has a linear time complexity of O(N), where N is the length of the `nums` array. Therefore, the overall time complexity is O(N * log N).
+- Space complexity: The algorithm uses a constant amount of extra space for variables and indices, so the space complexity is O(1).
