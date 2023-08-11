@@ -1,0 +1,21 @@
+# Intuition - 
+The problem is to find the number of combinations to make up a given `amount` using a set of `coins` of different denominations. This is a classic example of a combinatorial problem that can be solved using dynamic programming. The intuition behind the dynamic programming approach is that we can build up the solutions for larger `amounts` by using the solutions for smaller `amounts` and gradually considering each coin denomination.
+
+# Approach - 
+1. Create an array `dp` of size `amount + 1` to store the number of combinations for each amount from 0 to the given `amount`.
+
+2. Initialize `dp[0]` to 1, because there's only one way to make an amount of 0, which is by using no coins.
+
+3. For each coin denomination in the `coins` array:
+   a. Iterate through the `dp` array from `coin` to `amount`.
+   b. For each `i`, update `dp[i]` by adding the value of `dp[i - coin]`. This step essentially accumulates the number of combinations that can be formed for the current `amount` using the current coin denomination.
+
+4. After iterating through all coin denominations, the value at `dp[amount]` represents the total number of combinations that can be formed to make up the given `amount` using the provided `coins`.
+
+5. Return `dp[amount]` as the final result.
+
+# Complexity Analysis - 
+
+- **Time Complexity:** The time complexity of this solution is O(amount * n), where `amount` is the target amount and `n` is the number of coin denominations. This is because we iterate through the `dp` array of size `amount + 1` for each coin denomination.
+
+- **Space Complexity:** The space complexity is O(amount), as we use an additional array `dp` of size `amount + 1` to store the number of combinations for each amount.
