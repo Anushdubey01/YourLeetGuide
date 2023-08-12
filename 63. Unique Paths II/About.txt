@@ -1,0 +1,14 @@
+# Intuition - 
+The intuition behind this solution is to use dynamic programming to calculate the number of unique paths to reach each cell in the grid while considering obstacles. By building up the solution from the top-left corner to the bottom-right corner, you can calculate the total number of unique paths.
+
+# Approach - 
+The approach in the provided solution is as follows:
+1. Initialize a 2D array `dp` to store the number of unique paths for each cell.
+2. Set `dp[0][1]` to 1. This is because you can only move right from the starting cell.
+3. Iterate through the grid using nested loops:
+   - If the current cell does not have an obstacle (`obstacleGrid[i - 1][j - 1] == 0`), update `dp[i][j]` with the sum of the paths coming from the cell above (`dp[i - 1][j]`) and the cell to the left (`dp[i][j - 1]`).
+4. Return the value at `dp[m][n]`, where `m` and `n` are the dimensions of the grid.
+
+# Complexity - 
+- Time complexity: The time complexity of this solution is O(m * n), where `m` is the number of rows and `n` is the number of columns in the grid. This is because you iterate through each cell once, and each cell's computation takes constant time.
+- Space complexity: The space complexity is O(m * n) as well. The `dp` array has the same dimensions as the grid, so it requires O(m * n) space to store the intermediate results.
