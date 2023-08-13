@@ -1,0 +1,14 @@
+# Intuition - 
+The given singly-linked list represents a non-negative integer without leading zeroes. To double the number represented by the linked list, we need to simulate the multiplication process step by step.
+
+# Approach - 
+1. Traverse the original linked list and store the values of the nodes in an ArrayList `originalValues`.
+2. Initialize an ArrayList `doubledValues` to store the doubled values in reverse order.
+3. Traverse `originalValues` in reverse order and perform the multiplication and carry operation, adding the results to `doubledValues`.
+4. Handle any remaining carry values by adding them to `doubledValues`.
+5. Create a new linked list to represent the final doubled value. Traverse `doubledValues` and create new nodes with the values from the ArrayList.
+6. Return the head of the new linked list.
+
+# Complexity - 
+- **Time Complexity: O(N),** where N is the number of nodes in the original linked list. We traverse the list twice (once to gather original values, and once to create the new linked list).
+- **Space Complexity: O(N),** as we are using ArrayLists to store the original and doubled values. The space complexity of creating the new linked list is also O(N).
