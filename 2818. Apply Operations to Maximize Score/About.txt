@@ -1,0 +1,38 @@
+# Intuition - 
+The problem aims to find the maximum score of a sequence of operations performed on a list of numbers. Each operation involves raising a number to a power based on its properties, and the total score is calculated from the products of these powered numbers. The goal is to determine the maximum achievable score.
+
+# Approach -
+1. The code defines two helper functions: `calculateScore` and `calculatePower`, to calculate the score of a number and the power of a number respectively.
+2. The `maximumScore` function starts by initializing a priority queue (`priorityQueue`) and a list of lists (`list`). The priority queue will be used to store numbers with their corresponding scores, and the list will store the numbers and their calculated scores.
+3. The input list of numbers (`nums`) is iterated over to calculate their scores and store the data in both the priority queue and the list of lists.
+4. The main loop starts, which aims to calculate the maximum score using the highest-scoring numbers.
+5. In each iteration, the code dequeues the number with the highest score from the priority queue (`currentList`).
+6. It then identifies the indices to the right and left of the current number (`currentIndex`) where operations can be performed while adhering to the rules mentioned.
+7. The number of operations (`realOperations`) is calculated based on the possible range of indices.
+8. The code calculates the result using the `calculatePower` function and updates the result variable accordingly.
+9. The number of remaining operations (`k`) is reduced by the number of operations performed.
+10. The loop continues until either the priority queue is empty or `k` reaches zero.
+11. Finally, the calculated result is returned.
+
+# Complexity - 
+
+**Time Complexity:**
+
+1. The `calculateScore` function iterates through the prime factors of a number, which takes O(sqrt(number)) time.
+2. The `calculatePower` function uses the exponentiation by squaring technique, which requires O(log(exponent)) operations.
+3. Constructing the priority queue and the `list` takes O(n * log n) time due to sorting and insertion into the priority queue.
+4. The outer `while` loop runs as long as the priority queue is not empty and `k` is greater than 0. In the worst case, this loop can run up to `n` times.
+5. The inner `while` loops for calculating `right` and `left` values can run at most `n` times in total.
+6. The final loop calculates the result by multiplying powers, which takes O(n) time.
+
+The overall time complexity of the code is dominated by the sorting and priority queue operations and can be approximated as O(n * log n).
+
+**Space Complexity:**
+
+1. The space complexity is determined by the space used for storing intermediate values and data structures.
+2. The priority queue, list, and temporary variables used in calculations contribute to the space complexity.
+3. The priority queue and list both require O(n) space.
+4. Other variables and data structures used within functions occupy constant space.
+5. The space complexity is O(n), as it grows linearly with the input size.
+
+**In summary, the code has a time complexity of approximately O(n * log n) and a space complexity of O(n).**
