@@ -1,0 +1,17 @@
+Intuition -
+The problem asks whether it's possible to partition an array into non-empty consecutive subsequences of length 1, 2, or 3, such that the numbers in each subsequence are the same or consecutive.
+
+Approach -
+We will use dynamic programming to solve this problem.
+The dp[i] array will store whether it's possible to partition the first i elements into valid subsequences.
+Initialize dp[0] as true since an empty array can be considered a valid partition.
+Initialize dp[2] based on whether the first two elements are equal or not.
+Loop through the array from index 3 to n, and at each index i, we need to check if we can form a valid partition by considering the previous elements.
+We consider two cases:
+We can form a valid partition by taking the current element and the previous one (i.e., nums[i] == nums[i - 1]).
+We can form a valid partition by taking the current element and the previous two (i.e., either nums[i], nums[i - 1], and nums[i - 2] are equal, or they form consecutive numbers).
+Update dp[i] based on the two cases above.
+Finally, return dp[n] which indicates whether a valid partition can be formed using the entire array.
+Complexity -
+Time complexity: O(n), where n is the length of the input array nums. We iterate through the array once.
+Space complexity: O(n), as we are using an additional dp array of size n + 1 to store the dynamic programming values.
