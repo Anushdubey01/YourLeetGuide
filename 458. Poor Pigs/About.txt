@@ -1,0 +1,15 @@
+# Intuition -
+The problem is asking for the minimum number of pigs needed to determine which buckets contain poisoned water within a certain number of tests. Each pig can be used to represent different states (outcomes) based on whether they survive or die during the tests. The goal is to ensure that all possible states of the buckets can be uniquely represented by the available pigs.
+
+# Approach -
+1. Calculate the number of tests a single pig can perform within the given time window: `testsPerPig = timeToTest / timeToDie`.
+2. Initialize `numPigs` to keep track of the number of pigs needed, and `states` to keep track of the number of unique states that a single pig can represent (states start with 1 since a pig can either survive or die, so two possible states).
+3. Enter a loop that continues until the number of states is greater than or equal to the number of buckets.
+   - At each iteration, multiply the `states` by `(testsPerPig + 1)` since each pig can cover that many unique states.
+   - Increment the `numPigs` by 1.
+4. Once the loop ends, return the `numPigs` as the minimum number of pigs needed to solve the problem.
+
+# Complexity -
+ - **Time Complexity** - The time complexity of this solution is determined by the loop, which iterates until the number of states becomes greater than or equal to the number of buckets. Let `n` be the number of buckets. The loop runs until `states` becomes `>= n`, and in each iteration, the `states` are multiplied by `(testsPerPig + 1)`. The number of iterations can be considered logarithmic with base `(testsPerPig + 1)` in relation to `n`. Therefore, the time complexity is O(log_base_(testsPerPig + 1)(n)).
+
+ - **Space Complexity** - The space complexity of the solution is constant since the code uses a fixed number of variables (`testsPerPig`, `numPigs`, `states`) that do not depend on the input size. Hence, the space complexity is O(1).
