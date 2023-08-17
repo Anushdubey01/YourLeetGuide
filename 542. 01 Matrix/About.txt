@@ -1,0 +1,23 @@
+**Intuition:**
+The given program aims to update a given matrix containing values representing distances from cells with value 1 to the nearest cell with value 0. The basic idea is to perform a breadth-first search (BFS) starting from the cells with value 0 and gradually expanding to adjacent cells with non-zero values. During this process, the distance to each cell with a non-zero value is updated based on the minimum distance from its adjacent cells with value 0.
+
+**Approach:**
+1. Initialize the required variables: `rows` and `cols` as the number of rows and columns in the matrix, `directions` to represent the four possible directions (up, down, left, right), a queue `queue` to store cells to be processed, and a `visited` array to keep track of visited cells.
+
+2. Iterate through the entire matrix:
+   - If the current cell's value is 0, enqueue the cell's coordinates into the queue and mark it as visited in the `visited` array.
+
+3. Start a BFS loop while the queue is not empty:
+   - Dequeue a cell from the queue.
+   - Iterate through the four possible directions:
+     - Calculate the coordinates of the adjacent cell.
+     - If the calculated coordinates are within the matrix bounds and the cell hasn't been visited:
+       - Update the distance of the adjacent cell by adding 1 to the distance of the current cell.
+       - Enqueue the adjacent cell's coordinates into the queue.
+       - Mark the adjacent cell as visited in the `visited` array.
+
+4. Return the modified matrix with updated distances.
+
+**Complexity:**
+- Time Complexity: The algorithm processes each cell only once, and for each cell, it performs constant time operations. Hence, the time complexity is O(rows * cols).
+- Space Complexity: The algorithm uses additional space to store the queue and the `visited` array, both of which can take up to O(rows * cols) space. Therefore, the space complexity is O(rows * cols).
