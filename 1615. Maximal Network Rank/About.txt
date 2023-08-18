@@ -1,0 +1,16 @@
+# Intuition - 
+The problem involves finding the maximal network rank, which can be thought of as the maximum number of direct connections a pair of cities can have, considering all possible pairs of cities. A direct connection between two cities is represented by a road connecting them.
+
+# Approach - 
+1. First, a graph representation of the cities and their connections is built. This is done using an array `adj`, where each element `adj[i]` is a `HashSet` containing the cities directly connected to city `i`.
+2. For each road in the input array `roads`, the graph representation is updated to reflect the connection between the cities.
+3. The main part of the algorithm involves iterating through all possible pairs of cities (i, j) and calculating their potential network rank. The network rank of a pair (i, j) is the sum of the sizes of the `HashSet`s representing the connections of cities i and j.
+4. If cities i and j are directly connected (i.e., there's a road between them), then the double counting of their connection is avoided by decrementing the network rank by 1.
+5. The maximum network rank encountered during this iteration is stored in the `ans` variable, which is ultimately returned as the answer.
+
+# Complexity Analysis - 
+ - **Time Complexity:**
+The overall time complexity is O(E + n^2), where E is the number of roads (edges) and n is the number of cities.
+
+ - **Space Complexity:**
+The space complexity is O(n), where n is the number of cities. This accounts for the adjacency list storage.
