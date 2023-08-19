@@ -1,0 +1,24 @@
+**Intuition:**
+
+The goal of this program is to find the minimum number of operations needed to transform a given list of integers into a beautiful array. In this context, a beautiful array is one where elements are sorted in non-decreasing order, and you can perform operations to change the group of a number to another group.
+
+**Approach:**
+
+1. Initialize an empty list `temp` to keep track of elements in a particular order.
+2. Initialize a variable `count` to keep track of the number of operations performed.
+3. Add the first element of the input list `nums` to `temp`.
+4. Loop through the rest of the elements in `nums` (from index 1 to n-1).
+5. For each element `num` in `nums`, find its position in `temp` using a binary search to determine where it should be placed.
+   - Use `lowerBound` to find the index where `num` should be inserted or is already present in `temp`.
+   - Use `upperBound` to find the index where the next greater element than `num` should be inserted.
+6. If `upperBound` returns an index equal to the size of `temp`, it means `num` is the largest element in the current beautiful array group. In this case, add `num` to `temp`.
+7. Otherwise, if `upperBound` returns an index `ind`, update the element at index `ind` in `temp` to be the minimum of the current element and `num`.
+8. Increment the `count` variable by 1 for each operation performed.
+9. Repeat steps 5-8 for all elements in `nums`.
+10. The final value of `count` will represent the minimum number of operations needed to make the array beautiful.
+11. Return the value of `count` as the result.
+
+**Complexity Analysis:**
+
+- Time Complexity: O(n*log(n)) - The primary time complexity comes from the binary search operations (`lowerBound` and `upperBound`) within the loop. Since the list `temp` can have at most n elements, and for each element, you perform a binary search which takes O(log(n)) time, the overall time complexity is O(n*log(n)).
+- Space Complexity: O(n) - The additional space used is mainly for the `temp` list, which can have at most n elements. Therefore, the space complexity is O(n).

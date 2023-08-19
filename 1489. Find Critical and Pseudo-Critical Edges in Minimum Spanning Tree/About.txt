@@ -1,0 +1,30 @@
+**Intuition:**
+
+This program aims to find critical and pseudo-critical edges in a given graph. Critical edges are those that, when removed, increase the minimum spanning tree (MST) weight. Pseudo-critical edges are those that, when added, maintain the same MST weight. The code uses a Union-Find data structure to efficiently compute MST weights while adding or removing edges.
+
+**Approach:**
+
+1. The `UnionFind` class is implemented to create a Union-Find data structure with path compression and union by rank. This data structure is used to efficiently find connected components and build the MST.
+
+2. In the `findCriticalAndPseudoCriticalEdges` method:
+   - It initializes lists for critical and pseudo-critical edges.
+   - The index information of the edges is recorded and sorted by weight in ascending order.
+   - The MST weight of the original graph (without any edges added or removed) is calculated using the `getMSTWeight` function. This MST weight serves as a reference.
+   - It iterates through the sorted edges and determines whether each edge is critical (its removal increases MST weight) or pseudo-critical (its addition maintains the MST weight) by temporarily adding or removing the edge and recalculating the MST weight.
+   - The critical and pseudo-critical edges are collected into separate lists, and these lists are returned as the result.
+
+3. The `getMSTWeight` function calculates the MST weight given a set of edges:
+   - It starts with an empty MST and adds the specified edge if provided.
+   - It then iterates through the sorted edges (excluding the one specified for deletion) and uses the Union-Find data structure to keep track of connected components and compute the MST weight.
+   - If the graph is disconnected, it returns a large value to indicate that no MST is possible.
+   - Otherwise, it returns the computed MST weight.
+
+**Complexity:**
+
+- Time Complexity:
+   - Sorting the edges takes O(E * log(E)) time, where E is the number of edges.
+   - The `getMSTWeight` function performs Union-Find operations on edges, taking O(E * α(V)) time, where α(V) is the inverse Ackermann function, which is effectively constant for practical purposes.
+   - Overall, the time complexity is O(E * log(E)), where E is the number of edges.
+
+- Space Complexity:
+   - The additional space complexity is O(E) for storing the edges and O(V) for the Union-Find data structure, where E is the number of edges and V is the number of nodes.

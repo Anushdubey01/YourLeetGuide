@@ -1,0 +1,19 @@
+**Intuition:**
+
+The given program is intended to check whether it's possible to make `str2` a subsequence of `str1` by making character substitutions based on a rule. The rule states that you can change 'a' to 'z' or decrement any other character by one in the ASCII sequence. The program iterates through `str2` and for each character, it attempts to find a corresponding character in `str1` according to the rule.
+
+**Approach:**
+
+1. Initialize variables `len1` and `len2` to store the lengths of `str1` and `str2` respectively.
+2. Initialize `indexStr1` to keep track of the current position in `str1` and `countMatches` to count the number of matching characters between `str1` and `str2`.
+3. Iterate through each character in `str2`:
+   a. Store the current character in `originalChar` for later reference.
+   b. Adjust the current character as per the given rule, i.e., change 'a' to 'z' and decrement other characters by one in the ASCII sequence.
+   c. Use a while loop to search for a matching character in `str1` starting from the current position in `str1` (`indexStr1`). If a match is found, increment `countMatches` and update `indexStr1` to the next character in `str1`. If no match is found, continue searching in `str1`.
+4. After processing all characters in `str2`, compare `countMatches` with the length of `str2`. If they are equal, it means all characters in `str2` were matched, and you can return `true`. Otherwise, return `false`.
+
+**Complexity Analysis:**
+
+- Time Complexity: The program iterates through both `str1` and `str2`, with nested loops and character comparisons. The worst-case time complexity is O(len1 * len2), where len1 and len2 are the lengths of `str1` and `str2`, respectively.
+
+- Space Complexity: The space complexity is O(1) since the program uses a constant amount of extra space to store variables like `len1`, `len2`, `indexStr1`, `countMatches`, and `originalChar`.
