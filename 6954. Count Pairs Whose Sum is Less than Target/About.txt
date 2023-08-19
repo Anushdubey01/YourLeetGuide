@@ -1,0 +1,23 @@
+**Intuition:**
+
+The given program aims to count the number of pairs of integers in a list (`nums`) such that the sum of each pair is less than a specified target value.
+
+**Approach:**
+
+1. Initialize a variable `count` to keep track of the count of valid pairs. Start it at 0.
+
+2. Iterate through the list `nums` using two nested loops, where `i` represents the index of the first element in the pair, and `j` represents the index of the second element in the pair.
+
+3. For each pair of indices `(i, j)` (where `i < j`), calculate the sum of the elements at these indices, `pairSum = nums.get(i) + nums.get(j)`.
+
+4. Check if `pairSum` is less than the target value. If it is, increment the `count` variable because this pair contributes to the count of pairs whose sum is less than the target.
+
+5. Continue iterating through all possible pairs.
+
+6. After both loops complete, return the final value of the `count` variable, which represents the count of pairs satisfying the condition.
+
+**Complexity Analysis:**
+
+- **Time Complexity:** The program uses two nested loops to iterate through all pairs of elements in the `nums` list. Therefore, the time complexity is O(n^2), where 'n' is the number of elements in the list `nums`.
+
+- **Space Complexity:** The program uses a constant amount of additional space for variables, so the space complexity is O(1), which means it does not depend on the size of the input list.
