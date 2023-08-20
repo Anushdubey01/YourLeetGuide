@@ -1,0 +1,22 @@
+Intuition -
+The program aims to determine whether a given string s is an acronym for a list of words provided as input. An acronym is typically formed by taking the first letter of each word in a phrase and combining them to create a new string. The program checks if the characters in s match the first characters of the words in the list, one-to-one.
+
+Approach -
+Check if the length of s is equal to the number of words in the list. If not, return false because the length mismatch implies that s cannot be an acronym for the given list of words.
+
+Iterate through the list of words and compare the first character of each word with the corresponding character in s.
+
+If at any point, the characters do not match, return false immediately, as this means s cannot be an acronym.
+
+If all characters match for all words, return true, indicating that s is indeed an acronym for the given list of words.
+
+Complexity -
+Time Complexity:
+
+Checking the length of s and the number of words in the list takes O(1) time.
+The loop that iterates through the list of words and compares characters has a time complexity of O(n), where n is the number of words in the list.
+Therefore, the overall time complexity is O(n).
+Space Complexity:
+
+The program uses a constant amount of extra space, regardless of the input size. It only creates a few variables to store characters and indices.
+Thus, the space complexity is O(1).

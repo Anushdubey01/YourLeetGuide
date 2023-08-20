@@ -1,0 +1,26 @@
+# Intuition - 
+
+The intuition behind this code is to find a list of `n` distinct positive integers such that the sum of these integers is minimized, given a constraint that each integer should not be the complement of another integer concerning a given value `k`.
+
+# Approach - 
+
+1. Initialize an empty set `st` to keep track of integers that have been used.
+
+2. Initialize an empty list `v` to store the resulting list of integers.
+
+3. Initialize a variable `now` to 1. This variable will be used to iterate through positive integers starting from 1.
+
+4. Use a while loop to fill the list `v` with `n` distinct positive integers. Inside the loop:
+   - Check if the set `st` does not contain the current value of `now`.
+   - If it doesn't contain `now`, add `now` to the list `v` and add `k - now` to the set `st`. This ensures that the sum of the integers in `v` doesn't exceed `k`, as each integer is paired with its complement concerning `k`.
+   - Increment the `now` variable.
+
+5. After the loop, calculate the sum of the integers in list `v` using `stream().mapToInt(Integer::intValue).sum()`.
+
+6. Return the calculated sum.
+
+# Complexity - 
+
+- Time complexity: The code uses a while loop to populate the `v` list with `n` distinct integers. The loop runs until `v` contains `n` integers. Therefore, the time complexity is O(n).
+
+- Space complexity: The code uses a set `st` to store integers and a list `v` to store the resulting list. The space complexity depends on the number of integers in `v`, which is `n`. Therefore, the space complexity is O(n).
