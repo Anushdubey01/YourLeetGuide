@@ -1,0 +1,26 @@
+**Intuition:**
+
+The given code is for a problem related to reorganizing a string. The goal is to rearrange the characters in the input string `s` such that no two adjacent characters are the same. If such a rearrangement is not possible, the function should return an empty string.
+
+The code uses a greedy approach to solve this problem. It first counts the frequency of each character in the input string and then tries to construct a new string by repeatedly selecting the character with the highest frequency and appending it to the result string. To ensure that no two adjacent characters are the same, it keeps track of the previously appended character and its frequency.
+
+**Approach:**
+
+1. Initialize a `count` map to store the frequency of each character in the input string.
+2. Find the maximum frequency (`maxFreq`) among all characters while updating the `count` map.
+3. If `maxFreq` is greater than `(s.length() + 1) / 2`, it means there are too many instances of a single character, making it impossible to reorganize the string. In this case, return an empty string.
+4. Initialize a `StringBuilder` `sb` to build the result string.
+5. Create a max heap (`maxHeap`) of character-frequency pairs. The characters are sorted by their frequency in descending order.
+6. Initialize variables `prevFreq` and `prevChar` to 0 and '@' (an arbitrary character) respectively. These variables keep track of the previously appended character and its frequency.
+7. Iterate while the max heap is not empty:
+   a. Pop the character with the highest frequency from the max heap.
+   b. Append this character to the result string `sb`.
+   c. If `prevFreq` is greater than 0 (meaning there is a character from the previous iteration), push it back into the max heap.
+   d. Update `prevFreq` to `freq - 1` and `prevChar` to the current character.
+8. Return the result string `sb.toString()`.
+
+**Complexity:**
+
+- Time Complexity: The code iterates through the input string once to count the character frequencies, which takes O(n) time, where n is the length of the input string. It also involves operations like inserting and removing elements from the max heap, which takes O(log k) time per operation, where k is the number of unique characters in the input string. Overall, the time complexity is O(n + k log k).
+
+- Space Complexity: The code uses additional space to store the `count` map, the `StringBuilder` `sb`, and the max heap `maxHeap`. The space complexity is O(k), where k is the number of unique characters in the input string.
