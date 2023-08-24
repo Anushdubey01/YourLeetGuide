@@ -1,0 +1,39 @@
+# Intuition - 
+
+The given code implements a data structure called `RandomizedCollection`, which is similar to a set but allows for duplicates and supports efficient random element retrieval. It allows inserting elements, removing elements (if they exist), and getting a random element.
+
+# Approach - 
+
+1. `RandomizedCollection` uses two data structures:
+   - `valueToIndices`: A dictionary (HashMap in Java) that maps a value to a list of indices in the `items` list where that value appears.
+   - `items`: A list that stores instances of the `Item` class. Each `Item` object represents a value and its index in the `items` list.
+
+2. **Insertion (`insert` method):**
+   - When inserting a value, we first check if it exists in the `valueToIndices` dictionary.
+   - If it doesn't exist, we create an entry with an empty list as the value.
+   - We add the current index of the `items` list to the corresponding list in `valueToIndices`, representing the index of the newly added value.
+   - We create an `Item` object with the value and its index in the corresponding list.
+   - We add this `Item` object to the `items` list.
+   - If the size of the corresponding list in `valueToIndices` is 1, it means this is the first occurrence of the value, and we return `true`. Otherwise, we return `false`.
+
+3. **Removal (`remove` method):**
+   - When removing a value, we first check if it exists in the `valueToIndices` dictionary.
+   - If it doesn't exist, we return `false` as the value is not in the collection.
+   - Otherwise, we retrieve the last index of the value from the corresponding list in `valueToIndices`.
+   - We update the last `Item` in the `items` list with the value and index of the removed value.
+   - We remove the last `Item` from the `items` list.
+   - If the list of indices in `valueToIndices` becomes empty after removing the value, we remove the entry from the dictionary.
+   - We return `true` to indicate successful removal.
+
+4. **Random Element Retrieval (`getRandom` method):**
+   - We generate a random index within the range of valid indices in the `items` list.
+   - We retrieve the `Item` object at that index and return its value.
+
+5. Helper methods:
+   - `lastIndex`: Returns the last index in a list of indices.
+   - `last`: Returns the last `Item` in a list of `Item` objects.
+
+# Complexity Analysis - 
+ - Time Complexity - (O(1))
+
+ - Space Complexity - (O(N))
