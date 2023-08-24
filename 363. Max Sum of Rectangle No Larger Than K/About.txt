@@ -1,0 +1,35 @@
+Intuition -
+The problem asks to find the maximum sum of a rectangular submatrix in a given matrix such that the sum is not greater than a given integer a. This problem can be solved using a combination of techniques, including prefix sums and binary search.
+
+Approach -
+Initialize variables b and c to represent the number of rows and columns in the matrix, respectively. Also, initialize the ans variable to store the maximum submatrix sum, initially set to Integer.MIN_VALUE.
+
+Create an array sum of length b+1 to store the prefix sums of rows.
+
+Iterate through each column i from 0 to c (inclusive):
+
+Create an array sumInRow to store the sum of elements in each row for the current submatrix.
+
+Iterate through each column j from i to c (inclusive):
+
+Iterate through each row p from 0 to b (inclusive):
+Update sumInRow[p] by adding the corresponding element from the matrix in the current column j.
+Update sum[p+1] by adding sum[p] and sumInRow[p]. This step is calculating the prefix sums of the rows for the current submatrix.
+Update ans by taking the maximum of the current ans and the result of the mergeSort function, which calculates the maximum subarray sum in the sum array, not exceeding the given integer a.
+
+If ans becomes equal to a, return a, as there cannot be a greater sum.
+
+After the iterations, return the final value of ans, which represents the maximum submatrix sum not exceeding a.
+
+The mergeSort function is a modified merge sort algorithm to find the maximum subarray sum in the sum array not exceeding a. It recursively divides the array into two halves and combines the results.
+
+Complexity Analysis -
+Time Complexity:
+
+The code iterates through each column from 0 to c, and for each column, it iterates through each possible combination of columns.
+Inside the inner loop, there is a binary search operation in the mergeSort function, which runs in O(log(b)) time.
+Therefore, the overall time complexity of the code is O(c^2 * b * log(b)), where c is the number of columns and b is the number of rows.
+Space Complexity:
+
+The code uses additional space for the sum array, sumInRow array, and cache array.
+The space complexity is O(b + b + (end - start)) = O(b + b + b) = O(b), where b is the number of rows.
